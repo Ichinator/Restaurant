@@ -11,10 +11,10 @@
 
 namespace Symfony\Bundle\FrameworkBundle\Console\Descriptor;
 
+use Symfony\Component\Console\Formatter\OutputFormatter;
 use Symfony\Component\Console\Helper\Table;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\DependencyInjection\Alias;
-use Symfony\Component\DependencyInjection\Argument\ClosureProxyArgument;
 use Symfony\Component\DependencyInjection\Argument\IteratorArgument;
 use Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -227,7 +227,8 @@ class TextDescriptor extends Descriptor
         $rawOutput = isset($options['raw_text']) && $options['raw_text'];
         foreach ($this->sortServiceIds($serviceIds) as $serviceId) {
             $definition = $this->resolveServiceDefinition($builder, $serviceId);
-            $styledServiceId = $rawOutput ? $serviceId : sprintf('<fg=cyan>%s</fg=cyan>', $serviceId);
+
+            $styledServiceId = $rawOutput ? $serviceId : sprintf('<fg=cyan>%s</fg=cyan>', OutputFormatter::escape($serviceId));
             if ($definition instanceof Definition) {
                 if ($showTag) {
                     foreach ($definition->getTag($showTag) as $key => $tag) {
@@ -343,9 +344,6 @@ class TextDescriptor extends Descriptor
                     $argumentsInformation[] = sprintf('Service(%s)', (string) $argument);
                 } elseif ($argument instanceof IteratorArgument) {
                     $argumentsInformation[] = sprintf('Iterator (%d element(s))', count($argument->getValues()));
-                } elseif ($argument instanceof ClosureProxyArgument) {
-                    list($reference, $method) = $argument->getValues();
-                    $argumentsInformation[] = sprintf('ClosureProxy(Service(%s)::%s())', $reference, $method);
                 } elseif ($argument instanceof Definition) {
                     $argumentsInformation[] = 'Inlined Service';
                 } else {
@@ -421,9 +419,6 @@ class TextDescriptor extends Descriptor
         $this->writeText($this->formatCallable($callable), $options);
     }
 
-    /**
-     * @param array $array
-     */
     private function renderEventListenerTable(EventDispatcherInterface $eventDispatcher, $event, array $eventListeners, SymfonyStyle $io)
     {
         $tableHeaders = array('Order', 'Callable', 'Priority');
@@ -478,13 +473,7 @@ class TextDescriptor extends Descriptor
         }
 
         if ($callable instanceof \Closure) {
-            $formatted = $this->formatClosure($callable);
-
-            if ('closure' === $formatted) {
-                return '\Closure()';
-            }
-
-            return $formatted.'()';
+            return '\Closure()';
         }
 
         if (method_exists($callable, '__invoke')) {

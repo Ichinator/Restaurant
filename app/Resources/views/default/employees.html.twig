@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    {{ parent ()}}
+{% endblock %}
+{% block body %}
+    {{ parent ()}}
+
+    {% for employees in employees %}
+        {{ employees.nom}}<br \>
+        {{ employees.prenom }}<br \>
+        {{ employees.poste }}<br \>
+        {{ employees.image }}<br \><br \>
+    {% endfor %}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}

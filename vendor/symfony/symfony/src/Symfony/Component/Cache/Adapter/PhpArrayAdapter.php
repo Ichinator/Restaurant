@@ -38,6 +38,7 @@ class PhpArrayAdapter implements AdapterInterface
     {
         $this->file = $file;
         $this->fallbackPool = $fallbackPool;
+        $this->zendDetectUnicode = ini_get('zend.detect_unicode');
         $this->createCacheItem = \Closure::bind(
             function ($key, $value, $isHit) {
                 $item = new CacheItem();
@@ -65,7 +66,7 @@ class PhpArrayAdapter implements AdapterInterface
     public static function create($file, CacheItemPoolInterface $fallbackPool)
     {
         // Shared memory is available in PHP 7.0+ with OPCache enabled and in HHVM
-        if ((PHP_VERSION_ID >= 70000 && ini_get('opcache.enable')) || defined('HHVM_VERSION')) {
+        if ((\PHP_VERSION_ID >= 70000 && ini_get('opcache.enable')) || defined('HHVM_VERSION')) {
             if (!$fallbackPool instanceof AdapterInterface) {
                 $fallbackPool = new ProxyAdapter($fallbackPool);
             }
@@ -224,10 +225,6 @@ class PhpArrayAdapter implements AdapterInterface
     }
 
     /**
-     * Generator for items.
-     *
-     * @param array $keys
-     *
      * @return \Generator
      */
     private function generateItems(array $keys)

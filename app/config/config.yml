@@ -6,7 +6,8 @@ imports:
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
-    locale: en
+    locale: fr
+    app.path.employees_images: /uploads/images/employees
 
 framework:
     #esi: ~
@@ -82,4 +83,48 @@ easy_admin:
     entities:
         User:
             class: AppBundle\Entity\User
+        Employees:
+            class: AppBundle\Entity\Employees
+            form:
+                            fields:
+                                - { property: 'nom', label: 'Nom'}
+                                - { property: 'prenom', label: 'Prénom'}
+                                - { property: 'poste', label: 'Poste occupé'}
+                                - { property: 'imageFile', type: 'file', label: 'Ajouter' }
+    design:
+            form_theme: ['horizontal', 'VichUploaderBundle:Form:fields.html.twig']
 
+
+vich_uploader:
+    db_driver: orm
+    mappings:
+            employees_images:
+                uri_prefix:         '%app.path.employees_images%'
+                upload_destination: '%kernel.root_dir%/../web/uploads/images/employees'
+
+# app/config.yml
+kms_froala_editor:
+    language: "fr"
+
+
+# app/config/config.yml
+framework:
+    http_method_override: true
+
+# app/config/config.yml
+fos_comment:
+    db_driver: orm
+    class:
+        model:
+            comment: MyProject\MyBundle\Entity\Comment
+            thread: MyProject\MyBundle\Entity\Thread
+
+assetic:
+    bundles: [ "FOSCommentBundle" ]
+
+# app/config/config.yml
+assetic:
+    debug:          '%kernel.debug%'
+    use_controller: '%kernel.debug%'
+    filters:
+        cssrewrite: ~

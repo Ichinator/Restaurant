@@ -113,7 +113,7 @@ class SecurityExtension extends Extension
         $container->registerForAutoconfiguration(VoterInterface::class)
             ->addTag('security.voter');
 
-        if (PHP_VERSION_ID < 70000) {
+        if (\PHP_VERSION_ID < 70000) {
             // add some required classes for compilation
             $this->addClassesToCompile(array(
                 'Symfony\Component\Security\Http\Firewall',
@@ -180,13 +180,7 @@ class SecurityExtension extends Extension
         $container->setParameter('security.acl.dbal.sid_table_name', $config['tables']['security_identity']);
     }
 
-    /**
-     * Loads the web configuration.
-     *
-     * @param array            $config    An array of configuration settings
-     * @param ContainerBuilder $container A ContainerBuilder instance
-     */
-    private function createRoleHierarchy($config, ContainerBuilder $container)
+    private function createRoleHierarchy(array $config, ContainerBuilder $container)
     {
         if (!isset($config['role_hierarchy']) || 0 === count($config['role_hierarchy'])) {
             $container->removeDefinition('security.access.role_hierarchy_voter');
@@ -204,7 +198,7 @@ class SecurityExtension extends Extension
             return;
         }
 
-        if (PHP_VERSION_ID < 70000) {
+        if (\PHP_VERSION_ID < 70000) {
             $this->addClassesToCompile(array(
                 'Symfony\\Component\\Security\\Http\\AccessMap',
             ));

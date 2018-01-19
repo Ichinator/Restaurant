@@ -14,6 +14,7 @@ namespace Symfony\Component\Config\Tests\Resource;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Config\Resource\ClassExistenceResource;
 use Symfony\Component\Config\Tests\Fixtures\Resource\ConditionalClass;
+use Symfony\Component\Config\Tests\Fixtures\BadParent;
 
 class ClassExistenceResourceTest extends TestCase
 {
@@ -66,7 +67,7 @@ EOF
 
             $loadedClass = 123;
 
-            $res = new ClassExistenceResource('MissingFooClass', ClassExistenceResource::EXISTS_KO);
+            $res = new ClassExistenceResource('MissingFooClass', false);
 
             $this->assertSame(123, $loadedClass);
         } finally {
@@ -74,9 +75,25 @@ EOF
         }
     }
 
+    public function testBadParentWithTimestamp()
+    {
+        $res = new ClassExistenceResource(BadParent::class, false);
+        $this->assertTrue($res->isFresh(time()));
+    }
+
+    /**
+     * @expectedException \ReflectionException
+     * @expectedExceptionMessage Class Symfony\Component\Config\Tests\Fixtures\MissingParent not found
+     */
+    public function testBadParentWithNoTimestamp()
+    {
+        $res = new ClassExistenceResource(BadParent::class, false);
+        $res->isFresh(0);
+    }
+
     public function testConditionalClass()
     {
-        $res = new ClassExistenceResource(ConditionalClass::class, ClassExistenceResource::EXISTS_KO_WITH_THROWING_AUTOLOADER);
+        $res = new ClassExistenceResource(ConditionalClass::class, false);
 
         $this->assertFalse($res->isFresh(0));
     }

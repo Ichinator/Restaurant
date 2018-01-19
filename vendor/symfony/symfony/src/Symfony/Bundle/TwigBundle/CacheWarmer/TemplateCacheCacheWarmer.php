@@ -17,6 +17,8 @@ use Symfony\Component\Finder\Finder;
 use Symfony\Component\HttpKernel\CacheWarmer\CacheWarmerInterface;
 use Symfony\Bundle\FrameworkBundle\CacheWarmer\TemplateFinderInterface;
 use Symfony\Component\Templating\TemplateReference;
+use Twig\Environment;
+use Twig\Error\Error;
 
 /**
  * Generates the Twig cache for all templates.
@@ -33,11 +35,7 @@ class TemplateCacheCacheWarmer implements CacheWarmerInterface, ServiceSubscribe
     private $paths;
 
     /**
-     * Constructor.
-     *
-     * @param ContainerInterface      $container The dependency injection container
-     * @param TemplateFinderInterface $finder    The template paths cache warmer
-     * @param array                   $paths     Additional twig paths to warm
+     * @param array $paths Additional twig paths to warm
      */
     public function __construct(ContainerInterface $container, TemplateFinderInterface $finder = null, array $paths = array())
     {
@@ -77,7 +75,7 @@ class TemplateCacheCacheWarmer implements CacheWarmerInterface, ServiceSubscribe
 
             try {
                 $twig->loadTemplate($template);
-            } catch (\Twig_Error $e) {
+            } catch (Error $e) {
                 // problem during compilation, give up
             }
         }
@@ -99,7 +97,7 @@ class TemplateCacheCacheWarmer implements CacheWarmerInterface, ServiceSubscribe
     public static function getSubscribedServices()
     {
         return array(
-            'twig' => \Twig_Environment::class,
+            'twig' => Environment::class,
         );
     }
 

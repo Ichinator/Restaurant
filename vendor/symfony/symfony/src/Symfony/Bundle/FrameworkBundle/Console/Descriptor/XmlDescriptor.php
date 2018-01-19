@@ -12,7 +12,6 @@
 namespace Symfony\Bundle\FrameworkBundle\Console\Descriptor;
 
 use Symfony\Component\DependencyInjection\Alias;
-use Symfony\Component\DependencyInjection\Argument\ClosureProxyArgument;
 use Symfony\Component\DependencyInjection\Argument\IteratorArgument;
 use Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -134,8 +133,6 @@ class XmlDescriptor extends Descriptor
     /**
      * Writes DOM document.
      *
-     * @param \DOMDocument $dom
-     *
      * @return \DOMDocument|string
      */
     private function writeDocument(\DOMDocument $dom)
@@ -145,8 +142,6 @@ class XmlDescriptor extends Descriptor
     }
 
     /**
-     * @param RouteCollection $routes
-     *
      * @return \DOMDocument
      */
     private function getRouteCollectionDocument(RouteCollection $routes)
@@ -232,8 +227,6 @@ class XmlDescriptor extends Descriptor
     }
 
     /**
-     * @param ParameterBag $parameters
-     *
      * @return \DOMDocument
      */
     private function getContainerParametersDocument(ParameterBag $parameters)
@@ -416,8 +409,6 @@ class XmlDescriptor extends Descriptor
     }
 
     /**
-     * @param array $arguments
-     *
      * @return \DOMNode[]
      */
     private function getArgumentNodes(array $arguments, \DOMDocument $dom)
@@ -444,11 +435,6 @@ class XmlDescriptor extends Descriptor
                 foreach ($this->getArgumentNodes($argument->getValues(), $dom) as $childArgumentXML) {
                     $argumentXML->appendChild($childArgumentXML);
                 }
-            } elseif ($argument instanceof ClosureProxyArgument) {
-                list($reference, $method) = $argument->getValues();
-                $argumentXML->setAttribute('type', 'closure-proxy');
-                $argumentXML->setAttribute('id', (string) $reference);
-                $argumentXML->setAttribute('method', $method);
             } elseif ($argument instanceof Definition) {
                 $argumentXML->appendChild($dom->importNode($this->getContainerDefinitionDocument($argument, null, false, true)->childNodes->item(0), true));
             } elseif (is_array($argument)) {
@@ -489,9 +475,6 @@ class XmlDescriptor extends Descriptor
     }
 
     /**
-     * @param string $parameter
-     * @param array  $options
-     *
      * @return \DOMDocument
      */
     private function getContainerParameterDocument($parameter, $options = array())
@@ -536,10 +519,6 @@ class XmlDescriptor extends Descriptor
         return $dom;
     }
 
-    /**
-     * @param \DOMElement $element
-     * @param array       $eventListeners
-     */
     private function appendEventListenerDocument(EventDispatcherInterface $eventDispatcher, $event, \DOMElement $element, array $eventListeners)
     {
         foreach ($eventListeners as $listener) {
@@ -599,7 +578,7 @@ class XmlDescriptor extends Descriptor
         }
 
         if ($callable instanceof \Closure) {
-            $callableXML->setAttribute('type', $this->formatClosure($callable));
+            $callableXML->setAttribute('type', 'closure');
 
             return $dom;
         }

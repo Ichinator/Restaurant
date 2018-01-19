@@ -7,14 +7,13 @@ CHANGELOG
  * Not defining the `type` option of the `framework.workflows.*` configuration entries is deprecated.
    The default value will be `state_machine` in Symfony 4.0.
  * Deprecated the `CompilerDebugDumpPass` class
- * [BC BREAK] Removed the "framework.trusted_proxies" configuration option and the corresponding "kernel.trusted_proxies" parameter
+ * Deprecated the "framework.trusted_proxies" configuration option and the corresponding "kernel.trusted_proxies" parameter
  * Added a new new version strategy option called json_manifest_path
    that allows you to use the `JsonManifestVersionStrategy`.
  * Added `Symfony\Bundle\FrameworkBundle\Controller\AbstractController`. It provides
    the same helpers as the `Controller` class, but does not allow accessing the dependency
    injection container, in order to encourage explicit dependency declarations.
  * Added support for the `controller.service_arguments` tag, for injecting services into controllers' actions
- * Deprecated `cache:clear` with warmup (always call it with `--no-warmup`)
  * Changed default configuration for
    assets/forms/validation/translation/serialization/csrf from `canBeEnabled()` to
    `canBeDisabled()` when Flex is used
@@ -71,7 +70,8 @@ CHANGELOG
  * Deprecated using core form types without dependencies as services
  * Added `Symfony\Component\HttpHernel\DataCollector\RequestDataCollector::onKernelResponse()`
  * Added `Symfony\Bundle\FrameworkBundle\DataCollector\RequestDataCollector`
- * Deprecated service `serializer.mapping.cache.apc` (use `serializer.mapping.cache.doctrine.apc` instead)
+ * The `framework.serializer.cache` option and the service `serializer.mapping.cache.apc` have been
+   deprecated. APCu should now be automatically used when available.
 
 3.0.0
 -----

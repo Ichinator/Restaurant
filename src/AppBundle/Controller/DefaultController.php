@@ -18,4 +18,13 @@ class DefaultController extends Controller
             'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
         ]);
     }
+
+    /**
+     * @Route("/access", name="access")
+     */
+    public function accessAction(Request $request)
+    {
+        // replace this example code with whatever you need
+        return $this->render('default/access.html.twig');
+    }
 }

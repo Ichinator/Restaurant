@@ -250,19 +250,12 @@ class TagAwareAdapter implements TagAwareAdapterInterface
 
             $f = $this->getTagsByKey;
             $tagsByKey = $f($items);
-            $deletedTags = $this->deferred = array();
+            $this->deferred = array();
             $tagVersions = $this->getTagVersions($tagsByKey);
             $f = $this->createCacheItem;
 
             foreach ($tagsByKey as $key => $tags) {
-                if ($tags) {
-                    $this->itemsAdapter->saveDeferred($f(static::TAGS_PREFIX.$key, array_intersect_key($tagVersions, $tags), $items[$key]));
-                } else {
-                    $deletedTags[] = static::TAGS_PREFIX.$key;
-                }
-            }
-            if ($deletedTags) {
-                $this->itemsAdapter->deleteItems($deletedTags);
+                $this->itemsAdapter->saveDeferred($f(static::TAGS_PREFIX.$key, array_intersect_key($tagVersions, $tags), $items[$key]));
             }
         }
 
@@ -281,7 +274,7 @@ class TagAwareAdapter implements TagAwareAdapterInterface
 
         foreach ($items as $key => $item) {
             if (!$tagKeys) {
-                yield $key => $f($item, self::TAGS_PREFIX.$key, $itemTags);
+                yield $key => $f($item, static::TAGS_PREFIX.$key, $itemTags);
                 continue;
             }
             if (!isset($tagKeys[$key])) {
@@ -306,7 +299,7 @@ class TagAwareAdapter implements TagAwareAdapterInterface
                 $tagVersions = $tagKeys = null;
 
                 foreach ($bufferedItems as $key => $item) {
-                    yield $key => $f($item, self::TAGS_PREFIX.$key, $itemTags);
+                    yield $key => $f($item, static::TAGS_PREFIX.$key, $itemTags);
                 }
                 $bufferedItems = null;
             }
