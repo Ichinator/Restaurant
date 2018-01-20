@@ -101,6 +101,7 @@ vich_uploader:
             employees_images:
                 uri_prefix:         '%app.path.employees_images%'
                 upload_destination: '%kernel.root_dir%/../web/uploads/images/employees'
+                namer: vich_uploader.namer_uniqid
 
 # app/config.yml
 kms_froala_editor:

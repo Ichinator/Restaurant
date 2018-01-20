@@ -514,8 +514,8 @@
         <parameter key="uri_prefix">/uploads/images/employees</parameter>
         <parameter key="upload_destination">/home/ichinator/Bureau/MesProjetsGIT/Restaurant/app/../web/uploads/images/employees</parameter>
         <parameter key="namer" type="collection">
-          <parameter key="service">null</parameter>
-          <parameter key="options">null</parameter>
+          <parameter key="service">vich_uploader.namer_uniqid.employees_images</parameter>
+          <parameter key="options" type="collection"/>
         </parameter>
         <parameter key="directory_namer" type="collection">
           <parameter key="service">null</parameter>
@@ -939,7 +939,7 @@
       <tag name="monolog.logger" channel="cache"/>
       <argument></argument>
       <argument>0</argument>
-      <argument>ZxhWRmA2I8qZ2IoCInUF0Q</argument>
+      <argument>saQMB-ormvxjyOVV+3RhhA</argument>
       <argument>/home/ichinator/Bureau/MesProjetsGIT/Restaurant/var/cache/dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -949,7 +949,7 @@
       <tag name="monolog.logger" channel="cache"/>
       <argument></argument>
       <argument>0</argument>
-      <argument>ZxhWRmA2I8qZ2IoCInUF0Q</argument>
+      <argument>saQMB-ormvxjyOVV+3RhhA</argument>
       <call method="setLogger">
         <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       </call>
@@ -2432,14 +2432,6 @@
         <argument>2048</argument>
       </call>
       <call method="addListener">
-        <argument>console.command</argument>
-        <argument type="collection">
-          <argument type="service" id="debug.debug_handlers_listener"/>
-          <argument>configure</argument>
-        </argument>
-        <argument>2048</argument>
-      </call>
-      <call method="addListener">
         <argument>kernel.request</argument>
         <argument type="collection">
           <argument type="service" id="router_listener"/>
@@ -3523,12 +3515,12 @@
     </service>
     <service id="security.authentication.listener.anonymous.main" class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
       <argument type="service" id="security.token_storage"/>
-      <argument>5a62050ca1ed06.69426909</argument>
+      <argument>5a637f42100618.04467294</argument>
       <argument type="service" id="monolog.logger.security" on-invalid="null"/>
       <argument type="service" id="security.authentication.manager"/>
     </service>
     <service id="security.authentication.provider.anonymous.main" class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-      <argument>5a62050ca1ed06.69426909</argument>
+      <argument>5a637f42100618.04467294</argument>
     </service>
     <service id="security.exception_listener.main" class="Symfony\Component\Security\Http\Firewall\ExceptionListener" public="false">
       <argument type="service" id="security.token_storage"/>
@@ -4925,6 +4917,7 @@
       <tag name="form.type_guesser"/>
       <argument type="service" id="doctrine"/>
     </service>
+    <service id="vich_uploader.namer_uniqid.employees_images" class="Vich\UploaderBundle\Naming\UniqidNamer"/>
     <service id="vich_uploader.adapter.propel" class="Vich\UploaderBundle\Adapter\Propel\PropelORMAdapter" public="false"/>
     <service id="vich_uploader.adapter.mongodb" class="Vich\UploaderBundle\Adapter\ODM\MongoDB\MongoDBAdapter" public="false"/>
     <service id="vich_uploader.adapter.orm" class="Vich\UploaderBundle\Adapter\ORM\DoctrineORMAdapter" public="false"/>
@@ -5088,8 +5081,8 @@
           <argument key="uri_prefix">/uploads/images/employees</argument>
           <argument key="upload_destination">/home/ichinator/Bureau/MesProjetsGIT/Restaurant/app/../web/uploads/images/employees</argument>
           <argument key="namer" type="collection">
-            <argument key="service">null</argument>
-            <argument key="options">null</argument>
+            <argument key="service">vich_uploader.namer_uniqid.employees_images</argument>
+            <argument key="options" type="collection"/>
           </argument>
           <argument key="directory_namer" type="collection">
             <argument key="service">null</argument>
@@ -6595,7 +6588,7 @@
     <service id="cache.system.recorder_inner" class="Symfony\Component\Cache\Adapter\AdapterInterface" public="false" lazy="true">
       <argument>D8MxcDgLIr</argument>
       <argument>0</argument>
-      <argument>ZxhWRmA2I8qZ2IoCInUF0Q</argument>
+      <argument>saQMB-ormvxjyOVV+3RhhA</argument>
       <argument>/home/ichinator/Bureau/MesProjetsGIT/Restaurant/var/cache/dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -6603,7 +6596,7 @@
     <service id="cache.validator.recorder_inner" class="Symfony\Component\Cache\Adapter\AdapterInterface" public="false" lazy="true">
       <argument>lLHwAahPtH</argument>
       <argument>0</argument>
-      <argument>ZxhWRmA2I8qZ2IoCInUF0Q</argument>
+      <argument>saQMB-ormvxjyOVV+3RhhA</argument>
       <argument>/home/ichinator/Bureau/MesProjetsGIT/Restaurant/var/cache/dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -6611,7 +6604,7 @@
     <service id="cache.serializer.recorder_inner" class="Symfony\Component\Cache\Adapter\AdapterInterface" public="false" lazy="true">
       <argument>52d-Oa89OT</argument>
       <argument>0</argument>
-      <argument>ZxhWRmA2I8qZ2IoCInUF0Q</argument>
+      <argument>saQMB-ormvxjyOVV+3RhhA</argument>
       <argument>/home/ichinator/Bureau/MesProjetsGIT/Restaurant/var/cache/dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -6619,7 +6612,7 @@
     <service id="cache.annotations.recorder_inner" class="Symfony\Component\Cache\Adapter\AdapterInterface" public="false" lazy="true">
       <argument>VQrigT4oBG</argument>
       <argument>0</argument>
-      <argument>ZxhWRmA2I8qZ2IoCInUF0Q</argument>
+      <argument>saQMB-ormvxjyOVV+3RhhA</argument>
       <argument>/home/ichinator/Bureau/MesProjetsGIT/Restaurant/var/cache/dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>

@@ -9,7 +9,7 @@
         {{ employees.nom}}<br \>
         {{ employees.prenom }}<br \>
         {{ employees.poste }}<br \>
-        {{ employees.image }}<br \><br \>
+        <img src="{{ vich_uploader_asset(employees, 'imageFile') }}" alt="{{ employees.image }}" /><br \><br \>
     {% endfor %}
 {% endblock %}
 
