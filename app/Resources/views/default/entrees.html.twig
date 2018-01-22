@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    {{ parent ()}}
+{% endblock %}
+{% block body %}
+    {{ parent ()}}
+
+    {% for entrees in entrees %}
+        {{ entrees.name}}<br \>
+        {{ entrees.prix }}<br \>
+        <img src="{{ vich_uploader_asset(entrees, 'imageFile') }}" alt="{{ entrees.image }}" /><br \><br \>
+    {% endfor %}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}

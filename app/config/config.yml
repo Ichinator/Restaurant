@@ -8,6 +8,10 @@ imports:
 parameters:
     locale: fr
     app.path.employees_images: /uploads/images/employees
+    app.path.entrees_images: /uploads/images/entrees
+    app.path.plats_images: /uploads/images/plats
+    app.path.desserts_images: /uploads/images/desserts
+    app.path.menus_images: /uploads/images/menus
 
 framework:
     #esi: ~
@@ -91,6 +95,41 @@ easy_admin:
                                 - { property: 'prenom', label: 'Prénom'}
                                 - { property: 'poste', label: 'Poste occupé'}
                                 - { property: 'imageFile', type: 'file', label: 'Ajouter' }
+        Entrees:
+            class: AppBundle\Entity\Entrees
+            form:
+                            fields:
+                                - { property: 'name', label: 'Nom de l entrée'}
+                                - { property: 'prix', label: 'Prix'}
+                                - { property: 'imageFile', type: 'file', label: 'Ajouter image entree'}
+        Plats:
+            class: AppBundle\Entity\Plats
+            form:
+                            fields:
+                                - { property: 'name', label: 'Nom du plat'}
+                                - { property: 'prix', label: 'Prix'}
+                                - { property: 'imageFile', type: 'file', label: 'Ajouter image du plat'}
+        Desserts:
+            class: AppBundle\Entity\Desserts
+            form:
+                            fields:
+                                - { property: 'name', label: 'Nom du dessert'}
+                                - { property: 'prix', label: 'Prix'}
+                                - { property: 'imageFile', type: 'file', label: 'Ajouter image du dessert'}
+        Boissons:
+            class: AppBundle\Entity\Boissons
+            form:
+                            fields:
+                                - { property: 'name', label: 'Nom de la boisson'}
+                                - { property: 'prix', label: 'Prix'}
+                                - { property: 'imageFile', type: 'file', label: 'Ajouter image de la boisson'}
+        Menu:
+                    class: AppBundle\Entity\Menu
+                    form:
+                            fields:
+                                - { property: 'name', label: 'Nom du menu'}
+                                - { property: 'prix', label: 'Prix'}
+                                - { property: 'imageFile', type: 'file', label: 'Ajouter image du menu'}
     design:
             form_theme: ['horizontal', 'VichUploaderBundle:Form:fields.html.twig']
 
@@ -101,6 +140,22 @@ vich_uploader:
             employees_images:
                 uri_prefix:         '%app.path.employees_images%'
                 upload_destination: '%kernel.root_dir%/../web/uploads/images/employees'
+                namer: vich_uploader.namer_uniqid
+            entrees_images:
+                uri_prefix:         '%app.path.entrees_images%'
+                upload_destination: '%kernel.root_dir%/../web/uploads/images/entrees'
+                namer: vich_uploader.namer_uniqid
+            plats_images:
+                uri_prefix:         '%app.path.plats_images%'
+                upload_destination: '%kernel.root_dir%/../web/uploads/images/plats'
+                namer: vich_uploader.namer_uniqid
+            desserts_images:
+                uri_prefix:         '%app.path.desserts_images%'
+                upload_destination: '%kernel.root_dir%/../web/uploads/images/desserts'
+                namer: vich_uploader.namer_uniqid
+            menus_images:
+                uri_prefix:         '%app.path.menus_images%'
+                upload_destination: '%kernel.root_dir%/../web/uploads/images/menus'
                 namer: vich_uploader.namer_uniqid
 
 # app/config.yml

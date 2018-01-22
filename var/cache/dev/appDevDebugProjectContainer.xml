@@ -152,6 +152,10 @@
     <parameter key="secret">ThisTokenIsNotSoSecretChangeIt</parameter>
     <parameter key="locale">fr</parameter>
     <parameter key="app.path.employees_images">/uploads/images/employees</parameter>
+    <parameter key="app.path.entrees_images">/uploads/images/entrees</parameter>
+    <parameter key="app.path.plats_images">/uploads/images/plats</parameter>
+    <parameter key="app.path.desserts_images">/uploads/images/desserts</parameter>
+    <parameter key="app.path.menus_images">/uploads/images/menus</parameter>
     <parameter key="fragment.renderer.hinclude.global_template">null</parameter>
     <parameter key="fragment.path">/_fragment</parameter>
     <parameter key="kernel.secret">ThisTokenIsNotSoSecretChangeIt</parameter>
@@ -464,6 +468,111 @@
           </parameter>
           <parameter key="name">Employees</parameter>
         </parameter>
+        <parameter key="Entrees" type="collection">
+          <parameter key="class">AppBundle\Entity\Entrees</parameter>
+          <parameter key="form" type="collection">
+            <parameter key="fields" type="collection">
+              <parameter type="collection">
+                <parameter key="property">name</parameter>
+                <parameter key="label">Nom de l entrée</parameter>
+              </parameter>
+              <parameter type="collection">
+                <parameter key="property">prix</parameter>
+                <parameter key="label">Prix</parameter>
+              </parameter>
+              <parameter type="collection">
+                <parameter key="property">imageFile</parameter>
+                <parameter key="type">file</parameter>
+                <parameter key="label">Ajouter image entree</parameter>
+              </parameter>
+            </parameter>
+          </parameter>
+          <parameter key="name">Entrees</parameter>
+        </parameter>
+        <parameter key="Plats" type="collection">
+          <parameter key="class">AppBundle\Entity\Plats</parameter>
+          <parameter key="form" type="collection">
+            <parameter key="fields" type="collection">
+              <parameter type="collection">
+                <parameter key="property">name</parameter>
+                <parameter key="label">Nom du plat</parameter>
+              </parameter>
+              <parameter type="collection">
+                <parameter key="property">prix</parameter>
+                <parameter key="label">Prix</parameter>
+              </parameter>
+              <parameter type="collection">
+                <parameter key="property">imageFile</parameter>
+                <parameter key="type">file</parameter>
+                <parameter key="label">Ajouter image du plat</parameter>
+              </parameter>
+            </parameter>
+          </parameter>
+          <parameter key="name">Plats</parameter>
+        </parameter>
+        <parameter key="Desserts" type="collection">
+          <parameter key="class">AppBundle\Entity\Desserts</parameter>
+          <parameter key="form" type="collection">
+            <parameter key="fields" type="collection">
+              <parameter type="collection">
+                <parameter key="property">name</parameter>
+                <parameter key="label">Nom du dessert</parameter>
+              </parameter>
+              <parameter type="collection">
+                <parameter key="property">prix</parameter>
+                <parameter key="label">Prix</parameter>
+              </parameter>
+              <parameter type="collection">
+                <parameter key="property">imageFile</parameter>
+                <parameter key="type">file</parameter>
+                <parameter key="label">Ajouter image du dessert</parameter>
+              </parameter>
+            </parameter>
+          </parameter>
+          <parameter key="name">Desserts</parameter>
+        </parameter>
+        <parameter key="Boissons" type="collection">
+          <parameter key="class">AppBundle\Entity\Boissons</parameter>
+          <parameter key="form" type="collection">
+            <parameter key="fields" type="collection">
+              <parameter type="collection">
+                <parameter key="property">name</parameter>
+                <parameter key="label">Nom de la boisson</parameter>
+              </parameter>
+              <parameter type="collection">
+                <parameter key="property">prix</parameter>
+                <parameter key="label">Prix</parameter>
+              </parameter>
+              <parameter type="collection">
+                <parameter key="property">imageFile</parameter>
+                <parameter key="type">file</parameter>
+                <parameter key="label">Ajouter image de la boisson</parameter>
+              </parameter>
+            </parameter>
+          </parameter>
+          <parameter key="name">Boissons</parameter>
+        </parameter>
+        <parameter key="Menu" type="collection">
+          <parameter key="class">AppBundle\Entity\Menu</parameter>
+          <parameter key="form" type="collection">
+            <parameter key="fields" type="collection">
+              <parameter type="collection">
+                <parameter key="property">name</parameter>
+                <parameter key="label">Nom du menu</parameter>
+              </parameter>
+              <parameter type="collection">
+                <parameter key="property">prix</parameter>
+                <parameter key="label">Prix</parameter>
+              </parameter>
+              <parameter type="collection">
+                <parameter key="property">imageFile</parameter>
+                <parameter key="type">file</parameter>
+                <parameter key="label">Ajouter image du menu</parameter>
+              </parameter>
+            </parameter>
+          </parameter>
+          <parameter key="name">Menu</parameter>
+        </parameter>
       </parameter>
       <parameter key="design" type="collection">
         <parameter key="form_theme" type="collection">
@@ -515,6 +624,70 @@
         <parameter key="upload_destination">/home/ichinator/Bureau/MesProjetsGIT/Restaurant/app/../web/uploads/images/employees</parameter>
         <parameter key="namer" type="collection">
           <parameter key="service">vich_uploader.namer_uniqid.employees_images</parameter>
+          <parameter key="options" type="collection"/>
+        </parameter>
+        <parameter key="directory_namer" type="collection">
+          <parameter key="service">null</parameter>
+          <parameter key="options">null</parameter>
+        </parameter>
+        <parameter key="delete_on_remove">true</parameter>
+        <parameter key="delete_on_update">true</parameter>
+        <parameter key="inject_on_load">false</parameter>
+        <parameter key="db_driver">orm</parameter>
+      </parameter>
+      <parameter key="entrees_images" type="collection">
+        <parameter key="uri_prefix">/uploads/images/entrees</parameter>
+        <parameter key="upload_destination">/home/ichinator/Bureau/MesProjetsGIT/Restaurant/app/../web/uploads/images/entrees</parameter>
+        <parameter key="namer" type="collection">
+          <parameter key="service">vich_uploader.namer_uniqid.entrees_images</parameter>
+          <parameter key="options" type="collection"/>
+        </parameter>
+        <parameter key="directory_namer" type="collection">
+          <parameter key="service">null</parameter>
+          <parameter key="options">null</parameter>
+        </parameter>
+        <parameter key="delete_on_remove">true</parameter>
+        <parameter key="delete_on_update">true</parameter>
+        <parameter key="inject_on_load">false</parameter>
+        <parameter key="db_driver">orm</parameter>
+      </parameter>
+      <parameter key="plats_images" type="collection">
+        <parameter key="uri_prefix">/uploads/images/plats</parameter>
+        <parameter key="upload_destination">/home/ichinator/Bureau/MesProjetsGIT/Restaurant/app/../web/uploads/images/plats</parameter>
+        <parameter key="namer" type="collection">
+          <parameter key="service">vich_uploader.namer_uniqid.plats_images</parameter>
+          <parameter key="options" type="collection"/>
+        </parameter>
+        <parameter key="directory_namer" type="collection">
+          <parameter key="service">null</parameter>
+          <parameter key="options">null</parameter>
+        </parameter>
+        <parameter key="delete_on_remove">true</parameter>
+        <parameter key="delete_on_update">true</parameter>
+        <parameter key="inject_on_load">false</parameter>
+        <parameter key="db_driver">orm</parameter>
+      </parameter>
+      <parameter key="desserts_images" type="collection">
+        <parameter key="uri_prefix">/uploads/images/desserts</parameter>
+        <parameter key="upload_destination">/home/ichinator/Bureau/MesProjetsGIT/Restaurant/app/../web/uploads/images/desserts</parameter>
+        <parameter key="namer" type="collection">
+          <parameter key="service">vich_uploader.namer_uniqid.desserts_images</parameter>
+          <parameter key="options" type="collection"/>
+        </parameter>
+        <parameter key="directory_namer" type="collection">
+          <parameter key="service">null</parameter>
+          <parameter key="options">null</parameter>
+        </parameter>
+        <parameter key="delete_on_remove">true</parameter>
+        <parameter key="delete_on_update">true</parameter>
+        <parameter key="inject_on_load">false</parameter>
+        <parameter key="db_driver">orm</parameter>
+      </parameter>
+      <parameter key="menus_images" type="collection">
+        <parameter key="uri_prefix">/uploads/images/menus</parameter>
+        <parameter key="upload_destination">/home/ichinator/Bureau/MesProjetsGIT/Restaurant/app/../web/uploads/images/menus</parameter>
+        <parameter key="namer" type="collection">
+          <parameter key="service">vich_uploader.namer_uniqid.menus_images</parameter>
           <parameter key="options" type="collection"/>
         </parameter>
         <parameter key="directory_namer" type="collection">
@@ -776,6 +949,9 @@
     <service id="AppBundle\Controller\EmployeesController" class="AppBundle\Controller\EmployeesController" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
     </service>
+    <service id="AppBundle\Controller\FoodController" class="AppBundle\Controller\FoodController" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+    </service>
     <service id="controller_name_converter" class="Symfony\Bundle\FrameworkBundle\Controller\ControllerNameParser" public="false">
       <tag name="monolog.logger" channel="request"/>
       <argument type="service" id="kernel"/>
@@ -792,7 +968,7 @@
     </service>
     <service id="argument_resolver.service" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" public="false">
       <tag name="controller.argument_value_resolver" priority="-50"/>
-      <argument type="service" id="service_locator.2d358e84fdddc77bb423163cfe3fbbcc"/>
+      <argument type="service" id="service_locator.3e082329fc99bfae597876a3501e6fda"/>
     </service>
     <service id="argument_resolver.default" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" public="false">
       <tag name="controller.argument_value_resolver" priority="-100"/>
@@ -939,7 +1115,7 @@
       <tag name="monolog.logger" channel="cache"/>
       <argument></argument>
       <argument>0</argument>
-      <argument>saQMB-ormvxjyOVV+3RhhA</argument>
+      <argument>j6HfSkS8Oj8-K37Y8Oh2zo</argument>
       <argument>/home/ichinator/Bureau/MesProjetsGIT/Restaurant/var/cache/dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -949,7 +1125,7 @@
       <tag name="monolog.logger" channel="cache"/>
       <argument></argument>
       <argument>0</argument>
-      <argument>saQMB-ormvxjyOVV+3RhhA</argument>
+      <argument>j6HfSkS8Oj8-K37Y8Oh2zo</argument>
       <call method="setLogger">
         <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       </call>
@@ -3515,12 +3691,12 @@
     </service>
     <service id="security.authentication.listener.anonymous.main" class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
       <argument type="service" id="security.token_storage"/>
-      <argument>5a637f42100618.04467294</argument>
+      <argument>5a65ff8235f973.81410515</argument>
       <argument type="service" id="monolog.logger.security" on-invalid="null"/>
       <argument type="service" id="security.authentication.manager"/>
     </service>
     <service id="security.authentication.provider.anonymous.main" class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-      <argument>5a637f42100618.04467294</argument>
+      <argument>5a65ff8235f973.81410515</argument>
     </service>
     <service id="security.exception_listener.main" class="Symfony\Component\Security\Http\Firewall\ExceptionListener" public="false">
       <argument type="service" id="security.token_storage"/>
@@ -4208,7 +4384,43 @@
     <service id="doctrine.dbal.default_connection.event_manager" class="Symfony\Bridge\Doctrine\ContainerAwareEventManager" public="false">
       <argument type="service" id="service_container"/>
       <call method="addEventSubscriber">
+        <argument type="service" id="vich_uploader.listener.clean.menus_images"/>
+      </call>
+      <call method="addEventSubscriber">
+        <argument type="service" id="vich_uploader.listener.clean.plats_images"/>
+      </call>
+      <call method="addEventSubscriber">
+        <argument type="service" id="vich_uploader.listener.clean.desserts_images"/>
+      </call>
+      <call method="addEventSubscriber">
+        <argument type="service" id="vich_uploader.listener.clean.entrees_images"/>
+      </call>
+      <call method="addEventSubscriber">
         <argument type="service" id="vich_uploader.listener.clean.employees_images"/>
+      </call>
+      <call method="addEventSubscriber">
+        <argument type="service" id="vich_uploader.listener.upload.menus_images"/>
+      </call>
+      <call method="addEventSubscriber">
+        <argument type="service" id="vich_uploader.listener.remove.menus_images"/>
+      </call>
+      <call method="addEventSubscriber">
+        <argument type="service" id="vich_uploader.listener.upload.desserts_images"/>
+      </call>
+      <call method="addEventSubscriber">
+        <argument type="service" id="vich_uploader.listener.remove.desserts_images"/>
+      </call>
+      <call method="addEventSubscriber">
+        <argument type="service" id="vich_uploader.listener.upload.plats_images"/>
+      </call>
+      <call method="addEventSubscriber">
+        <argument type="service" id="vich_uploader.listener.remove.plats_images"/>
+      </call>
+      <call method="addEventSubscriber">
+        <argument type="service" id="vich_uploader.listener.upload.entrees_images"/>
+      </call>
+      <call method="addEventSubscriber">
+        <argument type="service" id="vich_uploader.listener.remove.entrees_images"/>
       </call>
       <call method="addEventSubscriber">
         <argument type="service" id="vich_uploader.listener.upload.employees_images"/>
@@ -4715,6 +4927,111 @@
             </argument>
             <argument key="name">Employees</argument>
           </argument>
+          <argument key="Entrees" type="collection">
+            <argument key="class">AppBundle\Entity\Entrees</argument>
+            <argument key="form" type="collection">
+              <argument key="fields" type="collection">
+                <argument type="collection">
+                  <argument key="property">name</argument>
+                  <argument key="label">Nom de l entrée</argument>
+                </argument>
+                <argument type="collection">
+                  <argument key="property">prix</argument>
+                  <argument key="label">Prix</argument>
+                </argument>
+                <argument type="collection">
+                  <argument key="property">imageFile</argument>
+                  <argument key="type">file</argument>
+                  <argument key="label">Ajouter image entree</argument>
+                </argument>
+              </argument>
+            </argument>
+            <argument key="name">Entrees</argument>
+          </argument>
+          <argument key="Plats" type="collection">
+            <argument key="class">AppBundle\Entity\Plats</argument>
+            <argument key="form" type="collection">
+              <argument key="fields" type="collection">
+                <argument type="collection">
+                  <argument key="property">name</argument>
+                  <argument key="label">Nom du plat</argument>
+                </argument>
+                <argument type="collection">
+                  <argument key="property">prix</argument>
+                  <argument key="label">Prix</argument>
+                </argument>
+                <argument type="collection">
+                  <argument key="property">imageFile</argument>
+                  <argument key="type">file</argument>
+                  <argument key="label">Ajouter image du plat</argument>
+                </argument>
+              </argument>
+            </argument>
+            <argument key="name">Plats</argument>
+          </argument>
+          <argument key="Desserts" type="collection">
+            <argument key="class">AppBundle\Entity\Desserts</argument>
+            <argument key="form" type="collection">
+              <argument key="fields" type="collection">
+                <argument type="collection">
+                  <argument key="property">name</argument>
+                  <argument key="label">Nom du dessert</argument>
+                </argument>
+                <argument type="collection">
+                  <argument key="property">prix</argument>
+                  <argument key="label">Prix</argument>
+                </argument>
+                <argument type="collection">
+                  <argument key="property">imageFile</argument>
+                  <argument key="type">file</argument>
+                  <argument key="label">Ajouter image du dessert</argument>
+                </argument>
+              </argument>
+            </argument>
+            <argument key="name">Desserts</argument>
+          </argument>
+          <argument key="Boissons" type="collection">
+            <argument key="class">AppBundle\Entity\Boissons</argument>
+            <argument key="form" type="collection">
+              <argument key="fields" type="collection">
+                <argument type="collection">
+                  <argument key="property">name</argument>
+                  <argument key="label">Nom de la boisson</argument>
+                </argument>
+                <argument type="collection">
+                  <argument key="property">prix</argument>
+                  <argument key="label">Prix</argument>
+                </argument>
+                <argument type="collection">
+                  <argument key="property">imageFile</argument>
+                  <argument key="type">file</argument>
+                  <argument key="label">Ajouter image de la boisson</argument>
+                </argument>
+              </argument>
+            </argument>
+            <argument key="name">Boissons</argument>
+          </argument>
+          <argument key="Menu" type="collection">
+            <argument key="class">AppBundle\Entity\Menu</argument>
+            <argument key="form" type="collection">
+              <argument key="fields" type="collection">
+                <argument type="collection">
+                  <argument key="property">name</argument>
+                  <argument key="label">Nom du menu</argument>
+                </argument>
+                <argument type="collection">
+                  <argument key="property">prix</argument>
+                  <argument key="label">Prix</argument>
+                </argument>
+                <argument type="collection">
+                  <argument key="property">imageFile</argument>
+                  <argument key="type">file</argument>
+                  <argument key="label">Ajouter image du menu</argument>
+                </argument>
+              </argument>
+            </argument>
+            <argument key="name">Menu</argument>
+          </argument>
         </argument>
         <argument key="design" type="collection">
           <argument key="form_theme" type="collection">
@@ -4918,6 +5235,10 @@
       <argument type="service" id="doctrine"/>
     </service>
     <service id="vich_uploader.namer_uniqid.employees_images" class="Vich\UploaderBundle\Naming\UniqidNamer"/>
+    <service id="vich_uploader.namer_uniqid.entrees_images" class="Vich\UploaderBundle\Naming\UniqidNamer"/>
+    <service id="vich_uploader.namer_uniqid.plats_images" class="Vich\UploaderBundle\Naming\UniqidNamer"/>
+    <service id="vich_uploader.namer_uniqid.desserts_images" class="Vich\UploaderBundle\Naming\UniqidNamer"/>
+    <service id="vich_uploader.namer_uniqid.menus_images" class="Vich\UploaderBundle\Naming\UniqidNamer"/>
     <service id="vich_uploader.adapter.propel" class="Vich\UploaderBundle\Adapter\Propel\PropelORMAdapter" public="false"/>
     <service id="vich_uploader.adapter.mongodb" class="Vich\UploaderBundle\Adapter\ODM\MongoDB\MongoDBAdapter" public="false"/>
     <service id="vich_uploader.adapter.orm" class="Vich\UploaderBundle\Adapter\ORM\DoctrineORMAdapter" public="false"/>
@@ -5093,6 +5414,70 @@
           <argument key="inject_on_load">false</argument>
           <argument key="db_driver">orm</argument>
         </argument>
+        <argument key="entrees_images" type="collection">
+          <argument key="uri_prefix">/uploads/images/entrees</argument>
+          <argument key="upload_destination">/home/ichinator/Bureau/MesProjetsGIT/Restaurant/app/../web/uploads/images/entrees</argument>
+          <argument key="namer" type="collection">
+            <argument key="service">vich_uploader.namer_uniqid.entrees_images</argument>
+            <argument key="options" type="collection"/>
+          </argument>
+          <argument key="directory_namer" type="collection">
+            <argument key="service">null</argument>
+            <argument key="options">null</argument>
+          </argument>
+          <argument key="delete_on_remove">true</argument>
+          <argument key="delete_on_update">true</argument>
+          <argument key="inject_on_load">false</argument>
+          <argument key="db_driver">orm</argument>
+        </argument>
+        <argument key="plats_images" type="collection">
+          <argument key="uri_prefix">/uploads/images/plats</argument>
+          <argument key="upload_destination">/home/ichinator/Bureau/MesProjetsGIT/Restaurant/app/../web/uploads/images/plats</argument>
+          <argument key="namer" type="collection">
+            <argument key="service">vich_uploader.namer_uniqid.plats_images</argument>
+            <argument key="options" type="collection"/>
+          </argument>
+          <argument key="directory_namer" type="collection">
+            <argument key="service">null</argument>
+            <argument key="options">null</argument>
+          </argument>
+          <argument key="delete_on_remove">true</argument>
+          <argument key="delete_on_update">true</argument>
+          <argument key="inject_on_load">false</argument>
+          <argument key="db_driver">orm</argument>
+        </argument>
+        <argument key="desserts_images" type="collection">
+          <argument key="uri_prefix">/uploads/images/desserts</argument>
+          <argument key="upload_destination">/home/ichinator/Bureau/MesProjetsGIT/Restaurant/app/../web/uploads/images/desserts</argument>
+          <argument key="namer" type="collection">
+            <argument key="service">vich_uploader.namer_uniqid.desserts_images</argument>
+            <argument key="options" type="collection"/>
+          </argument>
+          <argument key="directory_namer" type="collection">
+            <argument key="service">null</argument>
+            <argument key="options">null</argument>
+          </argument>
+          <argument key="delete_on_remove">true</argument>
+          <argument key="delete_on_update">true</argument>
+          <argument key="inject_on_load">false</argument>
+          <argument key="db_driver">orm</argument>
+        </argument>
+        <argument key="menus_images" type="collection">
+          <argument key="uri_prefix">/uploads/images/menus</argument>
+          <argument key="upload_destination">/home/ichinator/Bureau/MesProjetsGIT/Restaurant/app/../web/uploads/images/menus</argument>
+          <argument key="namer" type="collection">
+            <argument key="service">vich_uploader.namer_uniqid.menus_images</argument>
+            <argument key="options" type="collection"/>
+          </argument>
+          <argument key="directory_namer" type="collection">
+            <argument key="service">null</argument>
+            <argument key="options">null</argument>
+          </argument>
+          <argument key="delete_on_remove">true</argument>
+          <argument key="delete_on_update">true</argument>
+          <argument key="inject_on_load">false</argument>
+          <argument key="db_driver">orm</argument>
+        </argument>
       </argument>
       <argument>_name</argument>
     </service>
@@ -5144,6 +5529,90 @@
     <service id="vich_uploader.listener.upload.employees_images" class="Vich\UploaderBundle\EventListener\Doctrine\UploadListener" public="false">
       <tag name="doctrine.event_subscriber" priority="0"/>
       <argument>employees_images</argument>
+      <argument type="service" id="vich_uploader.adapter.orm"/>
+      <argument type="service" id="vich_uploader.metadata_reader"/>
+      <argument type="service" id="vich_uploader.upload_handler"/>
+    </service>
+    <service id="vich_uploader.listener.clean.entrees_images" class="Vich\UploaderBundle\EventListener\Doctrine\CleanListener" public="false">
+      <tag name="doctrine.event_subscriber" priority="50"/>
+      <argument>entrees_images</argument>
+      <argument type="service" id="vich_uploader.adapter.orm"/>
+      <argument type="service" id="vich_uploader.metadata_reader"/>
+      <argument type="service" id="vich_uploader.upload_handler"/>
+    </service>
+    <service id="vich_uploader.listener.remove.entrees_images" class="Vich\UploaderBundle\EventListener\Doctrine\RemoveListener" public="false">
+      <tag name="doctrine.event_subscriber" priority="0"/>
+      <argument>entrees_images</argument>
+      <argument type="service" id="vich_uploader.adapter.orm"/>
+      <argument type="service" id="vich_uploader.metadata_reader"/>
+      <argument type="service" id="vich_uploader.upload_handler"/>
+    </service>
+    <service id="vich_uploader.listener.upload.entrees_images" class="Vich\UploaderBundle\EventListener\Doctrine\UploadListener" public="false">
+      <tag name="doctrine.event_subscriber" priority="0"/>
+      <argument>entrees_images</argument>
+      <argument type="service" id="vich_uploader.adapter.orm"/>
+      <argument type="service" id="vich_uploader.metadata_reader"/>
+      <argument type="service" id="vich_uploader.upload_handler"/>
+    </service>
+    <service id="vich_uploader.listener.clean.plats_images" class="Vich\UploaderBundle\EventListener\Doctrine\CleanListener" public="false">
+      <tag name="doctrine.event_subscriber" priority="50"/>
+      <argument>plats_images</argument>
+      <argument type="service" id="vich_uploader.adapter.orm"/>
+      <argument type="service" id="vich_uploader.metadata_reader"/>
+      <argument type="service" id="vich_uploader.upload_handler"/>
+    </service>
+    <service id="vich_uploader.listener.remove.plats_images" class="Vich\UploaderBundle\EventListener\Doctrine\RemoveListener" public="false">
+      <tag name="doctrine.event_subscriber" priority="0"/>
+      <argument>plats_images</argument>
+      <argument type="service" id="vich_uploader.adapter.orm"/>
+      <argument type="service" id="vich_uploader.metadata_reader"/>
+      <argument type="service" id="vich_uploader.upload_handler"/>
+    </service>
+    <service id="vich_uploader.listener.upload.plats_images" class="Vich\UploaderBundle\EventListener\Doctrine\UploadListener" public="false">
+      <tag name="doctrine.event_subscriber" priority="0"/>
+      <argument>plats_images</argument>
+      <argument type="service" id="vich_uploader.adapter.orm"/>
+      <argument type="service" id="vich_uploader.metadata_reader"/>
+      <argument type="service" id="vich_uploader.upload_handler"/>
+    </service>
+    <service id="vich_uploader.listener.clean.desserts_images" class="Vich\UploaderBundle\EventListener\Doctrine\CleanListener" public="false">
+      <tag name="doctrine.event_subscriber" priority="50"/>
+      <argument>desserts_images</argument>
+      <argument type="service" id="vich_uploader.adapter.orm"/>
+      <argument type="service" id="vich_uploader.metadata_reader"/>
+      <argument type="service" id="vich_uploader.upload_handler"/>
+    </service>
+    <service id="vich_uploader.listener.remove.desserts_images" class="Vich\UploaderBundle\EventListener\Doctrine\RemoveListener" public="false">
+      <tag name="doctrine.event_subscriber" priority="0"/>
+      <argument>desserts_images</argument>
+      <argument type="service" id="vich_uploader.adapter.orm"/>
+      <argument type="service" id="vich_uploader.metadata_reader"/>
+      <argument type="service" id="vich_uploader.upload_handler"/>
+    </service>
+    <service id="vich_uploader.listener.upload.desserts_images" class="Vich\UploaderBundle\EventListener\Doctrine\UploadListener" public="false">
+      <tag name="doctrine.event_subscriber" priority="0"/>
+      <argument>desserts_images</argument>
+      <argument type="service" id="vich_uploader.adapter.orm"/>
+      <argument type="service" id="vich_uploader.metadata_reader"/>
+      <argument type="service" id="vich_uploader.upload_handler"/>
+    </service>
+    <service id="vich_uploader.listener.clean.menus_images" class="Vich\UploaderBundle\EventListener\Doctrine\CleanListener" public="false">
+      <tag name="doctrine.event_subscriber" priority="50"/>
+      <argument>menus_images</argument>
+      <argument type="service" id="vich_uploader.adapter.orm"/>
+      <argument type="service" id="vich_uploader.metadata_reader"/>
+      <argument type="service" id="vich_uploader.upload_handler"/>
+    </service>
+    <service id="vich_uploader.listener.remove.menus_images" class="Vich\UploaderBundle\EventListener\Doctrine\RemoveListener" public="false">
+      <tag name="doctrine.event_subscriber" priority="0"/>
+      <argument>menus_images</argument>
+      <argument type="service" id="vich_uploader.adapter.orm"/>
+      <argument type="service" id="vich_uploader.metadata_reader"/>
+      <argument type="service" id="vich_uploader.upload_handler"/>
+    </service>
+    <service id="vich_uploader.listener.upload.menus_images" class="Vich\UploaderBundle\EventListener\Doctrine\UploadListener" public="false">
+      <tag name="doctrine.event_subscriber" priority="0"/>
+      <argument>menus_images</argument>
       <argument type="service" id="vich_uploader.adapter.orm"/>
       <argument type="service" id="vich_uploader.metadata_reader"/>
       <argument type="service" id="vich_uploader.upload_handler"/>
@@ -6281,6 +6750,8 @@
     <service id="abstract.instanceof.AppBundle\Controller\DefaultController" class="AppBundle\Controller\DefaultController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id="instanceof.Symfony\Bundle\FrameworkBundle\Controller\Controller.0.AppBundle\Controller\EmployeesController" class="AppBundle\Controller\EmployeesController" autowire="true" abstract="true"/>
     <service id="abstract.instanceof.AppBundle\Controller\EmployeesController" class="AppBundle\Controller\EmployeesController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id="instanceof.Symfony\Bundle\FrameworkBundle\Controller\Controller.0.AppBundle\Controller\FoodController" class="AppBundle\Controller\FoodController" autowire="true" abstract="true"/>
+    <service id="abstract.instanceof.AppBundle\Controller\FoodController" class="AppBundle\Controller\FoodController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id="service_locator.4f8384c8862c511eefe34301cff90111" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection"/>
@@ -6289,7 +6760,11 @@
       <tag name="container.service_locator"/>
       <argument type="collection"/>
     </service>
-    <service id="service_locator.2d358e84fdddc77bb423163cfe3fbbcc" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id="service_locator.3fa3e4895f306abd2adad9c109e60ad4" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection"/>
+    </service>
+    <service id="service_locator.3e082329fc99bfae597876a3501e6fda" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection"/>
     </service>
@@ -6588,7 +7063,7 @@
     <service id="cache.system.recorder_inner" class="Symfony\Component\Cache\Adapter\AdapterInterface" public="false" lazy="true">
       <argument>D8MxcDgLIr</argument>
       <argument>0</argument>
-      <argument>saQMB-ormvxjyOVV+3RhhA</argument>
+      <argument>j6HfSkS8Oj8-K37Y8Oh2zo</argument>
       <argument>/home/ichinator/Bureau/MesProjetsGIT/Restaurant/var/cache/dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -6596,7 +7071,7 @@
     <service id="cache.validator.recorder_inner" class="Symfony\Component\Cache\Adapter\AdapterInterface" public="false" lazy="true">
       <argument>lLHwAahPtH</argument>
       <argument>0</argument>
-      <argument>saQMB-ormvxjyOVV+3RhhA</argument>
+      <argument>j6HfSkS8Oj8-K37Y8Oh2zo</argument>
       <argument>/home/ichinator/Bureau/MesProjetsGIT/Restaurant/var/cache/dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -6604,7 +7079,7 @@
     <service id="cache.serializer.recorder_inner" class="Symfony\Component\Cache\Adapter\AdapterInterface" public="false" lazy="true">
       <argument>52d-Oa89OT</argument>
       <argument>0</argument>
-      <argument>saQMB-ormvxjyOVV+3RhhA</argument>
+      <argument>j6HfSkS8Oj8-K37Y8Oh2zo</argument>
       <argument>/home/ichinator/Bureau/MesProjetsGIT/Restaurant/var/cache/dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -6612,7 +7087,7 @@
     <service id="cache.annotations.recorder_inner" class="Symfony\Component\Cache\Adapter\AdapterInterface" public="false" lazy="true">
       <argument>VQrigT4oBG</argument>
       <argument>0</argument>
-      <argument>saQMB-ormvxjyOVV+3RhhA</argument>
+      <argument>j6HfSkS8Oj8-K37Y8Oh2zo</argument>
       <argument>/home/ichinator/Bureau/MesProjetsGIT/Restaurant/var/cache/dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>

@@ -1,6 +1,6 @@
 <?php
 
-/* @EasyAdmin/default/includes/_delete_form.html.twig */
+/* EasyAdminBundle:default/includes:_delete_form.html.twig */
 class __TwigTemplate_4725f131ce53b77f1208aa566ad738bd3d5d31776212fe4d300383e7a9fd6815 extends Twig_Template
 {
     public function __construct(Twig_Environment $env)
@@ -15,11 +15,11 @@ class __TwigTemplate_4725f131ce53b77f1208aa566ad738bd3d5d31776212fe4d300383e7a9f
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_a193face3c68c08c8df55ac1264fb4d6bf5c5f485ea2a1c37b379cff3cb0ac3b = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
-        $__internal_a193face3c68c08c8df55ac1264fb4d6bf5c5f485ea2a1c37b379cff3cb0ac3b->enter($__internal_a193face3c68c08c8df55ac1264fb4d6bf5c5f485ea2a1c37b379cff3cb0ac3b_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@EasyAdmin/default/includes/_delete_form.html.twig"));
+        $__internal_a82ed2c5b554bd6c0ffba803a8d21d00a160bb47b30a1d2571ed5776a47f871b = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
+        $__internal_a82ed2c5b554bd6c0ffba803a8d21d00a160bb47b30a1d2571ed5776a47f871b->enter($__internal_a82ed2c5b554bd6c0ffba803a8d21d00a160bb47b30a1d2571ed5776a47f871b_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "EasyAdminBundle:default/includes:_delete_form.html.twig"));
 
-        $__internal_b0b806e23590eb9b2d4775c8bc4247becd47f748f20491e053681c7d8f2e494c = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_b0b806e23590eb9b2d4775c8bc4247becd47f748f20491e053681c7d8f2e494c->enter($__internal_b0b806e23590eb9b2d4775c8bc4247becd47f748f20491e053681c7d8f2e494c_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@EasyAdmin/default/includes/_delete_form.html.twig"));
+        $__internal_4bbe9b650a0c37910c2c231fb90333f0c9782066b8f48f117bc90c4db4ed8aeb = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_4bbe9b650a0c37910c2c231fb90333f0c9782066b8f48f117bc90c4db4ed8aeb->enter($__internal_4bbe9b650a0c37910c2c231fb90333f0c9782066b8f48f117bc90c4db4ed8aeb_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "EasyAdminBundle:default/includes:_delete_form.html.twig"));
 
         // line 1
         echo         // line 2
@@ -80,16 +80,16 @@ class __TwigTemplate_4725f131ce53b77f1208aa566ad738bd3d5d31776212fe4d300383e7a9f
 </div>
 ";
         
-        $__internal_a193face3c68c08c8df55ac1264fb4d6bf5c5f485ea2a1c37b379cff3cb0ac3b->leave($__internal_a193face3c68c08c8df55ac1264fb4d6bf5c5f485ea2a1c37b379cff3cb0ac3b_prof);
+        $__internal_a82ed2c5b554bd6c0ffba803a8d21d00a160bb47b30a1d2571ed5776a47f871b->leave($__internal_a82ed2c5b554bd6c0ffba803a8d21d00a160bb47b30a1d2571ed5776a47f871b_prof);
 
         
-        $__internal_b0b806e23590eb9b2d4775c8bc4247becd47f748f20491e053681c7d8f2e494c->leave($__internal_b0b806e23590eb9b2d4775c8bc4247becd47f748f20491e053681c7d8f2e494c_prof);
+        $__internal_4bbe9b650a0c37910c2c231fb90333f0c9782066b8f48f117bc90c4db4ed8aeb->leave($__internal_4bbe9b650a0c37910c2c231fb90333f0c9782066b8f48f117bc90c4db4ed8aeb_prof);
 
     }
 
     public function getTemplateName()
     {
-        return "@EasyAdmin/default/includes/_delete_form.html.twig";
+        return "EasyAdminBundle:default/includes:_delete_form.html.twig";
     }
 
     public function isTraitable()
@@ -143,6 +143,6 @@ class __TwigTemplate_4725f131ce53b77f1208aa566ad738bd3d5d31776212fe4d300383e7a9f
         </div>
     </div>
 </div>
-", "@EasyAdmin/default/includes/_delete_form.html.twig", "/home/ichinator/Bureau/MesProjetsGIT/Restaurant/vendor/javiereguiluz/easyadmin-bundle/src/Resources/views/default/includes/_delete_form.html.twig");
+", "EasyAdminBundle:default/includes:_delete_form.html.twig", "/home/ichinator/Bureau/MesProjetsGIT/Restaurant/vendor/javiereguiluz/easyadmin-bundle/src/Resources/views/default/includes/_delete_form.html.twig");
     }
 }

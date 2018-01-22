@@ -331,12 +331,35 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 
         }
 
-        // employees
-        if ('/showEmployees' === $pathinfo) {
-            return array (  '_controller' => 'AppBundle\\Controller\\EmployeesController::showAction',  '_route' => 'employees',);
+        elseif (0 === strpos($pathinfo, '/show')) {
+            // employees
+            if ('/showEmployees' === $pathinfo) {
+                return array (  '_controller' => 'AppBundle\\Controller\\EmployeesController::showAction',  '_route' => 'employees',);
+            }
+
+            // entrees
+            if ('/showEntrees' === $pathinfo) {
+                return array (  '_controller' => 'AppBundle\\Controller\\FoodController::showEntreesAction',  '_route' => 'entrees',);
+            }
+
+            // plats
+            if ('/showPlats' === $pathinfo) {
+                return array (  '_controller' => 'AppBundle\\Controller\\FoodController::showPlatsAction',  '_route' => 'plats',);
+            }
+
+            // desserts
+            if ('/showDesserts' === $pathinfo) {
+                return array (  '_controller' => 'AppBundle\\Controller\\FoodController::showDessertsAction',  '_route' => 'desserts',);
+            }
+
+            // boissons
+            if ('/showBoissons' === $pathinfo) {
+                return array (  '_controller' => 'AppBundle\\Controller\\FoodController::showBoissonsAction',  '_route' => 'boissons',);
+            }
+
         }
 
-        if (0 === strpos($pathinfo, '/login')) {
+        elseif (0 === strpos($pathinfo, '/login')) {
             // fos_user_security_login
             if ('/login' === $pathinfo) {
                 if (!in_array($canonicalMethod, array('GET', 'POST'))) {

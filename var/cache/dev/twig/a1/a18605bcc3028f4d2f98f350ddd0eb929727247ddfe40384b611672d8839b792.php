@@ -1,6 +1,6 @@
 <?php
 
-/* @EasyAdmin/default/field_datetime.html.twig */
+/* EasyAdminBundle:default:field_datetime.html.twig */
 class __TwigTemplate_f261acb8a0b273cfb776841889bbbde77c9598697771ce668ba974820711b764 extends Twig_Template
 {
     public function __construct(Twig_Environment $env)
@@ -15,27 +15,27 @@ class __TwigTemplate_f261acb8a0b273cfb776841889bbbde77c9598697771ce668ba97482071
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_92059c3382a38148ea2107bdfcbe41b286029ee335972ddbe7cfe2e17ec2b50f = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
-        $__internal_92059c3382a38148ea2107bdfcbe41b286029ee335972ddbe7cfe2e17ec2b50f->enter($__internal_92059c3382a38148ea2107bdfcbe41b286029ee335972ddbe7cfe2e17ec2b50f_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@EasyAdmin/default/field_datetime.html.twig"));
+        $__internal_1839216cff32aaa96b2e10d15f36413f93ecbf3b7cd8e778184a1539c2fc338b = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
+        $__internal_1839216cff32aaa96b2e10d15f36413f93ecbf3b7cd8e778184a1539c2fc338b->enter($__internal_1839216cff32aaa96b2e10d15f36413f93ecbf3b7cd8e778184a1539c2fc338b_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "EasyAdminBundle:default:field_datetime.html.twig"));
 
-        $__internal_42e4db44544401258c21dcaa5ab1ec9ab24a687415fa6baa6a3781c386136dc1 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_42e4db44544401258c21dcaa5ab1ec9ab24a687415fa6baa6a3781c386136dc1->enter($__internal_42e4db44544401258c21dcaa5ab1ec9ab24a687415fa6baa6a3781c386136dc1_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@EasyAdmin/default/field_datetime.html.twig"));
+        $__internal_eb0d80702563028c9557df06e369761592263eec93411c07dd104b59602acedf = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_eb0d80702563028c9557df06e369761592263eec93411c07dd104b59602acedf->enter($__internal_eb0d80702563028c9557df06e369761592263eec93411c07dd104b59602acedf_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "EasyAdminBundle:default:field_datetime.html.twig"));
 
         // line 1
         echo twig_escape_filter($this->env, twig_date_format_filter($this->env, ($context["value"] ?? $this->getContext($context, "value")), $this->getAttribute(($context["field_options"] ?? $this->getContext($context, "field_options")), "format", array())), "html", null, true);
         echo "
 ";
         
-        $__internal_92059c3382a38148ea2107bdfcbe41b286029ee335972ddbe7cfe2e17ec2b50f->leave($__internal_92059c3382a38148ea2107bdfcbe41b286029ee335972ddbe7cfe2e17ec2b50f_prof);
+        $__internal_1839216cff32aaa96b2e10d15f36413f93ecbf3b7cd8e778184a1539c2fc338b->leave($__internal_1839216cff32aaa96b2e10d15f36413f93ecbf3b7cd8e778184a1539c2fc338b_prof);
 
         
-        $__internal_42e4db44544401258c21dcaa5ab1ec9ab24a687415fa6baa6a3781c386136dc1->leave($__internal_42e4db44544401258c21dcaa5ab1ec9ab24a687415fa6baa6a3781c386136dc1_prof);
+        $__internal_eb0d80702563028c9557df06e369761592263eec93411c07dd104b59602acedf->leave($__internal_eb0d80702563028c9557df06e369761592263eec93411c07dd104b59602acedf_prof);
 
     }
 
     public function getTemplateName()
     {
-        return "@EasyAdmin/default/field_datetime.html.twig";
+        return "EasyAdminBundle:default:field_datetime.html.twig";
     }
 
     public function isTraitable()
@@ -59,6 +59,6 @@ class __TwigTemplate_f261acb8a0b273cfb776841889bbbde77c9598697771ce668ba97482071
     public function getSourceContext()
     {
         return new Twig_Source("{{ value|date(field_options.format) }}
-", "@EasyAdmin/default/field_datetime.html.twig", "/home/ichinator/Bureau/MesProjetsGIT/Restaurant/vendor/javiereguiluz/easyadmin-bundle/src/Resources/views/default/field_datetime.html.twig");
+", "EasyAdminBundle:default:field_datetime.html.twig", "/home/ichinator/Bureau/MesProjetsGIT/Restaurant/vendor/javiereguiluz/easyadmin-bundle/src/Resources/views/default/field_datetime.html.twig");
     }
 }

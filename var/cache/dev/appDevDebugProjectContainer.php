@@ -31,6 +31,7 @@ class appDevDebugProjectContainer extends Container
         $this->normalizedIds = array(
             'appbundle\\controller\\defaultcontroller' => 'AppBundle\\Controller\\DefaultController',
             'appbundle\\controller\\employeescontroller' => 'AppBundle\\Controller\\EmployeesController',
+            'appbundle\\controller\\foodcontroller' => 'AppBundle\\Controller\\FoodController',
             'fos\\restbundle\\request\\paramfetcherinterface' => 'FOS\\RestBundle\\Request\\ParamFetcherInterface',
             'fos\\restbundle\\view\\viewhandlerinterface' => 'FOS\\RestBundle\\View\\ViewHandlerInterface',
             'jms\\serializer\\arraytransformerinterface' => 'JMS\\Serializer\\ArrayTransformerInterface',
@@ -41,6 +42,7 @@ class appDevDebugProjectContainer extends Container
             '2_2454bac238f44e8ef62387c39e20b8712ae47060aa9482d6f2d7c0bacd1f9b1e' => 'get22454bac238f44e8ef62387c39e20b8712ae47060aa9482d6f2d7c0bacd1f9b1eService',
             'AppBundle\\Controller\\DefaultController' => 'getAppBundle_Controller_DefaultControllerService',
             'AppBundle\\Controller\\EmployeesController' => 'getAppBundle_Controller_EmployeesControllerService',
+            'AppBundle\\Controller\\FoodController' => 'getAppBundle_Controller_FoodControllerService',
             'FOS\\RestBundle\\View\\ViewHandlerInterface' => 'getFOS_RestBundle_View_ViewHandlerInterfaceService',
             'annotation_reader' => 'getAnnotationReaderService',
             'annotations.reader' => 'getAnnotations_ReaderService',
@@ -428,7 +430,11 @@ class appDevDebugProjectContainer extends Container
             'vich_uploader.namer_origname' => 'getVichUploader_NamerOrignameService',
             'vich_uploader.namer_property' => 'getVichUploader_NamerPropertyService',
             'vich_uploader.namer_uniqid' => 'getVichUploader_NamerUniqidService',
+            'vich_uploader.namer_uniqid.desserts_images' => 'getVichUploader_NamerUniqid_DessertsImagesService',
             'vich_uploader.namer_uniqid.employees_images' => 'getVichUploader_NamerUniqid_EmployeesImagesService',
+            'vich_uploader.namer_uniqid.entrees_images' => 'getVichUploader_NamerUniqid_EntreesImagesService',
+            'vich_uploader.namer_uniqid.menus_images' => 'getVichUploader_NamerUniqid_MenusImagesService',
+            'vich_uploader.namer_uniqid.plats_images' => 'getVichUploader_NamerUniqid_PlatsImagesService',
             'vich_uploader.property_mapping_factory' => 'getVichUploader_PropertyMappingFactoryService',
             'vich_uploader.storage' => 'getVichUploader_StorageService',
             'vich_uploader.templating.helper.uploader_helper' => 'getVichUploader_Templating_Helper_UploaderHelperService',
@@ -579,6 +585,16 @@ class appDevDebugProjectContainer extends Container
     protected function getAppBundle_Controller_EmployeesControllerService()
     {
         return $this->services['AppBundle\Controller\EmployeesController'] = new \AppBundle\Controller\EmployeesController();
+    }
+
+    /**
+     * Gets the public 'AppBundle\Controller\FoodController' shared autowired service.
+     *
+     * @return \AppBundle\Controller\FoodController
+     */
+    protected function getAppBundle_Controller_FoodControllerService()
+    {
+        return $this->services['AppBundle\Controller\FoodController'] = new \AppBundle\Controller\FoodController();
     }
 
     /**
@@ -1297,7 +1313,19 @@ class appDevDebugProjectContainer extends Container
         $e = new \Vich\UploaderBundle\Adapter\ORM\DoctrineORMAdapter();
 
         $f = new \Symfony\Bridge\Doctrine\ContainerAwareEventManager($this);
+        $f->addEventSubscriber(new \Vich\UploaderBundle\EventListener\Doctrine\CleanListener('menus_images', $e, $a, $b));
+        $f->addEventSubscriber(new \Vich\UploaderBundle\EventListener\Doctrine\CleanListener('plats_images', $e, $a, $b));
+        $f->addEventSubscriber(new \Vich\UploaderBundle\EventListener\Doctrine\CleanListener('desserts_images', $e, $a, $b));
+        $f->addEventSubscriber(new \Vich\UploaderBundle\EventListener\Doctrine\CleanListener('entrees_images', $e, $a, $b));
         $f->addEventSubscriber(new \Vich\UploaderBundle\EventListener\Doctrine\CleanListener('employees_images', $e, $a, $b));
+        $f->addEventSubscriber(new \Vich\UploaderBundle\EventListener\Doctrine\UploadListener('menus_images', $e, $a, $b));
+        $f->addEventSubscriber(new \Vich\UploaderBundle\EventListener\Doctrine\RemoveListener('menus_images', $e, $a, $b));
+        $f->addEventSubscriber(new \Vich\UploaderBundle\EventListener\Doctrine\UploadListener('desserts_images', $e, $a, $b));
+        $f->addEventSubscriber(new \Vich\UploaderBundle\EventListener\Doctrine\RemoveListener('desserts_images', $e, $a, $b));
+        $f->addEventSubscriber(new \Vich\UploaderBundle\EventListener\Doctrine\UploadListener('plats_images', $e, $a, $b));
+        $f->addEventSubscriber(new \Vich\UploaderBundle\EventListener\Doctrine\RemoveListener('plats_images', $e, $a, $b));
+        $f->addEventSubscriber(new \Vich\UploaderBundle\EventListener\Doctrine\UploadListener('entrees_images', $e, $a, $b));
+        $f->addEventSubscriber(new \Vich\UploaderBundle\EventListener\Doctrine\RemoveListener('entrees_images', $e, $a, $b));
         $f->addEventSubscriber(new \Vich\UploaderBundle\EventListener\Doctrine\UploadListener('employees_images', $e, $a, $b));
         $f->addEventSubscriber(new \Vich\UploaderBundle\EventListener\Doctrine\RemoveListener('employees_images', $e, $a, $b));
         $f->addEventSubscriber(new \FOS\UserBundle\Doctrine\UserListener(${($_ = isset($this->services['fos_user.util.password_updater']) ? $this->services['fos_user.util.password_updater'] : $this->getFosUser_Util_PasswordUpdaterService()) && false ?: '_'}, ${($_ = isset($this->services['fos_user.util.canonical_fields_updater']) ? $this->services['fos_user.util.canonical_fields_updater'] : $this->getFosUser_Util_CanonicalFieldsUpdaterService()) && false ?: '_'}));
@@ -1623,7 +1651,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getEasyadmin_Config_ManagerService()
     {
-        $this->services['easyadmin.config.manager'] = $instance = new \EasyCorp\Bundle\EasyAdminBundle\Configuration\ConfigManager(${($_ = isset($this->services['easyadmin.cache.manager']) ? $this->services['easyadmin.cache.manager'] : $this->get('easyadmin.cache.manager')) && false ?: '_'}, ${($_ = isset($this->services['property_accessor']) ? $this->services['property_accessor'] : $this->get('property_accessor')) && false ?: '_'}, array('entities' => array('User' => array('class' => 'AppBundle\\Entity\\User', 'name' => 'User'), 'Employees' => array('class' => 'AppBundle\\Entity\\Employees', 'form' => array('fields' => array(0 => array('property' => 'nom', 'label' => 'Nom'), 1 => array('property' => 'prenom', 'label' => 'Prénom'), 2 => array('property' => 'poste', 'label' => 'Poste occupé'), 3 => array('property' => 'imageFile', 'type' => 'file', 'label' => 'Ajouter'))), 'name' => 'Employees')), 'design' => array('form_theme' => array(0 => '@EasyAdmin/form/bootstrap_3_horizontal_layout.html.twig', 1 => 'VichUploaderBundle:Form:fields.html.twig'), 'theme' => 'default', 'color_scheme' => 'dark', 'brand_color' => '#205081', 'assets' => array('css' => array(), 'js' => array(), 'favicon' => array('path' => 'favicon.ico', 'mime_type' => 'image/x-icon')), 'menu' => array()), 'site_name' => 'EasyAdmin', 'formats' => array('date' => 'Y-m-d', 'time' => 'H:i:s', 'datetime' => 'F j, Y H:i'), 'disabled_actions' => array(), 'translation_domain' => 'messages', 'list' => array('actions' => array(), 'max_results' => 15), 'search' => array(), 'edit' => array('actions' => array()), 'new' => array('actions' => array()), 'show' => array('actions' => array(), 'max_results' => 10)), true);
+        $this->services['easyadmin.config.manager'] = $instance = new \EasyCorp\Bundle\EasyAdminBundle\Configuration\ConfigManager(${($_ = isset($this->services['easyadmin.cache.manager']) ? $this->services['easyadmin.cache.manager'] : $this->get('easyadmin.cache.manager')) && false ?: '_'}, ${($_ = isset($this->services['property_accessor']) ? $this->services['property_accessor'] : $this->get('property_accessor')) && false ?: '_'}, array('entities' => array('User' => array('class' => 'AppBundle\\Entity\\User', 'name' => 'User'), 'Employees' => array('class' => 'AppBundle\\Entity\\Employees', 'form' => array('fields' => array(0 => array('property' => 'nom', 'label' => 'Nom'), 1 => array('property' => 'prenom', 'label' => 'Prénom'), 2 => array('property' => 'poste', 'label' => 'Poste occupé'), 3 => array('property' => 'imageFile', 'type' => 'file', 'label' => 'Ajouter'))), 'name' => 'Employees'), 'Entrees' => array('class' => 'AppBundle\\Entity\\Entrees', 'form' => array('fields' => array(0 => array('property' => 'name', 'label' => 'Nom de l entrée'), 1 => array('property' => 'prix', 'label' => 'Prix'), 2 => array('property' => 'imageFile', 'type' => 'file', 'label' => 'Ajouter image entree'))), 'name' => 'Entrees'), 'Plats' => array('class' => 'AppBundle\\Entity\\Plats', 'form' => array('fields' => array(0 => array('property' => 'name', 'label' => 'Nom du plat'), 1 => array('property' => 'prix', 'label' => 'Prix'), 2 => array('property' => 'imageFile', 'type' => 'file', 'label' => 'Ajouter image du plat'))), 'name' => 'Plats'), 'Desserts' => array('class' => 'AppBundle\\Entity\\Desserts', 'form' => array('fields' => array(0 => array('property' => 'name', 'label' => 'Nom du dessert'), 1 => array('property' => 'prix', 'label' => 'Prix'), 2 => array('property' => 'imageFile', 'type' => 'file', 'label' => 'Ajouter image du dessert'))), 'name' => 'Desserts'), 'Boissons' => array('class' => 'AppBundle\\Entity\\Boissons', 'form' => array('fields' => array(0 => array('property' => 'name', 'label' => 'Nom de la boisson'), 1 => array('property' => 'prix', 'label' => 'Prix'), 2 => array('property' => 'imageFile', 'type' => 'file', 'label' => 'Ajouter image de la boisson'))), 'name' => 'Boissons'), 'Menu' => array('class' => 'AppBundle\\Entity\\Menu', 'form' => array('fields' => array(0 => array('property' => 'name', 'label' => 'Nom du menu'), 1 => array('property' => 'prix', 'label' => 'Prix'), 2 => array('property' => 'imageFile', 'type' => 'file', 'label' => 'Ajouter image du menu'))), 'name' => 'Menu')), 'design' => array('form_theme' => array(0 => '@EasyAdmin/form/bootstrap_3_horizontal_layout.html.twig', 1 => 'VichUploaderBundle:Form:fields.html.twig'), 'theme' => 'default', 'color_scheme' => 'dark', 'brand_color' => '#205081', 'assets' => array('css' => array(), 'js' => array(), 'favicon' => array('path' => 'favicon.ico', 'mime_type' => 'image/x-icon')), 'menu' => array()), 'site_name' => 'EasyAdmin', 'formats' => array('date' => 'Y-m-d', 'time' => 'H:i:s', 'datetime' => 'F j, Y H:i'), 'disabled_actions' => array(), 'translation_domain' => 'messages', 'list' => array('actions' => array(), 'max_results' => 15), 'search' => array(), 'edit' => array('actions' => array()), 'new' => array('actions' => array()), 'show' => array('actions' => array(), 'max_results' => 10)), true);
 
         $instance->addConfigPass(new \EasyCorp\Bundle\EasyAdminBundle\Configuration\NormalizerConfigPass($this));
         $instance->addConfigPass(new \EasyCorp\Bundle\EasyAdminBundle\Configuration\DesignConfigPass($this, true, 'fr'));
@@ -3694,7 +3722,7 @@ class appDevDebugProjectContainer extends Container
         $p = new \Symfony\Component\Security\Http\Authentication\DefaultAuthenticationFailureHandler($f, $m, array(), $a);
         $p->setOptions(array('login_path' => '/login', 'failure_path' => NULL, 'failure_forward' => false, 'failure_path_parameter' => '_failure_path'));
 
-        return $this->services['security.firewall.map.context.main'] = new \Symfony\Bundle\SecurityBundle\Security\FirewallContext(array(0 => new \Symfony\Component\Security\Http\Firewall\ChannelListener($l, new \Symfony\Component\Security\Http\EntryPoint\RetryAuthenticationEntryPoint(80, 443), $a), 1 => new \Symfony\Component\Security\Http\Firewall\ContextListener($b, array(0 => ${($_ = isset($this->services['fos_user.user_provider.username']) ? $this->services['fos_user.user_provider.username'] : $this->getFosUser_UserProvider_UsernameService()) && false ?: '_'}), 'main', $a, $c, $d), 2 => $n, 3 => new \Symfony\Component\Security\Http\Firewall\UsernamePasswordFormAuthenticationListener($b, $g, ${($_ = isset($this->services['security.authentication.session_strategy']) ? $this->services['security.authentication.session_strategy'] : $this->getSecurity_Authentication_SessionStrategyService()) && false ?: '_'}, $m, 'main', $o, $p, array('check_path' => '/login_check', 'use_forward' => false, 'require_previous_session' => true, 'username_parameter' => '_username', 'password_parameter' => '_password', 'csrf_parameter' => '_csrf_token', 'csrf_token_id' => 'authenticate', 'post_only' => true), $a, $c, ${($_ = isset($this->services['security.csrf.token_manager']) ? $this->services['security.csrf.token_manager'] : $this->get('security.csrf.token_manager')) && false ?: '_'}), 4 => new \Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener($b, '5a637f42100618.04467294', $a, $g), 5 => new \Symfony\Component\Security\Http\Firewall\AccessListener($b, ${($_ = isset($this->services['debug.security.access.decision_manager']) ? $this->services['debug.security.access.decision_manager'] : $this->getDebug_Security_Access_DecisionManagerService()) && false ?: '_'}, $l, $g)), new \Symfony\Component\Security\Http\Firewall\ExceptionListener($b, $d, $m, 'main', new \Symfony\Component\Security\Http\EntryPoint\FormAuthenticationEntryPoint($f, $m, '/login', false), NULL, NULL, $a, false), new \Symfony\Bundle\SecurityBundle\Security\FirewallConfig('main', 'security.user_checker', 'security.request_matcher.a64d671f18e5575531d76c1d1154fdc4476cb8a79c02ed7a3469178c6d7b96b5ed4e60db', true, false, 'fos_user.user_provider.username', 'main', 'security.authentication.form_entry_point.main', NULL, NULL, array(0 => 'logout', 1 => 'form_login', 2 => 'anonymous')));
+        return $this->services['security.firewall.map.context.main'] = new \Symfony\Bundle\SecurityBundle\Security\FirewallContext(array(0 => new \Symfony\Component\Security\Http\Firewall\ChannelListener($l, new \Symfony\Component\Security\Http\EntryPoint\RetryAuthenticationEntryPoint(80, 443), $a), 1 => new \Symfony\Component\Security\Http\Firewall\ContextListener($b, array(0 => ${($_ = isset($this->services['fos_user.user_provider.username']) ? $this->services['fos_user.user_provider.username'] : $this->getFosUser_UserProvider_UsernameService()) && false ?: '_'}), 'main', $a, $c, $d), 2 => $n, 3 => new \Symfony\Component\Security\Http\Firewall\UsernamePasswordFormAuthenticationListener($b, $g, ${($_ = isset($this->services['security.authentication.session_strategy']) ? $this->services['security.authentication.session_strategy'] : $this->getSecurity_Authentication_SessionStrategyService()) && false ?: '_'}, $m, 'main', $o, $p, array('check_path' => '/login_check', 'use_forward' => false, 'require_previous_session' => true, 'username_parameter' => '_username', 'password_parameter' => '_password', 'csrf_parameter' => '_csrf_token', 'csrf_token_id' => 'authenticate', 'post_only' => true), $a, $c, ${($_ = isset($this->services['security.csrf.token_manager']) ? $this->services['security.csrf.token_manager'] : $this->get('security.csrf.token_manager')) && false ?: '_'}), 4 => new \Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener($b, '5a65ff8235f973.81410515', $a, $g), 5 => new \Symfony\Component\Security\Http\Firewall\AccessListener($b, ${($_ = isset($this->services['debug.security.access.decision_manager']) ? $this->services['debug.security.access.decision_manager'] : $this->getDebug_Security_Access_DecisionManagerService()) && false ?: '_'}, $l, $g)), new \Symfony\Component\Security\Http\Firewall\ExceptionListener($b, $d, $m, 'main', new \Symfony\Component\Security\Http\EntryPoint\FormAuthenticationEntryPoint($f, $m, '/login', false), NULL, NULL, $a, false), new \Symfony\Bundle\SecurityBundle\Security\FirewallConfig('main', 'security.user_checker', 'security.request_matcher.a64d671f18e5575531d76c1d1154fdc4476cb8a79c02ed7a3469178c6d7b96b5ed4e60db', true, false, 'fos_user.user_provider.username', 'main', 'security.authentication.form_entry_point.main', NULL, NULL, array(0 => 'logout', 1 => 'form_login', 2 => 'anonymous')));
     }
 
     /**
@@ -4769,6 +4797,16 @@ class appDevDebugProjectContainer extends Container
     }
 
     /**
+     * Gets the public 'vich_uploader.namer_uniqid.desserts_images' shared service.
+     *
+     * @return \Vich\UploaderBundle\Naming\UniqidNamer
+     */
+    protected function getVichUploader_NamerUniqid_DessertsImagesService()
+    {
+        return $this->services['vich_uploader.namer_uniqid.desserts_images'] = new \Vich\UploaderBundle\Naming\UniqidNamer();
+    }
+
+    /**
      * Gets the public 'vich_uploader.namer_uniqid.employees_images' shared service.
      *
      * @return \Vich\UploaderBundle\Naming\UniqidNamer
@@ -4776,6 +4814,36 @@ class appDevDebugProjectContainer extends Container
     protected function getVichUploader_NamerUniqid_EmployeesImagesService()
     {
         return $this->services['vich_uploader.namer_uniqid.employees_images'] = new \Vich\UploaderBundle\Naming\UniqidNamer();
+    }
+
+    /**
+     * Gets the public 'vich_uploader.namer_uniqid.entrees_images' shared service.
+     *
+     * @return \Vich\UploaderBundle\Naming\UniqidNamer
+     */
+    protected function getVichUploader_NamerUniqid_EntreesImagesService()
+    {
+        return $this->services['vich_uploader.namer_uniqid.entrees_images'] = new \Vich\UploaderBundle\Naming\UniqidNamer();
+    }
+
+    /**
+     * Gets the public 'vich_uploader.namer_uniqid.menus_images' shared service.
+     *
+     * @return \Vich\UploaderBundle\Naming\UniqidNamer
+     */
+    protected function getVichUploader_NamerUniqid_MenusImagesService()
+    {
+        return $this->services['vich_uploader.namer_uniqid.menus_images'] = new \Vich\UploaderBundle\Naming\UniqidNamer();
+    }
+
+    /**
+     * Gets the public 'vich_uploader.namer_uniqid.plats_images' shared service.
+     *
+     * @return \Vich\UploaderBundle\Naming\UniqidNamer
+     */
+    protected function getVichUploader_NamerUniqid_PlatsImagesService()
+    {
+        return $this->services['vich_uploader.namer_uniqid.plats_images'] = new \Vich\UploaderBundle\Naming\UniqidNamer();
     }
 
     /**
@@ -4978,7 +5046,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getCache_Annotations_RecorderInnerService($lazyLoad = true)
     {
-        return $this->services['cache.annotations.recorder_inner'] = \Symfony\Component\Cache\Adapter\AbstractAdapter::createSystemCache('VQrigT4oBG', 0, 'saQMB-ormvxjyOVV+3RhhA', (__DIR__.'/pools'), ${($_ = isset($this->services['monolog.logger.cache']) ? $this->services['monolog.logger.cache'] : $this->get('monolog.logger.cache', ContainerInterface::NULL_ON_INVALID_REFERENCE)) && false ?: '_'});
+        return $this->services['cache.annotations.recorder_inner'] = \Symfony\Component\Cache\Adapter\AbstractAdapter::createSystemCache('VQrigT4oBG', 0, 'j6HfSkS8Oj8-K37Y8Oh2zo', (__DIR__.'/pools'), ${($_ = isset($this->services['monolog.logger.cache']) ? $this->services['monolog.logger.cache'] : $this->get('monolog.logger.cache', ContainerInterface::NULL_ON_INVALID_REFERENCE)) && false ?: '_'});
     }
 
     /**
@@ -5004,7 +5072,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getCache_Serializer_RecorderInnerService($lazyLoad = true)
     {
-        return $this->services['cache.serializer.recorder_inner'] = \Symfony\Component\Cache\Adapter\AbstractAdapter::createSystemCache('52d-Oa89OT', 0, 'saQMB-ormvxjyOVV+3RhhA', (__DIR__.'/pools'), ${($_ = isset($this->services['monolog.logger.cache']) ? $this->services['monolog.logger.cache'] : $this->get('monolog.logger.cache', ContainerInterface::NULL_ON_INVALID_REFERENCE)) && false ?: '_'});
+        return $this->services['cache.serializer.recorder_inner'] = \Symfony\Component\Cache\Adapter\AbstractAdapter::createSystemCache('52d-Oa89OT', 0, 'j6HfSkS8Oj8-K37Y8Oh2zo', (__DIR__.'/pools'), ${($_ = isset($this->services['monolog.logger.cache']) ? $this->services['monolog.logger.cache'] : $this->get('monolog.logger.cache', ContainerInterface::NULL_ON_INVALID_REFERENCE)) && false ?: '_'});
     }
 
     /**
@@ -5014,7 +5082,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getCache_System_RecorderInnerService($lazyLoad = true)
     {
-        return $this->services['cache.system.recorder_inner'] = \Symfony\Component\Cache\Adapter\AbstractAdapter::createSystemCache('D8MxcDgLIr', 0, 'saQMB-ormvxjyOVV+3RhhA', (__DIR__.'/pools'), ${($_ = isset($this->services['monolog.logger.cache']) ? $this->services['monolog.logger.cache'] : $this->get('monolog.logger.cache', ContainerInterface::NULL_ON_INVALID_REFERENCE)) && false ?: '_'});
+        return $this->services['cache.system.recorder_inner'] = \Symfony\Component\Cache\Adapter\AbstractAdapter::createSystemCache('D8MxcDgLIr', 0, 'j6HfSkS8Oj8-K37Y8Oh2zo', (__DIR__.'/pools'), ${($_ = isset($this->services['monolog.logger.cache']) ? $this->services['monolog.logger.cache'] : $this->get('monolog.logger.cache', ContainerInterface::NULL_ON_INVALID_REFERENCE)) && false ?: '_'});
     }
 
     /**
@@ -5034,7 +5102,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getCache_Validator_RecorderInnerService($lazyLoad = true)
     {
-        return $this->services['cache.validator.recorder_inner'] = \Symfony\Component\Cache\Adapter\AbstractAdapter::createSystemCache('lLHwAahPtH', 0, 'saQMB-ormvxjyOVV+3RhhA', (__DIR__.'/pools'), ${($_ = isset($this->services['monolog.logger.cache']) ? $this->services['monolog.logger.cache'] : $this->get('monolog.logger.cache', ContainerInterface::NULL_ON_INVALID_REFERENCE)) && false ?: '_'});
+        return $this->services['cache.validator.recorder_inner'] = \Symfony\Component\Cache\Adapter\AbstractAdapter::createSystemCache('lLHwAahPtH', 0, 'j6HfSkS8Oj8-K37Y8Oh2zo', (__DIR__.'/pools'), ${($_ = isset($this->services['monolog.logger.cache']) ? $this->services['monolog.logger.cache'] : $this->get('monolog.logger.cache', ContainerInterface::NULL_ON_INVALID_REFERENCE)) && false ?: '_'});
     }
 
     /**
@@ -5357,7 +5425,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getSecurity_Authentication_Provider_Anonymous_MainService()
     {
-        return $this->services['security.authentication.provider.anonymous.main'] = new \Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider('5a637f42100618.04467294');
+        return $this->services['security.authentication.provider.anonymous.main'] = new \Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider('5a65ff8235f973.81410515');
     }
 
     /**
@@ -5524,7 +5592,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getVichUploader_PropertyMappingFactoryService()
     {
-        return $this->services['vich_uploader.property_mapping_factory'] = new \Vich\UploaderBundle\Mapping\PropertyMappingFactory($this, ${($_ = isset($this->services['vich_uploader.metadata_reader']) ? $this->services['vich_uploader.metadata_reader'] : $this->getVichUploader_MetadataReaderService()) && false ?: '_'}, array('employees_images' => array('uri_prefix' => '/uploads/images/employees', 'upload_destination' => ($this->targetDirs[3].'/app/../web/uploads/images/employees'), 'namer' => array('service' => 'vich_uploader.namer_uniqid.employees_images', 'options' => array()), 'directory_namer' => array('service' => NULL, 'options' => NULL), 'delete_on_remove' => true, 'delete_on_update' => true, 'inject_on_load' => false, 'db_driver' => 'orm')), '_name');
+        return $this->services['vich_uploader.property_mapping_factory'] = new \Vich\UploaderBundle\Mapping\PropertyMappingFactory($this, ${($_ = isset($this->services['vich_uploader.metadata_reader']) ? $this->services['vich_uploader.metadata_reader'] : $this->getVichUploader_MetadataReaderService()) && false ?: '_'}, array('employees_images' => array('uri_prefix' => '/uploads/images/employees', 'upload_destination' => ($this->targetDirs[3].'/app/../web/uploads/images/employees'), 'namer' => array('service' => 'vich_uploader.namer_uniqid.employees_images', 'options' => array()), 'directory_namer' => array('service' => NULL, 'options' => NULL), 'delete_on_remove' => true, 'delete_on_update' => true, 'inject_on_load' => false, 'db_driver' => 'orm'), 'entrees_images' => array('uri_prefix' => '/uploads/images/entrees', 'upload_destination' => ($this->targetDirs[3].'/app/../web/uploads/images/entrees'), 'namer' => array('service' => 'vich_uploader.namer_uniqid.entrees_images', 'options' => array()), 'directory_namer' => array('service' => NULL, 'options' => NULL), 'delete_on_remove' => true, 'delete_on_update' => true, 'inject_on_load' => false, 'db_driver' => 'orm'), 'plats_images' => array('uri_prefix' => '/uploads/images/plats', 'upload_destination' => ($this->targetDirs[3].'/app/../web/uploads/images/plats'), 'namer' => array('service' => 'vich_uploader.namer_uniqid.plats_images', 'options' => array()), 'directory_namer' => array('service' => NULL, 'options' => NULL), 'delete_on_remove' => true, 'delete_on_update' => true, 'inject_on_load' => false, 'db_driver' => 'orm'), 'desserts_images' => array('uri_prefix' => '/uploads/images/desserts', 'upload_destination' => ($this->targetDirs[3].'/app/../web/uploads/images/desserts'), 'namer' => array('service' => 'vich_uploader.namer_uniqid.desserts_images', 'options' => array()), 'directory_namer' => array('service' => NULL, 'options' => NULL), 'delete_on_remove' => true, 'delete_on_update' => true, 'inject_on_load' => false, 'db_driver' => 'orm'), 'menus_images' => array('uri_prefix' => '/uploads/images/menus', 'upload_destination' => ($this->targetDirs[3].'/app/../web/uploads/images/menus'), 'namer' => array('service' => 'vich_uploader.namer_uniqid.menus_images', 'options' => array()), 'directory_namer' => array('service' => NULL, 'options' => NULL), 'delete_on_remove' => true, 'delete_on_update' => true, 'inject_on_load' => false, 'db_driver' => 'orm')), '_name');
     }
 
     /**
@@ -5742,6 +5810,78 @@ class appDevDebugProjectContainer extends Container
                     'inject_on_load' => false,
                     'db_driver' => 'orm',
                 ),
+                'entrees_images' => array(
+                    'uri_prefix' => '/uploads/images/entrees',
+                    'upload_destination' => ($this->targetDirs[3].'/app/../web/uploads/images/entrees'),
+                    'namer' => array(
+                        'service' => 'vich_uploader.namer_uniqid.entrees_images',
+                        'options' => array(
+
+                        ),
+                    ),
+                    'directory_namer' => array(
+                        'service' => NULL,
+                        'options' => NULL,
+                    ),
+                    'delete_on_remove' => true,
+                    'delete_on_update' => true,
+                    'inject_on_load' => false,
+                    'db_driver' => 'orm',
+                ),
+                'plats_images' => array(
+                    'uri_prefix' => '/uploads/images/plats',
+                    'upload_destination' => ($this->targetDirs[3].'/app/../web/uploads/images/plats'),
+                    'namer' => array(
+                        'service' => 'vich_uploader.namer_uniqid.plats_images',
+                        'options' => array(
+
+                        ),
+                    ),
+                    'directory_namer' => array(
+                        'service' => NULL,
+                        'options' => NULL,
+                    ),
+                    'delete_on_remove' => true,
+                    'delete_on_update' => true,
+                    'inject_on_load' => false,
+                    'db_driver' => 'orm',
+                ),
+                'desserts_images' => array(
+                    'uri_prefix' => '/uploads/images/desserts',
+                    'upload_destination' => ($this->targetDirs[3].'/app/../web/uploads/images/desserts'),
+                    'namer' => array(
+                        'service' => 'vich_uploader.namer_uniqid.desserts_images',
+                        'options' => array(
+
+                        ),
+                    ),
+                    'directory_namer' => array(
+                        'service' => NULL,
+                        'options' => NULL,
+                    ),
+                    'delete_on_remove' => true,
+                    'delete_on_update' => true,
+                    'inject_on_load' => false,
+                    'db_driver' => 'orm',
+                ),
+                'menus_images' => array(
+                    'uri_prefix' => '/uploads/images/menus',
+                    'upload_destination' => ($this->targetDirs[3].'/app/../web/uploads/images/menus'),
+                    'namer' => array(
+                        'service' => 'vich_uploader.namer_uniqid.menus_images',
+                        'options' => array(
+
+                        ),
+                    ),
+                    'directory_namer' => array(
+                        'service' => NULL,
+                        'options' => NULL,
+                    ),
+                    'delete_on_remove' => true,
+                    'delete_on_update' => true,
+                    'inject_on_load' => false,
+                    'db_driver' => 'orm',
+                ),
             ); break;
             case 'assetic.read_from': $value = ($this->targetDirs[3].'/app/../web'); break;
             case 'assetic.write_to': $value = ($this->targetDirs[3].'/app/../web'); break;
@@ -5801,6 +5941,10 @@ class appDevDebugProjectContainer extends Container
             'secret' => 'ThisTokenIsNotSoSecretChangeIt',
             'locale' => 'fr',
             'app.path.employees_images' => '/uploads/images/employees',
+            'app.path.entrees_images' => '/uploads/images/entrees',
+            'app.path.plats_images' => '/uploads/images/plats',
+            'app.path.desserts_images' => '/uploads/images/desserts',
+            'app.path.menus_images' => '/uploads/images/menus',
             'fragment.renderer.hinclude.global_template' => NULL,
             'fragment.path' => '/_fragment',
             'kernel.secret' => 'ThisTokenIsNotSoSecretChangeIt',
@@ -6117,6 +6261,111 @@ class appDevDebugProjectContainer extends Container
                             ),
                         ),
                         'name' => 'Employees',
+                    ),
+                    'Entrees' => array(
+                        'class' => 'AppBundle\\Entity\\Entrees',
+                        'form' => array(
+                            'fields' => array(
+                                0 => array(
+                                    'property' => 'name',
+                                    'label' => 'Nom de l entrée',
+                                ),
+                                1 => array(
+                                    'property' => 'prix',
+                                    'label' => 'Prix',
+                                ),
+                                2 => array(
+                                    'property' => 'imageFile',
+                                    'type' => 'file',
+                                    'label' => 'Ajouter image entree',
+                                ),
+                            ),
+                        ),
+                        'name' => 'Entrees',
+                    ),
+                    'Plats' => array(
+                        'class' => 'AppBundle\\Entity\\Plats',
+                        'form' => array(
+                            'fields' => array(
+                                0 => array(
+                                    'property' => 'name',
+                                    'label' => 'Nom du plat',
+                                ),
+                                1 => array(
+                                    'property' => 'prix',
+                                    'label' => 'Prix',
+                                ),
+                                2 => array(
+                                    'property' => 'imageFile',
+                                    'type' => 'file',
+                                    'label' => 'Ajouter image du plat',
+                                ),
+                            ),
+                        ),
+                        'name' => 'Plats',
+                    ),
+                    'Desserts' => array(
+                        'class' => 'AppBundle\\Entity\\Desserts',
+                        'form' => array(
+                            'fields' => array(
+                                0 => array(
+                                    'property' => 'name',
+                                    'label' => 'Nom du dessert',
+                                ),
+                                1 => array(
+                                    'property' => 'prix',
+                                    'label' => 'Prix',
+                                ),
+                                2 => array(
+                                    'property' => 'imageFile',
+                                    'type' => 'file',
+                                    'label' => 'Ajouter image du dessert',
+                                ),
+                            ),
+                        ),
+                        'name' => 'Desserts',
+                    ),
+                    'Boissons' => array(
+                        'class' => 'AppBundle\\Entity\\Boissons',
+                        'form' => array(
+                            'fields' => array(
+                                0 => array(
+                                    'property' => 'name',
+                                    'label' => 'Nom de la boisson',
+                                ),
+                                1 => array(
+                                    'property' => 'prix',
+                                    'label' => 'Prix',
+                                ),
+                                2 => array(
+                                    'property' => 'imageFile',
+                                    'type' => 'file',
+                                    'label' => 'Ajouter image de la boisson',
+                                ),
+                            ),
+                        ),
+                        'name' => 'Boissons',
+                    ),
+                    'Menu' => array(
+                        'class' => 'AppBundle\\Entity\\Menu',
+                        'form' => array(
+                            'fields' => array(
+                                0 => array(
+                                    'property' => 'name',
+                                    'label' => 'Nom du menu',
+                                ),
+                                1 => array(
+                                    'property' => 'prix',
+                                    'label' => 'Prix',
+                                ),
+                                2 => array(
+                                    'property' => 'imageFile',
+                                    'type' => 'file',
+                                    'label' => 'Ajouter image du menu',
+                                ),
+                            ),
+                        ),
+                        'name' => 'Menu',
                     ),
                 ),
                 'design' => array(

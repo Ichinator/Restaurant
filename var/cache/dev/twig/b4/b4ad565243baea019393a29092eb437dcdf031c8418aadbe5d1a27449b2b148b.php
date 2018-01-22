@@ -1,6 +1,6 @@
 <?php
 
-/* @EasyAdmin/default/field_toggle.html.twig */
+/* EasyAdminBundle:default:field_toggle.html.twig */
 class __TwigTemplate_5cf2c32e9308cfeebf06e5d2994dd4f7cdc3df6b8aa15952b2d57ce5cd8552a6 extends Twig_Template
 {
     public function __construct(Twig_Environment $env)
@@ -15,11 +15,11 @@ class __TwigTemplate_5cf2c32e9308cfeebf06e5d2994dd4f7cdc3df6b8aa15952b2d57ce5cd8
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_e0093e8774753fe34ac7934483b276d6e3c208980c2d13bbf05200f1d8f2cd61 = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
-        $__internal_e0093e8774753fe34ac7934483b276d6e3c208980c2d13bbf05200f1d8f2cd61->enter($__internal_e0093e8774753fe34ac7934483b276d6e3c208980c2d13bbf05200f1d8f2cd61_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@EasyAdmin/default/field_toggle.html.twig"));
+        $__internal_ab3bcb143b05c81ac2881cbdec048ef392c137199c4cebcea845714ee6fc513f = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
+        $__internal_ab3bcb143b05c81ac2881cbdec048ef392c137199c4cebcea845714ee6fc513f->enter($__internal_ab3bcb143b05c81ac2881cbdec048ef392c137199c4cebcea845714ee6fc513f_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "EasyAdminBundle:default:field_toggle.html.twig"));
 
-        $__internal_63d19c6da83eb45187454f36c01462f3ddba34511c129c5909725308110802da = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_63d19c6da83eb45187454f36c01462f3ddba34511c129c5909725308110802da->enter($__internal_63d19c6da83eb45187454f36c01462f3ddba34511c129c5909725308110802da_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@EasyAdmin/default/field_toggle.html.twig"));
+        $__internal_b76807578a4ffa742eb13f04ceb6eea0669c1f6f5615828854051169df45e919 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_b76807578a4ffa742eb13f04ceb6eea0669c1f6f5615828854051169df45e919->enter($__internal_b76807578a4ffa742eb13f04ceb6eea0669c1f6f5615828854051169df45e919_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "EasyAdminBundle:default:field_toggle.html.twig"));
 
         // line 2
         echo "
@@ -57,16 +57,16 @@ class __TwigTemplate_5cf2c32e9308cfeebf06e5d2994dd4f7cdc3df6b8aa15952b2d57ce5cd8
 ";
         }
         
-        $__internal_e0093e8774753fe34ac7934483b276d6e3c208980c2d13bbf05200f1d8f2cd61->leave($__internal_e0093e8774753fe34ac7934483b276d6e3c208980c2d13bbf05200f1d8f2cd61_prof);
+        $__internal_ab3bcb143b05c81ac2881cbdec048ef392c137199c4cebcea845714ee6fc513f->leave($__internal_ab3bcb143b05c81ac2881cbdec048ef392c137199c4cebcea845714ee6fc513f_prof);
 
         
-        $__internal_63d19c6da83eb45187454f36c01462f3ddba34511c129c5909725308110802da->leave($__internal_63d19c6da83eb45187454f36c01462f3ddba34511c129c5909725308110802da_prof);
+        $__internal_b76807578a4ffa742eb13f04ceb6eea0669c1f6f5615828854051169df45e919->leave($__internal_b76807578a4ffa742eb13f04ceb6eea0669c1f6f5615828854051169df45e919_prof);
 
     }
 
     public function getTemplateName()
     {
-        return "@EasyAdmin/default/field_toggle.html.twig";
+        return "EasyAdminBundle:default:field_toggle.html.twig";
     }
 
     public function isTraitable()
@@ -103,6 +103,6 @@ class __TwigTemplate_5cf2c32e9308cfeebf06e5d2994dd4f7cdc3df6b8aa15952b2d57ce5cd8
        data-onstyle=\"success\" data-offstyle=\"danger\"
        data-on=\"{{ 'label.true'|trans }}\" data-off=\"{{ 'label.false'|trans }}\">
 {% endif %}
-", "@EasyAdmin/default/field_toggle.html.twig", "/home/ichinator/Bureau/MesProjetsGIT/Restaurant/vendor/javiereguiluz/easyadmin-bundle/src/Resources/views/default/field_toggle.html.twig");
+", "EasyAdminBundle:default:field_toggle.html.twig", "/home/ichinator/Bureau/MesProjetsGIT/Restaurant/vendor/javiereguiluz/easyadmin-bundle/src/Resources/views/default/field_toggle.html.twig");
     }
 }

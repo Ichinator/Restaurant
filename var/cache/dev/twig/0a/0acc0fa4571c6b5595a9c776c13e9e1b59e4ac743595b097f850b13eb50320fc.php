@@ -1,6 +1,6 @@
 <?php
 
-/* @EasyAdmin/default/label_null.html.twig */
+/* EasyAdminBundle:default:label_null.html.twig */
 class __TwigTemplate_6c511de31d6d6f0c14bb0340a5be2541523ebef658db01e6c8e1404f517a99b9 extends Twig_Template
 {
     public function __construct(Twig_Environment $env)
@@ -15,11 +15,11 @@ class __TwigTemplate_6c511de31d6d6f0c14bb0340a5be2541523ebef658db01e6c8e1404f517
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_617508f59e533ca2bb7a12715e23703b0a7c2e478d428a8a9566227b570705f8 = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
-        $__internal_617508f59e533ca2bb7a12715e23703b0a7c2e478d428a8a9566227b570705f8->enter($__internal_617508f59e533ca2bb7a12715e23703b0a7c2e478d428a8a9566227b570705f8_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@EasyAdmin/default/label_null.html.twig"));
+        $__internal_0d4e69fbcf27e7d0514d33ff013b2b92648e208f177957d6285261cb8da0ffa7 = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
+        $__internal_0d4e69fbcf27e7d0514d33ff013b2b92648e208f177957d6285261cb8da0ffa7->enter($__internal_0d4e69fbcf27e7d0514d33ff013b2b92648e208f177957d6285261cb8da0ffa7_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "EasyAdminBundle:default:label_null.html.twig"));
 
-        $__internal_f4afe64aa1366dbd081df0a02d199a4d418f3eb8aa4a32861bca30411a87c17e = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_f4afe64aa1366dbd081df0a02d199a4d418f3eb8aa4a32861bca30411a87c17e->enter($__internal_f4afe64aa1366dbd081df0a02d199a4d418f3eb8aa4a32861bca30411a87c17e_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@EasyAdmin/default/label_null.html.twig"));
+        $__internal_b1d48279b6016d246e52f4406a34421ad85ec19196e98130d3991441b7c0107b = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_b1d48279b6016d246e52f4406a34421ad85ec19196e98130d3991441b7c0107b->enter($__internal_b1d48279b6016d246e52f4406a34421ad85ec19196e98130d3991441b7c0107b_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "EasyAdminBundle:default:label_null.html.twig"));
 
         // line 1
         echo "<span class=\"label\">";
@@ -27,16 +27,16 @@ class __TwigTemplate_6c511de31d6d6f0c14bb0340a5be2541523ebef658db01e6c8e1404f517
         echo "</span>
 ";
         
-        $__internal_617508f59e533ca2bb7a12715e23703b0a7c2e478d428a8a9566227b570705f8->leave($__internal_617508f59e533ca2bb7a12715e23703b0a7c2e478d428a8a9566227b570705f8_prof);
+        $__internal_0d4e69fbcf27e7d0514d33ff013b2b92648e208f177957d6285261cb8da0ffa7->leave($__internal_0d4e69fbcf27e7d0514d33ff013b2b92648e208f177957d6285261cb8da0ffa7_prof);
 
         
-        $__internal_f4afe64aa1366dbd081df0a02d199a4d418f3eb8aa4a32861bca30411a87c17e->leave($__internal_f4afe64aa1366dbd081df0a02d199a4d418f3eb8aa4a32861bca30411a87c17e_prof);
+        $__internal_b1d48279b6016d246e52f4406a34421ad85ec19196e98130d3991441b7c0107b->leave($__internal_b1d48279b6016d246e52f4406a34421ad85ec19196e98130d3991441b7c0107b_prof);
 
     }
 
     public function getTemplateName()
     {
-        return "@EasyAdmin/default/label_null.html.twig";
+        return "EasyAdminBundle:default:label_null.html.twig";
     }
 
     public function isTraitable()
@@ -60,6 +60,6 @@ class __TwigTemplate_6c511de31d6d6f0c14bb0340a5be2541523ebef658db01e6c8e1404f517
     public function getSourceContext()
     {
         return new Twig_Source("<span class=\"label\">{{ 'label.null'|trans(domain = 'EasyAdminBundle') }}</span>
-", "@EasyAdmin/default/label_null.html.twig", "/home/ichinator/Bureau/MesProjetsGIT/Restaurant/vendor/javiereguiluz/easyadmin-bundle/src/Resources/views/default/label_null.html.twig");
+", "EasyAdminBundle:default:label_null.html.twig", "/home/ichinator/Bureau/MesProjetsGIT/Restaurant/vendor/javiereguiluz/easyadmin-bundle/src/Resources/views/default/label_null.html.twig");
     }
 }

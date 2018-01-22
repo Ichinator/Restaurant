@@ -1,6 +1,6 @@
 <?php
 
-/* @EasyAdmin/default/includes/_actions.html.twig */
+/* EasyAdminBundle:default/includes:_actions.html.twig */
 class __TwigTemplate_56d18fb8279452a95369464be09bc78c74c1db0ceb397a41759b18d5c90209b9 extends Twig_Template
 {
     public function __construct(Twig_Environment $env)
@@ -15,11 +15,11 @@ class __TwigTemplate_56d18fb8279452a95369464be09bc78c74c1db0ceb397a41759b18d5c90
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_e5e4a05d7d06a5d29e7567f7a6c6e710c036f028fcb8211423ce325293368073 = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
-        $__internal_e5e4a05d7d06a5d29e7567f7a6c6e710c036f028fcb8211423ce325293368073->enter($__internal_e5e4a05d7d06a5d29e7567f7a6c6e710c036f028fcb8211423ce325293368073_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@EasyAdmin/default/includes/_actions.html.twig"));
+        $__internal_98ca52a5d4b0d24dc859c49e0eb355f279a411418a9d59721a9fb7c3f81d709b = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
+        $__internal_98ca52a5d4b0d24dc859c49e0eb355f279a411418a9d59721a9fb7c3f81d709b->enter($__internal_98ca52a5d4b0d24dc859c49e0eb355f279a411418a9d59721a9fb7c3f81d709b_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "EasyAdminBundle:default/includes:_actions.html.twig"));
 
-        $__internal_6c3049aba9e87929f109c0e32462dd214f2f46e734d8762280615b14ba2333e2 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_6c3049aba9e87929f109c0e32462dd214f2f46e734d8762280615b14ba2333e2->enter($__internal_6c3049aba9e87929f109c0e32462dd214f2f46e734d8762280615b14ba2333e2_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@EasyAdmin/default/includes/_actions.html.twig"));
+        $__internal_7d15145de197052ff17ebe4016358b286e89fd9c73f405e0bdd498b90edf3808 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_7d15145de197052ff17ebe4016358b286e89fd9c73f405e0bdd498b90edf3808->enter($__internal_7d15145de197052ff17ebe4016358b286e89fd9c73f405e0bdd498b90edf3808_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "EasyAdminBundle:default/includes:_actions.html.twig"));
 
         // line 1
         $context['_parent'] = $context;
@@ -77,16 +77,16 @@ class __TwigTemplate_56d18fb8279452a95369464be09bc78c74c1db0ceb397a41759b18d5c90
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['action'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
         
-        $__internal_e5e4a05d7d06a5d29e7567f7a6c6e710c036f028fcb8211423ce325293368073->leave($__internal_e5e4a05d7d06a5d29e7567f7a6c6e710c036f028fcb8211423ce325293368073_prof);
+        $__internal_98ca52a5d4b0d24dc859c49e0eb355f279a411418a9d59721a9fb7c3f81d709b->leave($__internal_98ca52a5d4b0d24dc859c49e0eb355f279a411418a9d59721a9fb7c3f81d709b_prof);
 
         
-        $__internal_6c3049aba9e87929f109c0e32462dd214f2f46e734d8762280615b14ba2333e2->leave($__internal_6c3049aba9e87929f109c0e32462dd214f2f46e734d8762280615b14ba2333e2_prof);
+        $__internal_7d15145de197052ff17ebe4016358b286e89fd9c73f405e0bdd498b90edf3808->leave($__internal_7d15145de197052ff17ebe4016358b286e89fd9c73f405e0bdd498b90edf3808_prof);
 
     }
 
     public function getTemplateName()
     {
-        return "@EasyAdmin/default/includes/_actions.html.twig";
+        return "EasyAdminBundle:default/includes:_actions.html.twig";
     }
 
     public function isTraitable()
@@ -125,6 +125,6 @@ class __TwigTemplate_56d18fb8279452a95369464be09bc78c74c1db0ceb397a41759b18d5c90
         {%- endif -%}
     </a>
 {% endfor %}
-", "@EasyAdmin/default/includes/_actions.html.twig", "/home/ichinator/Bureau/MesProjetsGIT/Restaurant/vendor/javiereguiluz/easyadmin-bundle/src/Resources/views/default/includes/_actions.html.twig");
+", "EasyAdminBundle:default/includes:_actions.html.twig", "/home/ichinator/Bureau/MesProjetsGIT/Restaurant/vendor/javiereguiluz/easyadmin-bundle/src/Resources/views/default/includes/_actions.html.twig");
     }
 }

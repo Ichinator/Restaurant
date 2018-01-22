@@ -2,6 +2,8 @@ Symfony\Component\DependencyInjection\Compiler\ResolveDefinitionTemplatesPass: R
 Symfony\Component\DependencyInjection\Compiler\ResolveDefinitionTemplatesPass: Resolving inheritance for "AppBundle\Controller\DefaultController" (parent: instanceof.Symfony\Bundle\FrameworkBundle\Controller\Controller.0.AppBundle\Controller\DefaultController).
 Symfony\Component\DependencyInjection\Compiler\ResolveDefinitionTemplatesPass: Resolving inheritance for "instanceof.Symfony\Bundle\FrameworkBundle\Controller\Controller.0.AppBundle\Controller\EmployeesController" (parent: abstract.instanceof.AppBundle\Controller\EmployeesController).
 Symfony\Component\DependencyInjection\Compiler\ResolveDefinitionTemplatesPass: Resolving inheritance for "AppBundle\Controller\EmployeesController" (parent: instanceof.Symfony\Bundle\FrameworkBundle\Controller\Controller.0.AppBundle\Controller\EmployeesController).
+Symfony\Component\DependencyInjection\Compiler\ResolveDefinitionTemplatesPass: Resolving inheritance for "instanceof.Symfony\Bundle\FrameworkBundle\Controller\Controller.0.AppBundle\Controller\FoodController" (parent: abstract.instanceof.AppBundle\Controller\FoodController).
+Symfony\Component\DependencyInjection\Compiler\ResolveDefinitionTemplatesPass: Resolving inheritance for "AppBundle\Controller\FoodController" (parent: instanceof.Symfony\Bundle\FrameworkBundle\Controller\Controller.0.AppBundle\Controller\FoodController).
 Symfony\Component\DependencyInjection\Compiler\ResolveDefinitionTemplatesPass: Resolving inheritance for "cache.app" (parent: cache.adapter.filesystem).
 Symfony\Component\DependencyInjection\Compiler\ResolveDefinitionTemplatesPass: Resolving inheritance for "cache.system" (parent: cache.adapter.system).
 Symfony\Component\DependencyInjection\Compiler\ResolveDefinitionTemplatesPass: Resolving inheritance for "cache.validator" (parent: cache.system).
@@ -48,6 +50,10 @@ Symfony\Component\DependencyInjection\Compiler\ResolveDefinitionTemplatesPass: R
 Symfony\Component\DependencyInjection\Compiler\ResolveDefinitionTemplatesPass: Resolving inheritance for "doctrine.orm.default_manager_configurator" (parent: doctrine.orm.manager_configurator.abstract).
 Symfony\Component\DependencyInjection\Compiler\ResolveDefinitionTemplatesPass: Resolving inheritance for "doctrine.orm.default_entity_manager" (parent: doctrine.orm.entity_manager.abstract).
 Symfony\Component\DependencyInjection\Compiler\ResolveDefinitionTemplatesPass: Resolving inheritance for "vich_uploader.namer_uniqid.employees_images" (parent: vich_uploader.namer_uniqid).
+Symfony\Component\DependencyInjection\Compiler\ResolveDefinitionTemplatesPass: Resolving inheritance for "vich_uploader.namer_uniqid.entrees_images" (parent: vich_uploader.namer_uniqid).
+Symfony\Component\DependencyInjection\Compiler\ResolveDefinitionTemplatesPass: Resolving inheritance for "vich_uploader.namer_uniqid.plats_images" (parent: vich_uploader.namer_uniqid).
+Symfony\Component\DependencyInjection\Compiler\ResolveDefinitionTemplatesPass: Resolving inheritance for "vich_uploader.namer_uniqid.desserts_images" (parent: vich_uploader.namer_uniqid).
+Symfony\Component\DependencyInjection\Compiler\ResolveDefinitionTemplatesPass: Resolving inheritance for "vich_uploader.namer_uniqid.menus_images" (parent: vich_uploader.namer_uniqid).
 Symfony\Component\DependencyInjection\Compiler\ResolveDefinitionTemplatesPass: Resolving inheritance for "vich_uploader.listener.inject.orm" (parent: vich_uploader.listener.doctrine.base).
 Symfony\Component\DependencyInjection\Compiler\ResolveDefinitionTemplatesPass: Resolving inheritance for "vich_uploader.listener.upload.orm" (parent: vich_uploader.listener.doctrine.base).
 Symfony\Component\DependencyInjection\Compiler\ResolveDefinitionTemplatesPass: Resolving inheritance for "vich_uploader.listener.clean.orm" (parent: vich_uploader.listener.doctrine.base).
@@ -67,6 +73,18 @@ Symfony\Component\DependencyInjection\Compiler\ResolveDefinitionTemplatesPass: R
 Symfony\Component\DependencyInjection\Compiler\ResolveDefinitionTemplatesPass: Resolving inheritance for "vich_uploader.listener.clean.employees_images" (parent: vich_uploader.listener.clean.orm).
 Symfony\Component\DependencyInjection\Compiler\ResolveDefinitionTemplatesPass: Resolving inheritance for "vich_uploader.listener.remove.employees_images" (parent: vich_uploader.listener.remove.orm).
 Symfony\Component\DependencyInjection\Compiler\ResolveDefinitionTemplatesPass: Resolving inheritance for "vich_uploader.listener.upload.employees_images" (parent: vich_uploader.listener.upload.orm).
+Symfony\Component\DependencyInjection\Compiler\ResolveDefinitionTemplatesPass: Resolving inheritance for "vich_uploader.listener.clean.entrees_images" (parent: vich_uploader.listener.clean.orm).
+Symfony\Component\DependencyInjection\Compiler\ResolveDefinitionTemplatesPass: Resolving inheritance for "vich_uploader.listener.remove.entrees_images" (parent: vich_uploader.listener.remove.orm).
+Symfony\Component\DependencyInjection\Compiler\ResolveDefinitionTemplatesPass: Resolving inheritance for "vich_uploader.listener.upload.entrees_images" (parent: vich_uploader.listener.upload.orm).
+Symfony\Component\DependencyInjection\Compiler\ResolveDefinitionTemplatesPass: Resolving inheritance for "vich_uploader.listener.clean.plats_images" (parent: vich_uploader.listener.clean.orm).
+Symfony\Component\DependencyInjection\Compiler\ResolveDefinitionTemplatesPass: Resolving inheritance for "vich_uploader.listener.remove.plats_images" (parent: vich_uploader.listener.remove.orm).
+Symfony\Component\DependencyInjection\Compiler\ResolveDefinitionTemplatesPass: Resolving inheritance for "vich_uploader.listener.upload.plats_images" (parent: vich_uploader.listener.upload.orm).
+Symfony\Component\DependencyInjection\Compiler\ResolveDefinitionTemplatesPass: Resolving inheritance for "vich_uploader.listener.clean.desserts_images" (parent: vich_uploader.listener.clean.orm).
+Symfony\Component\DependencyInjection\Compiler\ResolveDefinitionTemplatesPass: Resolving inheritance for "vich_uploader.listener.remove.desserts_images" (parent: vich_uploader.listener.remove.orm).
+Symfony\Component\DependencyInjection\Compiler\ResolveDefinitionTemplatesPass: Resolving inheritance for "vich_uploader.listener.upload.desserts_images" (parent: vich_uploader.listener.upload.orm).
+Symfony\Component\DependencyInjection\Compiler\ResolveDefinitionTemplatesPass: Resolving inheritance for "vich_uploader.listener.clean.menus_images" (parent: vich_uploader.listener.clean.orm).
+Symfony\Component\DependencyInjection\Compiler\ResolveDefinitionTemplatesPass: Resolving inheritance for "vich_uploader.listener.remove.menus_images" (parent: vich_uploader.listener.remove.orm).
+Symfony\Component\DependencyInjection\Compiler\ResolveDefinitionTemplatesPass: Resolving inheritance for "vich_uploader.listener.upload.menus_images" (parent: vich_uploader.listener.upload.orm).
 Symfony\Component\DependencyInjection\Compiler\ResolveDefinitionTemplatesPass: Resolving inheritance for "monolog.logger.request" (parent: monolog.logger_prototype).
 Symfony\Component\DependencyInjection\Compiler\ResolveDefinitionTemplatesPass: Resolving inheritance for "monolog.logger.console" (parent: monolog.logger_prototype).
 Symfony\Component\DependencyInjection\Compiler\ResolveDefinitionTemplatesPass: Resolving inheritance for "monolog.logger.cache" (parent: monolog.logger_prototype).
@@ -80,9 +98,14 @@ Symfony\Component\DependencyInjection\Compiler\ResolveDefinitionTemplatesPass: R
 Symfony\Component\DependencyInjection\Compiler\ResolveDefinitionTemplatesPass: Resolving inheritance for "monolog.logger.assetic" (parent: monolog.logger_prototype).
 Symfony\Component\DependencyInjection\Compiler\AutowirePass: Cannot autowire service "service_locator.4f8384c8862c511eefe34301cff90111": it references class "Symfony\Component\HttpFoundation\Request" but no such service exists. It cannot be auto-registered because it is from a different root namespace.
 Symfony\Component\DependencyInjection\Compiler\AutowirePass: Cannot autowire service "service_locator.f409a53fce4fc7a811cb7cebad8d8d74": it references class "Symfony\Component\HttpFoundation\Request" but no such service exists. It cannot be auto-registered because it is from a different root namespace.
+Symfony\Component\DependencyInjection\Compiler\AutowirePass: Cannot autowire service "service_locator.3fa3e4895f306abd2adad9c109e60ad4": it references class "Symfony\Component\HttpFoundation\Request" but no such service exists. It cannot be auto-registered because it is from a different root namespace.
 Symfony\Component\HttpKernel\DependencyInjection\RemoveEmptyControllerArgumentLocatorsPass: Removing service-argument resolver for controller "AppBundle\Controller\DefaultController:accessAction": no corresponding services exist for the referenced types.
 Symfony\Component\HttpKernel\DependencyInjection\RemoveEmptyControllerArgumentLocatorsPass: Removing service-argument resolver for controller "AppBundle\Controller\DefaultController:indexAction": no corresponding services exist for the referenced types.
 Symfony\Component\HttpKernel\DependencyInjection\RemoveEmptyControllerArgumentLocatorsPass: Removing service-argument resolver for controller "AppBundle\Controller\EmployeesController:showAction": no corresponding services exist for the referenced types.
+Symfony\Component\HttpKernel\DependencyInjection\RemoveEmptyControllerArgumentLocatorsPass: Removing service-argument resolver for controller "AppBundle\Controller\FoodController:showBoissonsAction": no corresponding services exist for the referenced types.
+Symfony\Component\HttpKernel\DependencyInjection\RemoveEmptyControllerArgumentLocatorsPass: Removing service-argument resolver for controller "AppBundle\Controller\FoodController:showDessertsAction": no corresponding services exist for the referenced types.
+Symfony\Component\HttpKernel\DependencyInjection\RemoveEmptyControllerArgumentLocatorsPass: Removing service-argument resolver for controller "AppBundle\Controller\FoodController:showEntreesAction": no corresponding services exist for the referenced types.
+Symfony\Component\HttpKernel\DependencyInjection\RemoveEmptyControllerArgumentLocatorsPass: Removing service-argument resolver for controller "AppBundle\Controller\FoodController:showPlatsAction": no corresponding services exist for the referenced types.
 Symfony\Component\DependencyInjection\Compiler\RemovePrivateAliasesPass: Removed service "Psr\Container\ContainerInterface"; reason: private alias.
 Symfony\Component\DependencyInjection\Compiler\RemovePrivateAliasesPass: Removed service "Symfony\Component\DependencyInjection\ContainerInterface"; reason: private alias.
 Symfony\Component\DependencyInjection\Compiler\RemovePrivateAliasesPass: Removed service "Symfony\Component\EventDispatcher\EventDispatcherInterface"; reason: private alias.
@@ -341,7 +364,9 @@ Symfony\Component\DependencyInjection\Compiler\RemoveAbstractDefinitionsPass: Re
 Symfony\Component\DependencyInjection\Compiler\RemoveAbstractDefinitionsPass: Removed service "abstract.instanceof.AppBundle\Controller\DefaultController"; reason: abstract.
 Symfony\Component\DependencyInjection\Compiler\RemoveAbstractDefinitionsPass: Removed service "instanceof.Symfony\Bundle\FrameworkBundle\Controller\Controller.0.AppBundle\Controller\EmployeesController"; reason: abstract.
 Symfony\Component\DependencyInjection\Compiler\RemoveAbstractDefinitionsPass: Removed service "abstract.instanceof.AppBundle\Controller\EmployeesController"; reason: abstract.
-Symfony\Component\DependencyInjection\Compiler\InlineServiceDefinitionsPass: Inlined service "service_locator.2d358e84fdddc77bb423163cfe3fbbcc" to "argument_resolver.service".
+Symfony\Component\DependencyInjection\Compiler\RemoveAbstractDefinitionsPass: Removed service "instanceof.Symfony\Bundle\FrameworkBundle\Controller\Controller.0.AppBundle\Controller\FoodController"; reason: abstract.
+Symfony\Component\DependencyInjection\Compiler\RemoveAbstractDefinitionsPass: Removed service "abstract.instanceof.AppBundle\Controller\FoodController"; reason: abstract.
+Symfony\Component\DependencyInjection\Compiler\InlineServiceDefinitionsPass: Inlined service "service_locator.3e082329fc99bfae597876a3501e6fda" to "argument_resolver.service".
 Symfony\Component\DependencyInjection\Compiler\InlineServiceDefinitionsPass: Inlined service "templating.cache_warmer.template_paths" to "cache_warmer".
 Symfony\Component\DependencyInjection\Compiler\InlineServiceDefinitionsPass: Inlined service "assetic.asset_manager_cache_warmer" to "cache_warmer".
 Symfony\Component\DependencyInjection\Compiler\InlineServiceDefinitionsPass: Inlined service "validator.mapping.cache_warmer" to "cache_warmer".
@@ -464,7 +489,19 @@ Symfony\Component\DependencyInjection\Compiler\InlineServiceDefinitionsPass: Inl
 Symfony\Component\DependencyInjection\Compiler\InlineServiceDefinitionsPass: Inlined service "swiftmailer.transport.replacementfactory" to "swiftmailer.mailer.default.transport.buffer".
 Symfony\Component\DependencyInjection\Compiler\InlineServiceDefinitionsPass: Inlined service "doctrine.dbal.logger.chain.default" to "doctrine.dbal.default_connection.configuration".
 Symfony\Component\DependencyInjection\Compiler\InlineServiceDefinitionsPass: Inlined service "doctrine.dbal.logger" to "doctrine.dbal.logger.chain.default".
+Symfony\Component\DependencyInjection\Compiler\InlineServiceDefinitionsPass: Inlined service "vich_uploader.listener.clean.menus_images" to "doctrine.dbal.default_connection.event_manager".
+Symfony\Component\DependencyInjection\Compiler\InlineServiceDefinitionsPass: Inlined service "vich_uploader.listener.clean.plats_images" to "doctrine.dbal.default_connection.event_manager".
+Symfony\Component\DependencyInjection\Compiler\InlineServiceDefinitionsPass: Inlined service "vich_uploader.listener.clean.desserts_images" to "doctrine.dbal.default_connection.event_manager".
+Symfony\Component\DependencyInjection\Compiler\InlineServiceDefinitionsPass: Inlined service "vich_uploader.listener.clean.entrees_images" to "doctrine.dbal.default_connection.event_manager".
 Symfony\Component\DependencyInjection\Compiler\InlineServiceDefinitionsPass: Inlined service "vich_uploader.listener.clean.employees_images" to "doctrine.dbal.default_connection.event_manager".
+Symfony\Component\DependencyInjection\Compiler\InlineServiceDefinitionsPass: Inlined service "vich_uploader.listener.upload.menus_images" to "doctrine.dbal.default_connection.event_manager".
+Symfony\Component\DependencyInjection\Compiler\InlineServiceDefinitionsPass: Inlined service "vich_uploader.listener.remove.menus_images" to "doctrine.dbal.default_connection.event_manager".
+Symfony\Component\DependencyInjection\Compiler\InlineServiceDefinitionsPass: Inlined service "vich_uploader.listener.upload.desserts_images" to "doctrine.dbal.default_connection.event_manager".
+Symfony\Component\DependencyInjection\Compiler\InlineServiceDefinitionsPass: Inlined service "vich_uploader.listener.remove.desserts_images" to "doctrine.dbal.default_connection.event_manager".
+Symfony\Component\DependencyInjection\Compiler\InlineServiceDefinitionsPass: Inlined service "vich_uploader.listener.upload.plats_images" to "doctrine.dbal.default_connection.event_manager".
+Symfony\Component\DependencyInjection\Compiler\InlineServiceDefinitionsPass: Inlined service "vich_uploader.listener.remove.plats_images" to "doctrine.dbal.default_connection.event_manager".
+Symfony\Component\DependencyInjection\Compiler\InlineServiceDefinitionsPass: Inlined service "vich_uploader.listener.upload.entrees_images" to "doctrine.dbal.default_connection.event_manager".
+Symfony\Component\DependencyInjection\Compiler\InlineServiceDefinitionsPass: Inlined service "vich_uploader.listener.remove.entrees_images" to "doctrine.dbal.default_connection.event_manager".
 Symfony\Component\DependencyInjection\Compiler\InlineServiceDefinitionsPass: Inlined service "vich_uploader.listener.upload.employees_images" to "doctrine.dbal.default_connection.event_manager".
 Symfony\Component\DependencyInjection\Compiler\InlineServiceDefinitionsPass: Inlined service "vich_uploader.listener.remove.employees_images" to "doctrine.dbal.default_connection.event_manager".
 Symfony\Component\DependencyInjection\Compiler\InlineServiceDefinitionsPass: Inlined service "fos_user.user_listener" to "doctrine.dbal.default_connection.event_manager".
@@ -745,6 +782,18 @@ Symfony\Component\DependencyInjection\Compiler\RemoveUnusedDefinitionsPass: Remo
 Symfony\Component\DependencyInjection\Compiler\RemoveUnusedDefinitionsPass: Removed service "vich_uploader.listener.clean.employees_images"; reason: unused.
 Symfony\Component\DependencyInjection\Compiler\RemoveUnusedDefinitionsPass: Removed service "vich_uploader.listener.remove.employees_images"; reason: unused.
 Symfony\Component\DependencyInjection\Compiler\RemoveUnusedDefinitionsPass: Removed service "vich_uploader.listener.upload.employees_images"; reason: unused.
+Symfony\Component\DependencyInjection\Compiler\RemoveUnusedDefinitionsPass: Removed service "vich_uploader.listener.clean.entrees_images"; reason: unused.
+Symfony\Component\DependencyInjection\Compiler\RemoveUnusedDefinitionsPass: Removed service "vich_uploader.listener.remove.entrees_images"; reason: unused.
+Symfony\Component\DependencyInjection\Compiler\RemoveUnusedDefinitionsPass: Removed service "vich_uploader.listener.upload.entrees_images"; reason: unused.
+Symfony\Component\DependencyInjection\Compiler\RemoveUnusedDefinitionsPass: Removed service "vich_uploader.listener.clean.plats_images"; reason: unused.
+Symfony\Component\DependencyInjection\Compiler\RemoveUnusedDefinitionsPass: Removed service "vich_uploader.listener.remove.plats_images"; reason: unused.
+Symfony\Component\DependencyInjection\Compiler\RemoveUnusedDefinitionsPass: Removed service "vich_uploader.listener.upload.plats_images"; reason: unused.
+Symfony\Component\DependencyInjection\Compiler\RemoveUnusedDefinitionsPass: Removed service "vich_uploader.listener.clean.desserts_images"; reason: unused.
+Symfony\Component\DependencyInjection\Compiler\RemoveUnusedDefinitionsPass: Removed service "vich_uploader.listener.remove.desserts_images"; reason: unused.
+Symfony\Component\DependencyInjection\Compiler\RemoveUnusedDefinitionsPass: Removed service "vich_uploader.listener.upload.desserts_images"; reason: unused.
+Symfony\Component\DependencyInjection\Compiler\RemoveUnusedDefinitionsPass: Removed service "vich_uploader.listener.clean.menus_images"; reason: unused.
+Symfony\Component\DependencyInjection\Compiler\RemoveUnusedDefinitionsPass: Removed service "vich_uploader.listener.remove.menus_images"; reason: unused.
+Symfony\Component\DependencyInjection\Compiler\RemoveUnusedDefinitionsPass: Removed service "vich_uploader.listener.upload.menus_images"; reason: unused.
 Symfony\Component\DependencyInjection\Compiler\RemoveUnusedDefinitionsPass: Removed service "fos_rest.view_handler.jsonp"; reason: unused.
 Symfony\Component\DependencyInjection\Compiler\RemoveUnusedDefinitionsPass: Removed service "fos_rest.routing.loader.directory"; reason: unused.
 Symfony\Component\DependencyInjection\Compiler\RemoveUnusedDefinitionsPass: Removed service "fos_rest.routing.loader.controller"; reason: unused.
@@ -793,7 +842,8 @@ Symfony\Component\DependencyInjection\Compiler\RemoveUnusedDefinitionsPass: Remo
 Symfony\Component\DependencyInjection\Compiler\RemoveUnusedDefinitionsPass: Removed service "twig.extension.webprofiler"; reason: unused.
 Symfony\Component\DependencyInjection\Compiler\RemoveUnusedDefinitionsPass: Removed service "service_locator.4f8384c8862c511eefe34301cff90111"; reason: unused.
 Symfony\Component\DependencyInjection\Compiler\RemoveUnusedDefinitionsPass: Removed service "service_locator.f409a53fce4fc7a811cb7cebad8d8d74"; reason: unused.
-Symfony\Component\DependencyInjection\Compiler\RemoveUnusedDefinitionsPass: Removed service "service_locator.2d358e84fdddc77bb423163cfe3fbbcc"; reason: unused.
+Symfony\Component\DependencyInjection\Compiler\RemoveUnusedDefinitionsPass: Removed service "service_locator.3fa3e4895f306abd2adad9c109e60ad4"; reason: unused.
+Symfony\Component\DependencyInjection\Compiler\RemoveUnusedDefinitionsPass: Removed service "service_locator.3e082329fc99bfae597876a3501e6fda"; reason: unused.
 Symfony\Component\DependencyInjection\Compiler\RemoveUnusedDefinitionsPass: Removed service "service_locator.20ccd3ddf0f78b2202986f924e362585"; reason: unused.
 Symfony\Component\DependencyInjection\Compiler\RemoveUnusedDefinitionsPass: Removed service "service_locator.3e67394412e95f58fcf0d63d502ad55c"; reason: unused.
 Symfony\Component\DependencyInjection\Compiler\RemoveUnusedDefinitionsPass: Removed service "service_locator.6f24348b77840ec12a20c22a3f985cf7"; reason: unused.
@@ -824,6 +874,18 @@ Symfony\Component\DependencyInjection\Compiler\InlineServiceDefinitionsPass: Inl
 Symfony\Component\DependencyInjection\Compiler\InlineServiceDefinitionsPass: Inlined service "security.access_map" to "security.firewall.map.context.main".
 Symfony\Component\DependencyInjection\Compiler\InlineServiceDefinitionsPass: Inlined service "security.http_utils" to "security.firewall.map.context.main".
 Symfony\Component\DependencyInjection\Compiler\InlineServiceDefinitionsPass: Inlined service "security.http_utils" to "security.firewall.map.context.main".
+Symfony\Component\DependencyInjection\Compiler\InlineServiceDefinitionsPass: Inlined service "vich_uploader.adapter.orm" to "doctrine.dbal.default_connection".
+Symfony\Component\DependencyInjection\Compiler\InlineServiceDefinitionsPass: Inlined service "vich_uploader.adapter.orm" to "doctrine.dbal.default_connection".
+Symfony\Component\DependencyInjection\Compiler\InlineServiceDefinitionsPass: Inlined service "vich_uploader.adapter.orm" to "doctrine.dbal.default_connection".
+Symfony\Component\DependencyInjection\Compiler\InlineServiceDefinitionsPass: Inlined service "vich_uploader.adapter.orm" to "doctrine.dbal.default_connection".
+Symfony\Component\DependencyInjection\Compiler\InlineServiceDefinitionsPass: Inlined service "vich_uploader.adapter.orm" to "doctrine.dbal.default_connection".
+Symfony\Component\DependencyInjection\Compiler\InlineServiceDefinitionsPass: Inlined service "vich_uploader.adapter.orm" to "doctrine.dbal.default_connection".
+Symfony\Component\DependencyInjection\Compiler\InlineServiceDefinitionsPass: Inlined service "vich_uploader.adapter.orm" to "doctrine.dbal.default_connection".
+Symfony\Component\DependencyInjection\Compiler\InlineServiceDefinitionsPass: Inlined service "vich_uploader.adapter.orm" to "doctrine.dbal.default_connection".
+Symfony\Component\DependencyInjection\Compiler\InlineServiceDefinitionsPass: Inlined service "vich_uploader.adapter.orm" to "doctrine.dbal.default_connection".
+Symfony\Component\DependencyInjection\Compiler\InlineServiceDefinitionsPass: Inlined service "vich_uploader.adapter.orm" to "doctrine.dbal.default_connection".
+Symfony\Component\DependencyInjection\Compiler\InlineServiceDefinitionsPass: Inlined service "vich_uploader.adapter.orm" to "doctrine.dbal.default_connection".
+Symfony\Component\DependencyInjection\Compiler\InlineServiceDefinitionsPass: Inlined service "vich_uploader.adapter.orm" to "doctrine.dbal.default_connection".
 Symfony\Component\DependencyInjection\Compiler\InlineServiceDefinitionsPass: Inlined service "vich_uploader.adapter.orm" to "doctrine.dbal.default_connection".
 Symfony\Component\DependencyInjection\Compiler\InlineServiceDefinitionsPass: Inlined service "vich_uploader.adapter.orm" to "doctrine.dbal.default_connection".
 Symfony\Component\DependencyInjection\Compiler\InlineServiceDefinitionsPass: Inlined service "vich_uploader.adapter.orm" to "doctrine.dbal.default_connection".

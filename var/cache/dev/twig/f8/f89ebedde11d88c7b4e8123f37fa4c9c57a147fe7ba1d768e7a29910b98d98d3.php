@@ -1,6 +1,6 @@
 <?php
 
-/* @EasyAdmin/default/paginator.html.twig */
+/* EasyAdminBundle:default:paginator.html.twig */
 class __TwigTemplate_26cff6643976e41a3d9aee8f3323539f90f0024e827c0ae87b596df1490b0ab5 extends Twig_Template
 {
     public function __construct(Twig_Environment $env)
@@ -15,11 +15,11 @@ class __TwigTemplate_26cff6643976e41a3d9aee8f3323539f90f0024e827c0ae87b596df1490
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_f1a25202371a632d8ec1eaf02d0e562d36309839c77544ec5b0bb436e9a17ecc = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
-        $__internal_f1a25202371a632d8ec1eaf02d0e562d36309839c77544ec5b0bb436e9a17ecc->enter($__internal_f1a25202371a632d8ec1eaf02d0e562d36309839c77544ec5b0bb436e9a17ecc_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@EasyAdmin/default/paginator.html.twig"));
+        $__internal_4b6b26c1be62b31115e9c06ca2abcd507c1a24111df52baf38e5a6c6cd453683 = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
+        $__internal_4b6b26c1be62b31115e9c06ca2abcd507c1a24111df52baf38e5a6c6cd453683->enter($__internal_4b6b26c1be62b31115e9c06ca2abcd507c1a24111df52baf38e5a6c6cd453683_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "EasyAdminBundle:default:paginator.html.twig"));
 
-        $__internal_8ab4280bf80a4f1eb6551b25c03b461b078416febfa46397539e4eb2f7cd5ee2 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_8ab4280bf80a4f1eb6551b25c03b461b078416febfa46397539e4eb2f7cd5ee2->enter($__internal_8ab4280bf80a4f1eb6551b25c03b461b078416febfa46397539e4eb2f7cd5ee2_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@EasyAdmin/default/paginator.html.twig"));
+        $__internal_7a52bb78d2349e009f5e574f019ca3a2566d3faf45642ba385390317442c6ebc = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_7a52bb78d2349e009f5e574f019ca3a2566d3faf45642ba385390317442c6ebc->enter($__internal_7a52bb78d2349e009f5e574f019ca3a2566d3faf45642ba385390317442c6ebc_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "EasyAdminBundle:default:paginator.html.twig"));
 
         // line 2
         echo "
@@ -174,16 +174,16 @@ class __TwigTemplate_26cff6643976e41a3d9aee8f3323539f90f0024e827c0ae87b596df1490
 ";
         }
         
-        $__internal_f1a25202371a632d8ec1eaf02d0e562d36309839c77544ec5b0bb436e9a17ecc->leave($__internal_f1a25202371a632d8ec1eaf02d0e562d36309839c77544ec5b0bb436e9a17ecc_prof);
+        $__internal_4b6b26c1be62b31115e9c06ca2abcd507c1a24111df52baf38e5a6c6cd453683->leave($__internal_4b6b26c1be62b31115e9c06ca2abcd507c1a24111df52baf38e5a6c6cd453683_prof);
 
         
-        $__internal_8ab4280bf80a4f1eb6551b25c03b461b078416febfa46397539e4eb2f7cd5ee2->leave($__internal_8ab4280bf80a4f1eb6551b25c03b461b078416febfa46397539e4eb2f7cd5ee2_prof);
+        $__internal_7a52bb78d2349e009f5e574f019ca3a2566d3faf45642ba385390317442c6ebc->leave($__internal_7a52bb78d2349e009f5e574f019ca3a2566d3faf45642ba385390317442c6ebc_prof);
 
     }
 
     public function getTemplateName()
     {
-        return "@EasyAdmin/default/paginator.html.twig";
+        return "EasyAdminBundle:default:paginator.html.twig";
     }
 
     public function isTraitable()
@@ -279,6 +279,6 @@ class __TwigTemplate_26cff6643976e41a3d9aee8f3323539f90f0024e827c0ae87b596df1490
         </div>
     </div>
 {% endif %}
-", "@EasyAdmin/default/paginator.html.twig", "/home/ichinator/Bureau/MesProjetsGIT/Restaurant/vendor/javiereguiluz/easyadmin-bundle/src/Resources/views/default/paginator.html.twig");
+", "EasyAdminBundle:default:paginator.html.twig", "/home/ichinator/Bureau/MesProjetsGIT/Restaurant/vendor/javiereguiluz/easyadmin-bundle/src/Resources/views/default/paginator.html.twig");
     }
 }
