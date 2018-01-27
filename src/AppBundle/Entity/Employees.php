@@ -5,6 +5,7 @@ namespace AppBundle\Entity;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @ORM\Entity
@@ -51,6 +52,20 @@ class Employees
      * @var \DateTime
      */
     private $updatedAt;
+
+    /**
+     * @ORM\Column(type="boolean")
+     * @var \DateTime
+     */
+    private $enabled;
+
+    /**
+     * @ORM\column(length=255, unique=true, nullable=false)
+     * @Gedmo\Slug(fields={"id"})
+     */
+
+    private $slug;
+
 
 // ...
 
@@ -189,5 +204,53 @@ class Employees
     public function getUpdatedAt()
     {
         return $this->updatedAt;
+    }
+
+    /**
+     * Set enabled
+     *
+     * @param boolean $enabled
+     *
+     * @return Employees
+     */
+    public function setEnabled($enabled)
+    {
+        $this->enabled = $enabled;
+
+        return $this;
+    }
+
+    /**
+     * Get enabled
+     *
+     * @return boolean
+     */
+    public function getEnabled()
+    {
+        return $this->enabled;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     *
+     * @return Employees
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 }

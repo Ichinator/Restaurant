@@ -15,11 +15,11 @@ class __TwigTemplate_588e6695eda93904eae7a0bb542742749a64f26d7107cb11facd343a09c
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_fbd2efa120382525c8baf93cede9d411b11ed016c34adcee13d170056e3b694d = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
-        $__internal_fbd2efa120382525c8baf93cede9d411b11ed016c34adcee13d170056e3b694d->enter($__internal_fbd2efa120382525c8baf93cede9d411b11ed016c34adcee13d170056e3b694d_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "FOSCommentBundle:Thread:async.html.twig"));
+        $__internal_261ebe508744b1118b27e86f6439ec41984e30c63534f037d4a8ec4df9c91db6 = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
+        $__internal_261ebe508744b1118b27e86f6439ec41984e30c63534f037d4a8ec4df9c91db6->enter($__internal_261ebe508744b1118b27e86f6439ec41984e30c63534f037d4a8ec4df9c91db6_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "FOSCommentBundle:Thread:async.html.twig"));
 
-        $__internal_3b66d5960df0ade877542f857cb375aaca4434001fd9957da8449f6df5435d70 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_3b66d5960df0ade877542f857cb375aaca4434001fd9957da8449f6df5435d70->enter($__internal_3b66d5960df0ade877542f857cb375aaca4434001fd9957da8449f6df5435d70_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "FOSCommentBundle:Thread:async.html.twig"));
+        $__internal_4bdae7b7dea7a0f80a11b8fb77931b5bed25528a2a425645f503085e81b706b1 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_4bdae7b7dea7a0f80a11b8fb77931b5bed25528a2a425645f503085e81b706b1->enter($__internal_4bdae7b7dea7a0f80a11b8fb77931b5bed25528a2a425645f503085e81b706b1_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "FOSCommentBundle:Thread:async.html.twig"));
 
         // line 11
         echo "
@@ -31,10 +31,14 @@ class __TwigTemplate_588e6695eda93904eae7a0bb542742749a64f26d7107cb11facd343a09c
         // line 16
         echo twig_escape_filter($this->env, ($context["id"] ?? $this->getContext($context, "id")), "html", null, true);
         echo "';
+    var fos_comment_thread_view = '";
+        // line 17
+        echo twig_escape_filter($this->env, ((array_key_exists("view", $context)) ? (_twig_default_filter(($context["view"] ?? $this->getContext($context, "view")), "tree")) : ("tree")), "html", null, true);
+        echo "';
 
     // api base url to use for initial requests
     var fos_comment_thread_api_base_url = '";
-        // line 19
+        // line 20
         echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("fos_comment_get_threads");
         echo "';
 
@@ -43,7 +47,7 @@ class __TwigTemplate_588e6695eda93904eae7a0bb542742749a64f26d7107cb11facd343a09c
         var fos_comment_script = document.createElement('script');
         fos_comment_script.async = true;
         fos_comment_script.src = '";
-        // line 25
+        // line 26
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("bundles/foscomment/js/comments.js"), "html", null, true);
         echo "';
         fos_comment_script.type = 'text/javascript';
@@ -53,10 +57,10 @@ class __TwigTemplate_588e6695eda93904eae7a0bb542742749a64f26d7107cb11facd343a09c
 </script>
 ";
         
-        $__internal_fbd2efa120382525c8baf93cede9d411b11ed016c34adcee13d170056e3b694d->leave($__internal_fbd2efa120382525c8baf93cede9d411b11ed016c34adcee13d170056e3b694d_prof);
+        $__internal_261ebe508744b1118b27e86f6439ec41984e30c63534f037d4a8ec4df9c91db6->leave($__internal_261ebe508744b1118b27e86f6439ec41984e30c63534f037d4a8ec4df9c91db6_prof);
 
         
-        $__internal_3b66d5960df0ade877542f857cb375aaca4434001fd9957da8449f6df5435d70->leave($__internal_3b66d5960df0ade877542f857cb375aaca4434001fd9957da8449f6df5435d70_prof);
+        $__internal_4bdae7b7dea7a0f80a11b8fb77931b5bed25528a2a425645f503085e81b706b1->leave($__internal_4bdae7b7dea7a0f80a11b8fb77931b5bed25528a2a425645f503085e81b706b1_prof);
 
     }
 
@@ -72,7 +76,7 @@ class __TwigTemplate_588e6695eda93904eae7a0bb542742749a64f26d7107cb11facd343a09c
 
     public function getDebugInfo()
     {
-        return array (  47 => 25,  38 => 19,  32 => 16,  25 => 11,);
+        return array (  51 => 26,  42 => 20,  36 => 17,  32 => 16,  25 => 11,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -101,6 +105,7 @@ class __TwigTemplate_588e6695eda93904eae7a0bb542742749a64f26d7107cb11facd343a09c
 <script type=\"text/javascript\">
     // thread id
     var fos_comment_thread_id = '{{ id }}';
+    var fos_comment_thread_view = '{{ view|default('tree') }}';
 
     // api base url to use for initial requests
     var fos_comment_thread_api_base_url = '{{ path('fos_comment_get_threads') }}';

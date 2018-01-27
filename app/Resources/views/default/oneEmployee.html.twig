@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    {{ parent ()}}
+{% endblock %}
+{% block body %}
+    {{ parent ()}}
+
+    {% for employees in oneEmployee %}
+        {{ employees.nom}}<br \>
+        {{ employees.prenom }}<br \>
+        {{ employees.poste }}<br \>
+        <img src="{{ vich_uploader_asset(employees, 'imageFile') }}" alt="{{ employees.image }}" /><br \><br \>
+    {% endfor %}
+    <p>Vu ok</p>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}

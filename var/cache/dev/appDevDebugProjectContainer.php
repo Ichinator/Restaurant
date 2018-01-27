@@ -29,6 +29,7 @@ class appDevDebugProjectContainer extends Container
 
         $this->services = array();
         $this->normalizedIds = array(
+            'appbundle\\controller\\admincontroller' => 'AppBundle\\Controller\\AdminController',
             'appbundle\\controller\\defaultcontroller' => 'AppBundle\\Controller\\DefaultController',
             'appbundle\\controller\\employeescontroller' => 'AppBundle\\Controller\\EmployeesController',
             'appbundle\\controller\\foodcontroller' => 'AppBundle\\Controller\\FoodController',
@@ -40,6 +41,7 @@ class appDevDebugProjectContainer extends Container
         $this->methodMap = array(
             '1_2454bac238f44e8ef62387c39e20b8712ae47060aa9482d6f2d7c0bacd1f9b1e' => 'get12454bac238f44e8ef62387c39e20b8712ae47060aa9482d6f2d7c0bacd1f9b1eService',
             '2_2454bac238f44e8ef62387c39e20b8712ae47060aa9482d6f2d7c0bacd1f9b1e' => 'get22454bac238f44e8ef62387c39e20b8712ae47060aa9482d6f2d7c0bacd1f9b1eService',
+            'AppBundle\\Controller\\AdminController' => 'getAppBundle_Controller_AdminControllerService',
             'AppBundle\\Controller\\DefaultController' => 'getAppBundle_Controller_DefaultControllerService',
             'AppBundle\\Controller\\EmployeesController' => 'getAppBundle_Controller_EmployeesControllerService',
             'AppBundle\\Controller\\FoodController' => 'getAppBundle_Controller_FoodControllerService',
@@ -233,6 +235,7 @@ class appDevDebugProjectContainer extends Container
             'fos_user.change_password.form.factory' => 'getFosUser_ChangePassword_Form_FactoryService',
             'fos_user.change_password.form.type' => 'getFosUser_ChangePassword_Form_TypeService',
             'fos_user.listener.authentication' => 'getFosUser_Listener_AuthenticationService',
+            'fos_user.listener.email_confirmation' => 'getFosUser_Listener_EmailConfirmationService',
             'fos_user.listener.flash' => 'getFosUser_Listener_FlashService',
             'fos_user.listener.resetting' => 'getFosUser_Listener_ResettingService',
             'fos_user.mailer' => 'getFosUser_MailerService',
@@ -565,6 +568,16 @@ class appDevDebugProjectContainer extends Container
         @trigger_error(sprintf('The %s() method is deprecated since Symfony 3.3 and will be removed in 4.0. Use the isCompiled() method instead.', __METHOD__), E_USER_DEPRECATED);
 
         return true;
+    }
+
+    /**
+     * Gets the public 'AppBundle\Controller\AdminController' shared autowired service.
+     *
+     * @return \AppBundle\Controller\AdminController
+     */
+    protected function getAppBundle_Controller_AdminControllerService()
+    {
+        return $this->services['AppBundle\Controller\AdminController'] = new \AppBundle\Controller\AdminController();
     }
 
     /**
@@ -1100,6 +1113,9 @@ class appDevDebugProjectContainer extends Container
         $instance->addListener('fos_user.resetting.reset.completed', array(0 => function () {
             return ${($_ = isset($this->services['fos_user.listener.flash']) ? $this->services['fos_user.listener.flash'] : $this->get('fos_user.listener.flash')) && false ?: '_'};
         }, 1 => 'addSuccessFlash'), 0);
+        $instance->addListener('fos_user.registration.success', array(0 => function () {
+            return ${($_ = isset($this->services['fos_user.listener.email_confirmation']) ? $this->services['fos_user.listener.email_confirmation'] : $this->get('fos_user.listener.email_confirmation')) && false ?: '_'};
+        }, 1 => 'onRegistrationSuccess'), 0);
         $instance->addListener('fos_user.resetting.reset.initialize', array(0 => function () {
             return ${($_ = isset($this->services['fos_user.listener.resetting']) ? $this->services['fos_user.listener.resetting'] : $this->get('fos_user.listener.resetting')) && false ?: '_'};
         }, 1 => 'onResettingResetInitialize'), 0);
@@ -1651,7 +1667,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getEasyadmin_Config_ManagerService()
     {
-        $this->services['easyadmin.config.manager'] = $instance = new \EasyCorp\Bundle\EasyAdminBundle\Configuration\ConfigManager(${($_ = isset($this->services['easyadmin.cache.manager']) ? $this->services['easyadmin.cache.manager'] : $this->get('easyadmin.cache.manager')) && false ?: '_'}, ${($_ = isset($this->services['property_accessor']) ? $this->services['property_accessor'] : $this->get('property_accessor')) && false ?: '_'}, array('entities' => array('User' => array('class' => 'AppBundle\\Entity\\User', 'name' => 'User'), 'Employees' => array('class' => 'AppBundle\\Entity\\Employees', 'form' => array('fields' => array(0 => array('property' => 'nom', 'label' => 'Nom'), 1 => array('property' => 'prenom', 'label' => 'Prénom'), 2 => array('property' => 'poste', 'label' => 'Poste occupé'), 3 => array('property' => 'imageFile', 'type' => 'file', 'label' => 'Ajouter'))), 'name' => 'Employees'), 'Entrees' => array('class' => 'AppBundle\\Entity\\Entrees', 'form' => array('fields' => array(0 => array('property' => 'name', 'label' => 'Nom de l entrée'), 1 => array('property' => 'prix', 'label' => 'Prix'), 2 => array('property' => 'imageFile', 'type' => 'file', 'label' => 'Ajouter image entree'))), 'name' => 'Entrees'), 'Plats' => array('class' => 'AppBundle\\Entity\\Plats', 'form' => array('fields' => array(0 => array('property' => 'name', 'label' => 'Nom du plat'), 1 => array('property' => 'prix', 'label' => 'Prix'), 2 => array('property' => 'imageFile', 'type' => 'file', 'label' => 'Ajouter image du plat'))), 'name' => 'Plats'), 'Desserts' => array('class' => 'AppBundle\\Entity\\Desserts', 'form' => array('fields' => array(0 => array('property' => 'name', 'label' => 'Nom du dessert'), 1 => array('property' => 'prix', 'label' => 'Prix'), 2 => array('property' => 'imageFile', 'type' => 'file', 'label' => 'Ajouter image du dessert'))), 'name' => 'Desserts'), 'Boissons' => array('class' => 'AppBundle\\Entity\\Boissons', 'form' => array('fields' => array(0 => array('property' => 'name', 'label' => 'Nom de la boisson'), 1 => array('property' => 'prix', 'label' => 'Prix'), 2 => array('property' => 'imageFile', 'type' => 'file', 'label' => 'Ajouter image de la boisson'))), 'name' => 'Boissons'), 'Menu' => array('class' => 'AppBundle\\Entity\\Menu', 'form' => array('fields' => array(0 => array('property' => 'name', 'label' => 'Nom du menu'), 1 => array('property' => 'prix', 'label' => 'Prix'), 2 => array('property' => 'imageFile', 'type' => 'file', 'label' => 'Ajouter image du menu'))), 'name' => 'Menu')), 'design' => array('form_theme' => array(0 => '@EasyAdmin/form/bootstrap_3_horizontal_layout.html.twig', 1 => 'VichUploaderBundle:Form:fields.html.twig'), 'theme' => 'default', 'color_scheme' => 'dark', 'brand_color' => '#205081', 'assets' => array('css' => array(), 'js' => array(), 'favicon' => array('path' => 'favicon.ico', 'mime_type' => 'image/x-icon')), 'menu' => array()), 'site_name' => 'EasyAdmin', 'formats' => array('date' => 'Y-m-d', 'time' => 'H:i:s', 'datetime' => 'F j, Y H:i'), 'disabled_actions' => array(), 'translation_domain' => 'messages', 'list' => array('actions' => array(), 'max_results' => 15), 'search' => array(), 'edit' => array('actions' => array()), 'new' => array('actions' => array()), 'show' => array('actions' => array(), 'max_results' => 10)), true);
+        $this->services['easyadmin.config.manager'] = $instance = new \EasyCorp\Bundle\EasyAdminBundle\Configuration\ConfigManager(${($_ = isset($this->services['easyadmin.cache.manager']) ? $this->services['easyadmin.cache.manager'] : $this->get('easyadmin.cache.manager')) && false ?: '_'}, ${($_ = isset($this->services['property_accessor']) ? $this->services['property_accessor'] : $this->get('property_accessor')) && false ?: '_'}, array('entities' => array('User' => array('class' => 'AppBundle\\Entity\\User', 'name' => 'User'), 'Employees' => array('class' => 'AppBundle\\Entity\\Employees', 'form' => array('fields' => array(0 => array('property' => 'nom', 'label' => 'Nom'), 1 => array('property' => 'prenom', 'label' => 'Prénom'), 2 => array('property' => 'poste', 'label' => 'Poste occupé'), 3 => array('property' => 'enabled', 'label' => 'Activer compte'), 4 => array('property' => 'imageFile', 'type' => 'file', 'label' => 'Ajouter'))), 'name' => 'Employees'), 'Entrees' => array('class' => 'AppBundle\\Entity\\Entrees', 'form' => array('fields' => array(0 => array('property' => 'name', 'label' => 'Nom de l entrée'), 1 => array('property' => 'prix', 'label' => 'Prix'), 2 => array('property' => 'imageFile', 'type' => 'file', 'label' => 'Ajouter image entree'))), 'name' => 'Entrees'), 'Plats' => array('class' => 'AppBundle\\Entity\\Plats', 'form' => array('fields' => array(0 => array('property' => 'name', 'label' => 'Nom du plat'), 1 => array('property' => 'prix', 'label' => 'Prix'), 2 => array('property' => 'imageFile', 'type' => 'file', 'label' => 'Ajouter image du plat'))), 'name' => 'Plats'), 'Desserts' => array('class' => 'AppBundle\\Entity\\Desserts', 'form' => array('fields' => array(0 => array('property' => 'name', 'label' => 'Nom du dessert'), 1 => array('property' => 'prix', 'label' => 'Prix'), 2 => array('property' => 'imageFile', 'type' => 'file', 'label' => 'Ajouter image du dessert'))), 'name' => 'Desserts'), 'Boissons' => array('class' => 'AppBundle\\Entity\\Boissons', 'form' => array('fields' => array(0 => array('property' => 'name', 'label' => 'Nom de la boisson'), 1 => array('property' => 'prix', 'label' => 'Prix'), 2 => array('property' => 'imageFile', 'type' => 'file', 'label' => 'Ajouter image de la boisson'))), 'name' => 'Boissons'), 'Menu' => array('class' => 'AppBundle\\Entity\\Menu', 'form' => array('fields' => array(0 => array('property' => 'name', 'label' => 'Nom du menu'), 1 => array('property' => 'entree', 'label' => 'Entree'), 2 => array('property' => 'Plat', 'label' => 'Plat'), 3 => array('property' => 'Boisson', 'label' => 'Boisson'), 4 => array('property' => 'prix', 'label' => 'Prix'), 5 => array('property' => 'imageFile', 'type' => 'file', 'label' => 'Ajouter image du menu'))), 'name' => 'Menu'), 'Comment' => array('class' => 'AppBundle\\Entity\\Comment', 'name' => 'Comment'), 'Thread' => array('class' => 'AppBundle\\Entity\\Thread', 'name' => 'Thread')), 'design' => array('form_theme' => array(0 => '@EasyAdmin/form/bootstrap_3_horizontal_layout.html.twig', 1 => 'VichUploaderBundle:Form:fields.html.twig'), 'theme' => 'default', 'color_scheme' => 'dark', 'brand_color' => '#205081', 'assets' => array('css' => array(), 'js' => array(), 'favicon' => array('path' => 'favicon.ico', 'mime_type' => 'image/x-icon')), 'menu' => array()), 'site_name' => 'EasyAdmin', 'formats' => array('date' => 'Y-m-d', 'time' => 'H:i:s', 'datetime' => 'F j, Y H:i'), 'disabled_actions' => array(), 'translation_domain' => 'messages', 'list' => array('actions' => array(), 'max_results' => 15), 'search' => array(), 'edit' => array('actions' => array()), 'new' => array('actions' => array()), 'show' => array('actions' => array(), 'max_results' => 10)), true);
 
         $instance->addConfigPass(new \EasyCorp\Bundle\EasyAdminBundle\Configuration\NormalizerConfigPass($this));
         $instance->addConfigPass(new \EasyCorp\Bundle\EasyAdminBundle\Configuration\DesignConfigPass($this, true, 'fr'));
@@ -2660,6 +2676,16 @@ class appDevDebugProjectContainer extends Container
     }
 
     /**
+     * Gets the public 'fos_user.listener.email_confirmation' shared service.
+     *
+     * @return \FOS\UserBundle\EventListener\EmailConfirmationListener
+     */
+    protected function getFosUser_Listener_EmailConfirmationService()
+    {
+        return $this->services['fos_user.listener.email_confirmation'] = new \FOS\UserBundle\EventListener\EmailConfirmationListener(${($_ = isset($this->services['fos_user.mailer']) ? $this->services['fos_user.mailer'] : $this->get('fos_user.mailer')) && false ?: '_'}, ${($_ = isset($this->services['fos_user.util.token_generator']) ? $this->services['fos_user.util.token_generator'] : $this->get('fos_user.util.token_generator')) && false ?: '_'}, ${($_ = isset($this->services['router']) ? $this->services['router'] : $this->get('router')) && false ?: '_'}, ${($_ = isset($this->services['session']) ? $this->services['session'] : $this->get('session')) && false ?: '_'});
+    }
+
+    /**
      * Gets the public 'fos_user.listener.flash' shared service.
      *
      * @return \FOS\UserBundle\EventListener\FlashListener
@@ -2686,7 +2712,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getFosUser_MailerService()
     {
-        return $this->services['fos_user.mailer'] = new \FOS\UserBundle\Mailer\Mailer(${($_ = isset($this->services['swiftmailer.mailer.default']) ? $this->services['swiftmailer.mailer.default'] : $this->get('swiftmailer.mailer.default')) && false ?: '_'}, ${($_ = isset($this->services['router']) ? $this->services['router'] : $this->get('router')) && false ?: '_'}, ${($_ = isset($this->services['templating']) ? $this->services['templating'] : $this->get('templating')) && false ?: '_'}, array('confirmation.template' => '@FOSUser/Registration/email.txt.twig', 'resetting.template' => '@FOSUser/Resetting/email.txt.twig', 'from_email' => array('confirmation' => array('Test' => 'Test'), 'resetting' => array('Test' => 'Test'))));
+        return $this->services['fos_user.mailer'] = new \FOS\UserBundle\Mailer\Mailer(${($_ = isset($this->services['swiftmailer.mailer.default']) ? $this->services['swiftmailer.mailer.default'] : $this->get('swiftmailer.mailer.default')) && false ?: '_'}, ${($_ = isset($this->services['router']) ? $this->services['router'] : $this->get('router')) && false ?: '_'}, ${($_ = isset($this->services['templating']) ? $this->services['templating'] : $this->get('templating')) && false ?: '_'}, array('confirmation.template' => '@FOSUser/Registration/email.txt.twig', 'resetting.template' => '@FOSUser/Resetting/email.txt.twig', 'from_email' => array('confirmation' => array('lazonegeek1@gmail.com' => 'lazonegeek1@gmail.com'), 'resetting' => array('lazonegeek1@gmail.com' => 'lazonegeek1@gmail.com'))));
     }
 
     /**
@@ -3722,7 +3748,7 @@ class appDevDebugProjectContainer extends Container
         $p = new \Symfony\Component\Security\Http\Authentication\DefaultAuthenticationFailureHandler($f, $m, array(), $a);
         $p->setOptions(array('login_path' => '/login', 'failure_path' => NULL, 'failure_forward' => false, 'failure_path_parameter' => '_failure_path'));
 
-        return $this->services['security.firewall.map.context.main'] = new \Symfony\Bundle\SecurityBundle\Security\FirewallContext(array(0 => new \Symfony\Component\Security\Http\Firewall\ChannelListener($l, new \Symfony\Component\Security\Http\EntryPoint\RetryAuthenticationEntryPoint(80, 443), $a), 1 => new \Symfony\Component\Security\Http\Firewall\ContextListener($b, array(0 => ${($_ = isset($this->services['fos_user.user_provider.username']) ? $this->services['fos_user.user_provider.username'] : $this->getFosUser_UserProvider_UsernameService()) && false ?: '_'}), 'main', $a, $c, $d), 2 => $n, 3 => new \Symfony\Component\Security\Http\Firewall\UsernamePasswordFormAuthenticationListener($b, $g, ${($_ = isset($this->services['security.authentication.session_strategy']) ? $this->services['security.authentication.session_strategy'] : $this->getSecurity_Authentication_SessionStrategyService()) && false ?: '_'}, $m, 'main', $o, $p, array('check_path' => '/login_check', 'use_forward' => false, 'require_previous_session' => true, 'username_parameter' => '_username', 'password_parameter' => '_password', 'csrf_parameter' => '_csrf_token', 'csrf_token_id' => 'authenticate', 'post_only' => true), $a, $c, ${($_ = isset($this->services['security.csrf.token_manager']) ? $this->services['security.csrf.token_manager'] : $this->get('security.csrf.token_manager')) && false ?: '_'}), 4 => new \Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener($b, '5a65ff8235f973.81410515', $a, $g), 5 => new \Symfony\Component\Security\Http\Firewall\AccessListener($b, ${($_ = isset($this->services['debug.security.access.decision_manager']) ? $this->services['debug.security.access.decision_manager'] : $this->getDebug_Security_Access_DecisionManagerService()) && false ?: '_'}, $l, $g)), new \Symfony\Component\Security\Http\Firewall\ExceptionListener($b, $d, $m, 'main', new \Symfony\Component\Security\Http\EntryPoint\FormAuthenticationEntryPoint($f, $m, '/login', false), NULL, NULL, $a, false), new \Symfony\Bundle\SecurityBundle\Security\FirewallConfig('main', 'security.user_checker', 'security.request_matcher.a64d671f18e5575531d76c1d1154fdc4476cb8a79c02ed7a3469178c6d7b96b5ed4e60db', true, false, 'fos_user.user_provider.username', 'main', 'security.authentication.form_entry_point.main', NULL, NULL, array(0 => 'logout', 1 => 'form_login', 2 => 'anonymous')));
+        return $this->services['security.firewall.map.context.main'] = new \Symfony\Bundle\SecurityBundle\Security\FirewallContext(array(0 => new \Symfony\Component\Security\Http\Firewall\ChannelListener($l, new \Symfony\Component\Security\Http\EntryPoint\RetryAuthenticationEntryPoint(80, 443), $a), 1 => new \Symfony\Component\Security\Http\Firewall\ContextListener($b, array(0 => ${($_ = isset($this->services['fos_user.user_provider.username']) ? $this->services['fos_user.user_provider.username'] : $this->getFosUser_UserProvider_UsernameService()) && false ?: '_'}), 'main', $a, $c, $d), 2 => $n, 3 => new \Symfony\Component\Security\Http\Firewall\UsernamePasswordFormAuthenticationListener($b, $g, ${($_ = isset($this->services['security.authentication.session_strategy']) ? $this->services['security.authentication.session_strategy'] : $this->getSecurity_Authentication_SessionStrategyService()) && false ?: '_'}, $m, 'main', $o, $p, array('check_path' => '/login_check', 'use_forward' => false, 'require_previous_session' => true, 'username_parameter' => '_username', 'password_parameter' => '_password', 'csrf_parameter' => '_csrf_token', 'csrf_token_id' => 'authenticate', 'post_only' => true), $a, $c, ${($_ = isset($this->services['security.csrf.token_manager']) ? $this->services['security.csrf.token_manager'] : $this->get('security.csrf.token_manager')) && false ?: '_'}), 4 => new \Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener($b, '5a6ca1eb2ecb21.07172763', $a, $g), 5 => new \Symfony\Component\Security\Http\Firewall\AccessListener($b, ${($_ = isset($this->services['debug.security.access.decision_manager']) ? $this->services['debug.security.access.decision_manager'] : $this->getDebug_Security_Access_DecisionManagerService()) && false ?: '_'}, $l, $g)), new \Symfony\Component\Security\Http\Firewall\ExceptionListener($b, $d, $m, 'main', new \Symfony\Component\Security\Http\EntryPoint\FormAuthenticationEntryPoint($f, $m, '/login', false), NULL, NULL, $a, false), new \Symfony\Bundle\SecurityBundle\Security\FirewallConfig('main', 'security.user_checker', 'security.request_matcher.a64d671f18e5575531d76c1d1154fdc4476cb8a79c02ed7a3469178c6d7b96b5ed4e60db', true, false, 'fos_user.user_provider.username', 'main', 'security.authentication.form_entry_point.main', NULL, NULL, array(0 => 'logout', 1 => 'form_login', 2 => 'anonymous')));
     }
 
     /**
@@ -4024,15 +4050,15 @@ class appDevDebugProjectContainer extends Container
     protected function getSwiftmailer_Mailer_Default_Transport_RealService()
     {
         $a = new \Swift_Transport_Esmtp_AuthHandler(array(0 => new \Swift_Transport_Esmtp_Auth_CramMd5Authenticator(), 1 => new \Swift_Transport_Esmtp_Auth_LoginAuthenticator(), 2 => new \Swift_Transport_Esmtp_Auth_PlainAuthenticator()));
-        $a->setUsername(NULL);
-        $a->setPassword(NULL);
-        $a->setAuthMode(NULL);
+        $a->setUsername('lazonegeek1@gmail.com');
+        $a->setPassword('bytnqpnumsejcjin');
+        $a->setAuthMode('login');
 
         $this->services['swiftmailer.mailer.default.transport.real'] = $instance = new \Swift_Transport_EsmtpTransport(new \Swift_Transport_StreamBuffer(new \Swift_StreamFilters_StringReplacementFilterFactory()), array(0 => $a), ${($_ = isset($this->services['swiftmailer.mailer.default.transport.eventdispatcher']) ? $this->services['swiftmailer.mailer.default.transport.eventdispatcher'] : $this->getSwiftmailer_Mailer_Default_Transport_EventdispatcherService()) && false ?: '_'});
 
-        $instance->setHost('127.0.0.1');
-        $instance->setPort(25);
-        $instance->setEncryption(NULL);
+        $instance->setHost('smtp.gmail.com');
+        $instance->setPort(465);
+        $instance->setEncryption('ssl');
         $instance->setTimeout(30);
         $instance->setSourceIp(NULL);
         (new \Symfony\Bundle\SwiftmailerBundle\DependencyInjection\SmtpTransportConfigurator(NULL, ${($_ = isset($this->services['router.request_context']) ? $this->services['router.request_context'] : $this->getRouter_RequestContextService()) && false ?: '_'}))->configure($instance);
@@ -5046,7 +5072,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getCache_Annotations_RecorderInnerService($lazyLoad = true)
     {
-        return $this->services['cache.annotations.recorder_inner'] = \Symfony\Component\Cache\Adapter\AbstractAdapter::createSystemCache('VQrigT4oBG', 0, 'j6HfSkS8Oj8-K37Y8Oh2zo', (__DIR__.'/pools'), ${($_ = isset($this->services['monolog.logger.cache']) ? $this->services['monolog.logger.cache'] : $this->get('monolog.logger.cache', ContainerInterface::NULL_ON_INVALID_REFERENCE)) && false ?: '_'});
+        return $this->services['cache.annotations.recorder_inner'] = \Symfony\Component\Cache\Adapter\AbstractAdapter::createSystemCache('VQrigT4oBG', 0, 'eF-njCBHKV3n74Dfw7v4mF', (__DIR__.'/pools'), ${($_ = isset($this->services['monolog.logger.cache']) ? $this->services['monolog.logger.cache'] : $this->get('monolog.logger.cache', ContainerInterface::NULL_ON_INVALID_REFERENCE)) && false ?: '_'});
     }
 
     /**
@@ -5072,7 +5098,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getCache_Serializer_RecorderInnerService($lazyLoad = true)
     {
-        return $this->services['cache.serializer.recorder_inner'] = \Symfony\Component\Cache\Adapter\AbstractAdapter::createSystemCache('52d-Oa89OT', 0, 'j6HfSkS8Oj8-K37Y8Oh2zo', (__DIR__.'/pools'), ${($_ = isset($this->services['monolog.logger.cache']) ? $this->services['monolog.logger.cache'] : $this->get('monolog.logger.cache', ContainerInterface::NULL_ON_INVALID_REFERENCE)) && false ?: '_'});
+        return $this->services['cache.serializer.recorder_inner'] = \Symfony\Component\Cache\Adapter\AbstractAdapter::createSystemCache('52d-Oa89OT', 0, 'eF-njCBHKV3n74Dfw7v4mF', (__DIR__.'/pools'), ${($_ = isset($this->services['monolog.logger.cache']) ? $this->services['monolog.logger.cache'] : $this->get('monolog.logger.cache', ContainerInterface::NULL_ON_INVALID_REFERENCE)) && false ?: '_'});
     }
 
     /**
@@ -5082,7 +5108,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getCache_System_RecorderInnerService($lazyLoad = true)
     {
-        return $this->services['cache.system.recorder_inner'] = \Symfony\Component\Cache\Adapter\AbstractAdapter::createSystemCache('D8MxcDgLIr', 0, 'j6HfSkS8Oj8-K37Y8Oh2zo', (__DIR__.'/pools'), ${($_ = isset($this->services['monolog.logger.cache']) ? $this->services['monolog.logger.cache'] : $this->get('monolog.logger.cache', ContainerInterface::NULL_ON_INVALID_REFERENCE)) && false ?: '_'});
+        return $this->services['cache.system.recorder_inner'] = \Symfony\Component\Cache\Adapter\AbstractAdapter::createSystemCache('D8MxcDgLIr', 0, 'eF-njCBHKV3n74Dfw7v4mF', (__DIR__.'/pools'), ${($_ = isset($this->services['monolog.logger.cache']) ? $this->services['monolog.logger.cache'] : $this->get('monolog.logger.cache', ContainerInterface::NULL_ON_INVALID_REFERENCE)) && false ?: '_'});
     }
 
     /**
@@ -5102,7 +5128,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getCache_Validator_RecorderInnerService($lazyLoad = true)
     {
-        return $this->services['cache.validator.recorder_inner'] = \Symfony\Component\Cache\Adapter\AbstractAdapter::createSystemCache('lLHwAahPtH', 0, 'j6HfSkS8Oj8-K37Y8Oh2zo', (__DIR__.'/pools'), ${($_ = isset($this->services['monolog.logger.cache']) ? $this->services['monolog.logger.cache'] : $this->get('monolog.logger.cache', ContainerInterface::NULL_ON_INVALID_REFERENCE)) && false ?: '_'});
+        return $this->services['cache.validator.recorder_inner'] = \Symfony\Component\Cache\Adapter\AbstractAdapter::createSystemCache('lLHwAahPtH', 0, 'eF-njCBHKV3n74Dfw7v4mF', (__DIR__.'/pools'), ${($_ = isset($this->services['monolog.logger.cache']) ? $this->services['monolog.logger.cache'] : $this->get('monolog.logger.cache', ContainerInterface::NULL_ON_INVALID_REFERENCE)) && false ?: '_'});
     }
 
     /**
@@ -5425,7 +5451,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getSecurity_Authentication_Provider_Anonymous_MainService()
     {
-        return $this->services['security.authentication.provider.anonymous.main'] = new \Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider('5a65ff8235f973.81410515');
+        return $this->services['security.authentication.provider.anonymous.main'] = new \Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider('5a6ca1eb2ecb21.07172763');
     }
 
     /**
@@ -5934,10 +5960,10 @@ class appDevDebugProjectContainer extends Container
             'database_name' => 'RestaurantDatabase',
             'database_user' => 'root',
             'database_password' => '140595Bilou1995',
-            'mailer_transport' => 'smtp',
-            'mailer_host' => '127.0.0.1',
-            'mailer_user' => NULL,
-            'mailer_password' => NULL,
+            'mailer_transport' => 'gmail',
+            'mailer_host' => NULL,
+            'mailer_user' => 'lazonegeek1@gmail.com',
+            'mailer_password' => 'bytnqpnumsejcjin',
             'secret' => 'ThisTokenIsNotSoSecretChangeIt',
             'locale' => 'fr',
             'app.path.employees_images' => '/uploads/images/employees',
@@ -6047,12 +6073,12 @@ class appDevDebugProjectContainer extends Container
             'swiftmailer.email_sender.listener.class' => 'Symfony\\Bundle\\SwiftmailerBundle\\EventListener\\EmailSenderListener',
             'swiftmailer.data_collector.class' => 'Symfony\\Bundle\\SwiftmailerBundle\\DataCollector\\MessageDataCollector',
             'swiftmailer.mailer.default.transport.name' => 'smtp',
-            'swiftmailer.mailer.default.transport.smtp.encryption' => NULL,
-            'swiftmailer.mailer.default.transport.smtp.port' => 25,
-            'swiftmailer.mailer.default.transport.smtp.host' => '127.0.0.1',
-            'swiftmailer.mailer.default.transport.smtp.username' => NULL,
-            'swiftmailer.mailer.default.transport.smtp.password' => NULL,
-            'swiftmailer.mailer.default.transport.smtp.auth_mode' => NULL,
+            'swiftmailer.mailer.default.transport.smtp.encryption' => 'ssl',
+            'swiftmailer.mailer.default.transport.smtp.port' => 465,
+            'swiftmailer.mailer.default.transport.smtp.host' => 'smtp.gmail.com',
+            'swiftmailer.mailer.default.transport.smtp.username' => 'lazonegeek1@gmail.com',
+            'swiftmailer.mailer.default.transport.smtp.password' => 'bytnqpnumsejcjin',
+            'swiftmailer.mailer.default.transport.smtp.auth_mode' => 'login',
             'swiftmailer.mailer.default.transport.smtp.timeout' => 30,
             'swiftmailer.mailer.default.transport.smtp.source_ip' => NULL,
             'swiftmailer.mailer.default.transport.smtp.local_domain' => NULL,
@@ -6205,9 +6231,9 @@ class appDevDebugProjectContainer extends Container
                 1 => 'Default',
             ),
             'fos_user.registration.confirmation.from_email' => array(
-                'Test' => 'Test',
+                'lazonegeek1@gmail.com' => 'lazonegeek1@gmail.com',
             ),
-            'fos_user.registration.confirmation.enabled' => false,
+            'fos_user.registration.confirmation.enabled' => true,
             'fos_user.registration.form.type' => 'FOS\\UserBundle\\Form\\Type\\RegistrationFormType',
             'fos_user.registration.form.name' => 'fos_user_registration_form',
             'fos_user.registration.form.validation_groups' => array(
@@ -6221,7 +6247,7 @@ class appDevDebugProjectContainer extends Container
                 1 => 'Default',
             ),
             'fos_user.resetting.email.from_email' => array(
-                'Test' => 'Test',
+                'lazonegeek1@gmail.com' => 'lazonegeek1@gmail.com',
             ),
             'fos_user.resetting.retry_ttl' => 7200,
             'fos_user.resetting.token_ttl' => 86400,
@@ -6254,6 +6280,10 @@ class appDevDebugProjectContainer extends Container
                                     'label' => 'Poste occupé',
                                 ),
                                 3 => array(
+                                    'property' => 'enabled',
+                                    'label' => 'Activer compte',
+                                ),
+                                4 => array(
                                     'property' => 'imageFile',
                                     'type' => 'file',
                                     'label' => 'Ajouter',
@@ -6355,10 +6385,22 @@ class appDevDebugProjectContainer extends Container
                                     'label' => 'Nom du menu',
                                 ),
                                 1 => array(
+                                    'property' => 'entree',
+                                    'label' => 'Entree',
+                                ),
+                                2 => array(
+                                    'property' => 'Plat',
+                                    'label' => 'Plat',
+                                ),
+                                3 => array(
+                                    'property' => 'Boisson',
+                                    'label' => 'Boisson',
+                                ),
+                                4 => array(
                                     'property' => 'prix',
                                     'label' => 'Prix',
                                 ),
-                                2 => array(
+                                5 => array(
                                     'property' => 'imageFile',
                                     'type' => 'file',
                                     'label' => 'Ajouter image du menu',
@@ -6366,6 +6408,14 @@ class appDevDebugProjectContainer extends Container
                             ),
                         ),
                         'name' => 'Menu',
+                    ),
+                    'Comment' => array(
+                        'class' => 'AppBundle\\Entity\\Comment',
+                        'name' => 'Comment',
+                    ),
+                    'Thread' => array(
+                        'class' => 'AppBundle\\Entity\\Thread',
+                        'name' => 'Thread',
                     ),
                 ),
                 'design' => array(

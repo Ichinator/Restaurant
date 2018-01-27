@@ -9,12 +9,9 @@ use AppBundle\Entity\Employees;
 
 class EmployeesController extends Controller{
     /**
-     * @Route("/showEmployees", name="employees")
+     * @Route("/showEmployees/", name="employees")
      */
     public function showAction(Request $request){
-        /*$repository=$this->getDoctrine()->getRepository('AppBundle:Employees');
-        $allemployees = $repository->findAll();
-        return $this->render('default/employees.html.twig', array('news'=>$allemployees));*/
 
         $employees = $this->getDoctrine()
             ->getRepository(Employees::class)
@@ -23,6 +20,16 @@ class EmployeesController extends Controller{
         return $this->render('default/employees.html.twig', array(
             'employees' => $employees
         ));
+    }
+
+    /**
+     * @Route("/showOneEmployee/{id}", name="showOneEmployee", requirements={"id"="\d+"})
+     */
+    public function showOneEmployeeAction($id)
+    {
+        $oneEmployee = $this->getDoctrine()->getRepository(Employees::Class)->findAll();
+        return $this->render('default/oneEmployee.html.twig', array('oneEmployee'=> $oneEmployee));
+
     }
 }
 

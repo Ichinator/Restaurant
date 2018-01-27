@@ -37,6 +37,8 @@ framework:
     assets: ~
     php_errors:
         log: true
+    #FOSCommentBundle
+    http_method_override: true
 
 # Twig Configuration
 twig:
@@ -79,8 +81,14 @@ fos_user:
     firewall_name: main
     user_class: AppBundle\Entity\User
     from_email:
-        address: "Test"
-        sender_name: "Test"
+        address: "%mailer_user%"
+        sender_name: "%mailer_user%"
+    registration:
+            confirmation:
+                enabled: true
+    #profile:
+    #        email_update_confirmation:
+    #            enabled: true
 
 # app/config/config.yml
 easy_admin:
@@ -94,6 +102,7 @@ easy_admin:
                                 - { property: 'nom', label: 'Nom'}
                                 - { property: 'prenom', label: 'Prénom'}
                                 - { property: 'poste', label: 'Poste occupé'}
+                                - { property: 'enabled', label: 'Activer compte'}
                                 - { property: 'imageFile', type: 'file', label: 'Ajouter' }
         Entrees:
             class: AppBundle\Entity\Entrees
@@ -128,8 +137,15 @@ easy_admin:
                     form:
                             fields:
                                 - { property: 'name', label: 'Nom du menu'}
+                                - { property: 'entree', label: 'Entree'}
+                                - { property: 'Plat', label: 'Plat'}
+                                - { property: 'Boisson', label: 'Boisson'}
                                 - { property: 'prix', label: 'Prix'}
                                 - { property: 'imageFile', type: 'file', label: 'Ajouter image du menu'}
+        Comment:
+                    class: AppBundle\Entity\Comment
+        Thread:
+                    class: AppBundle\Entity\Thread
     design:
             form_theme: ['horizontal', 'VichUploaderBundle:Form:fields.html.twig']
 
@@ -162,11 +178,6 @@ vich_uploader:
 kms_froala_editor:
     language: "fr"
 
-
-# app/config/config.yml
-framework:
-    http_method_override: true
-
 # app/config/config.yml
 fos_comment:
     db_driver: orm
@@ -184,3 +195,4 @@ assetic:
     use_controller: '%kernel.debug%'
     filters:
         cssrewrite: ~
+

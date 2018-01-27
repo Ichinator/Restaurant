@@ -145,10 +145,10 @@
     <parameter key="database_name">RestaurantDatabase</parameter>
     <parameter key="database_user">root</parameter>
     <parameter key="database_password">140595Bilou1995</parameter>
-    <parameter key="mailer_transport">smtp</parameter>
-    <parameter key="mailer_host">127.0.0.1</parameter>
-    <parameter key="mailer_user">null</parameter>
-    <parameter key="mailer_password">null</parameter>
+    <parameter key="mailer_transport">gmail</parameter>
+    <parameter key="mailer_host">null</parameter>
+    <parameter key="mailer_user">lazonegeek1@gmail.com</parameter>
+    <parameter key="mailer_password">bytnqpnumsejcjin</parameter>
     <parameter key="secret">ThisTokenIsNotSoSecretChangeIt</parameter>
     <parameter key="locale">fr</parameter>
     <parameter key="app.path.employees_images">/uploads/images/employees</parameter>
@@ -255,12 +255,12 @@
     <parameter key="swiftmailer.email_sender.listener.class">Symfony\Bundle\SwiftmailerBundle\EventListener\EmailSenderListener</parameter>
     <parameter key="swiftmailer.data_collector.class">Symfony\Bundle\SwiftmailerBundle\DataCollector\MessageDataCollector</parameter>
     <parameter key="swiftmailer.mailer.default.transport.name">smtp</parameter>
-    <parameter key="swiftmailer.mailer.default.transport.smtp.encryption">null</parameter>
-    <parameter key="swiftmailer.mailer.default.transport.smtp.port">25</parameter>
-    <parameter key="swiftmailer.mailer.default.transport.smtp.host">127.0.0.1</parameter>
-    <parameter key="swiftmailer.mailer.default.transport.smtp.username">null</parameter>
-    <parameter key="swiftmailer.mailer.default.transport.smtp.password">null</parameter>
-    <parameter key="swiftmailer.mailer.default.transport.smtp.auth_mode">null</parameter>
+    <parameter key="swiftmailer.mailer.default.transport.smtp.encryption">ssl</parameter>
+    <parameter key="swiftmailer.mailer.default.transport.smtp.port">465</parameter>
+    <parameter key="swiftmailer.mailer.default.transport.smtp.host">smtp.gmail.com</parameter>
+    <parameter key="swiftmailer.mailer.default.transport.smtp.username">lazonegeek1@gmail.com</parameter>
+    <parameter key="swiftmailer.mailer.default.transport.smtp.password">bytnqpnumsejcjin</parameter>
+    <parameter key="swiftmailer.mailer.default.transport.smtp.auth_mode">login</parameter>
     <parameter key="swiftmailer.mailer.default.transport.smtp.timeout">30</parameter>
     <parameter key="swiftmailer.mailer.default.transport.smtp.source_ip">null</parameter>
     <parameter key="swiftmailer.mailer.default.transport.smtp.local_domain">null</parameter>
@@ -411,9 +411,9 @@
       <parameter>Default</parameter>
     </parameter>
     <parameter key="fos_user.registration.confirmation.from_email" type="collection">
-      <parameter key="Test">Test</parameter>
+      <parameter key="lazonegeek1@gmail.com">lazonegeek1@gmail.com</parameter>
     </parameter>
-    <parameter key="fos_user.registration.confirmation.enabled">false</parameter>
+    <parameter key="fos_user.registration.confirmation.enabled">true</parameter>
     <parameter key="fos_user.registration.form.type">FOS\UserBundle\Form\Type\RegistrationFormType</parameter>
     <parameter key="fos_user.registration.form.name">fos_user_registration_form</parameter>
     <parameter key="fos_user.registration.form.validation_groups" type="collection">
@@ -427,7 +427,7 @@
       <parameter>Default</parameter>
     </parameter>
     <parameter key="fos_user.resetting.email.from_email" type="collection">
-      <parameter key="Test">Test</parameter>
+      <parameter key="lazonegeek1@gmail.com">lazonegeek1@gmail.com</parameter>
     </parameter>
     <parameter key="fos_user.resetting.retry_ttl">7200</parameter>
     <parameter key="fos_user.resetting.token_ttl">86400</parameter>
@@ -458,6 +458,10 @@
               <parameter type="collection">
                 <parameter key="property">poste</parameter>
                 <parameter key="label">Poste occupé</parameter>
+              </parameter>
+              <parameter type="collection">
+                <parameter key="property">enabled</parameter>
+                <parameter key="label">Activer compte</parameter>
               </parameter>
               <parameter type="collection">
                 <parameter key="property">imageFile</parameter>
@@ -561,6 +565,18 @@
                 <parameter key="label">Nom du menu</parameter>
               </parameter>
               <parameter type="collection">
+                <parameter key="property">entree</parameter>
+                <parameter key="label">Entree</parameter>
+              </parameter>
+              <parameter type="collection">
+                <parameter key="property">Plat</parameter>
+                <parameter key="label">Plat</parameter>
+              </parameter>
+              <parameter type="collection">
+                <parameter key="property">Boisson</parameter>
+                <parameter key="label">Boisson</parameter>
+              </parameter>
+              <parameter type="collection">
                 <parameter key="property">prix</parameter>
                 <parameter key="label">Prix</parameter>
               </parameter>
@@ -572,6 +588,14 @@
             </parameter>
           </parameter>
           <parameter key="name">Menu</parameter>
+        </parameter>
+        <parameter key="Comment" type="collection">
+          <parameter key="class">AppBundle\Entity\Comment</parameter>
+          <parameter key="name">Comment</parameter>
+        </parameter>
+        <parameter key="Thread" type="collection">
+          <parameter key="class">AppBundle\Entity\Thread</parameter>
+          <parameter key="name">Thread</parameter>
         </parameter>
       </parameter>
       <parameter key="design" type="collection">
@@ -943,6 +967,9 @@
   <services>
     <service id="service_container" class="Symfony\Component\DependencyInjection\ContainerInterface" synthetic="true"/>
     <service id="AppBundle\AppBundle" class="AppBundle\AppBundle" public="false" autowire="true" autoconfigure="true"/>
+    <service id="AppBundle\Controller\AdminController" class="AppBundle\Controller\AdminController" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+    </service>
     <service id="AppBundle\Controller\DefaultController" class="AppBundle\Controller\DefaultController" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
     </service>
@@ -968,7 +995,7 @@
     </service>
     <service id="argument_resolver.service" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" public="false">
       <tag name="controller.argument_value_resolver" priority="-50"/>
-      <argument type="service" id="service_locator.3e082329fc99bfae597876a3501e6fda"/>
+      <argument type="service" id="service_locator.d88cfa4e69b97939bcb559bc710963c9"/>
     </service>
     <service id="argument_resolver.default" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" public="false">
       <tag name="controller.argument_value_resolver" priority="-100"/>
@@ -1115,7 +1142,7 @@
       <tag name="monolog.logger" channel="cache"/>
       <argument></argument>
       <argument>0</argument>
-      <argument>j6HfSkS8Oj8-K37Y8Oh2zo</argument>
+      <argument>eF-njCBHKV3n74Dfw7v4mF</argument>
       <argument>/home/ichinator/Bureau/MesProjetsGIT/Restaurant/var/cache/dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -1125,7 +1152,7 @@
       <tag name="monolog.logger" channel="cache"/>
       <argument></argument>
       <argument>0</argument>
-      <argument>j6HfSkS8Oj8-K37Y8Oh2zo</argument>
+      <argument>eF-njCBHKV3n74Dfw7v4mF</argument>
       <call method="setLogger">
         <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       </call>
@@ -2856,6 +2883,14 @@
         <argument>0</argument>
       </call>
       <call method="addListener">
+        <argument>fos_user.registration.success</argument>
+        <argument type="collection">
+          <argument type="service" id="fos_user.listener.email_confirmation"/>
+          <argument>onRegistrationSuccess</argument>
+        </argument>
+        <argument>0</argument>
+      </call>
+      <call method="addListener">
         <argument>fos_user.resetting.reset.initialize</argument>
         <argument type="collection">
           <argument type="service" id="fos_user.listener.resetting"/>
@@ -3691,12 +3726,12 @@
     </service>
     <service id="security.authentication.listener.anonymous.main" class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
       <argument type="service" id="security.token_storage"/>
-      <argument>5a65ff8235f973.81410515</argument>
+      <argument>5a6ca1eb2ecb21.07172763</argument>
       <argument type="service" id="monolog.logger.security" on-invalid="null"/>
       <argument type="service" id="security.authentication.manager"/>
     </service>
     <service id="security.authentication.provider.anonymous.main" class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-      <argument>5a65ff8235f973.81410515</argument>
+      <argument>5a6ca1eb2ecb21.07172763</argument>
     </service>
     <service id="security.exception_listener.main" class="Symfony\Component\Security\Http\Firewall\ExceptionListener" public="false">
       <argument type="service" id="security.token_storage"/>
@@ -4229,13 +4264,13 @@
         <argument type="service" id="3_e5ed84d0a6f8734bf195db77082647fb1d4b1f3f6932735ffab01d5b6f10c36b"/>
       </argument>
       <call method="setUsername">
-        <argument>null</argument>
+        <argument>lazonegeek1@gmail.com</argument>
       </call>
       <call method="setPassword">
-        <argument>null</argument>
+        <argument>bytnqpnumsejcjin</argument>
       </call>
       <call method="setAuthMode">
-        <argument>null</argument>
+        <argument>login</argument>
       </call>
     </service>
     <service id="swiftmailer.mailer.default.transport.buffer" class="Swift_Transport_StreamBuffer" public="false">
@@ -4252,13 +4287,13 @@
       </argument>
       <argument type="service" id="swiftmailer.mailer.default.transport.eventdispatcher"/>
       <call method="setHost">
-        <argument>127.0.0.1</argument>
+        <argument>smtp.gmail.com</argument>
       </call>
       <call method="setPort">
-        <argument>25</argument>
+        <argument>465</argument>
       </call>
       <call method="setEncryption">
-        <argument>null</argument>
+        <argument>ssl</argument>
       </call>
       <call method="setTimeout">
         <argument>30</argument>
@@ -4788,10 +4823,10 @@
         <argument key="resetting.template">@FOSUser/Resetting/email.txt.twig</argument>
         <argument key="from_email" type="collection">
           <argument key="confirmation" type="collection">
-            <argument key="Test">Test</argument>
+            <argument key="lazonegeek1@gmail.com">lazonegeek1@gmail.com</argument>
           </argument>
           <argument key="resetting" type="collection">
-            <argument key="Test">Test</argument>
+            <argument key="lazonegeek1@gmail.com">lazonegeek1@gmail.com</argument>
           </argument>
         </argument>
       </argument>
@@ -4807,10 +4842,10 @@
         </argument>
         <argument key="from_email" type="collection">
           <argument key="confirmation" type="collection">
-            <argument key="Test">Test</argument>
+            <argument key="lazonegeek1@gmail.com">lazonegeek1@gmail.com</argument>
           </argument>
           <argument key="resetting" type="collection">
-            <argument key="Test">Test</argument>
+            <argument key="lazonegeek1@gmail.com">lazonegeek1@gmail.com</argument>
           </argument>
         </argument>
       </argument>
@@ -4858,6 +4893,13 @@
     <service id="fos_user.registration.form.type" class="FOS\UserBundle\Form\Type\RegistrationFormType">
       <tag name="form.type" alias="fos_user_registration"/>
       <argument>AppBundle\Entity\User</argument>
+    </service>
+    <service id="fos_user.listener.email_confirmation" class="FOS\UserBundle\EventListener\EmailConfirmationListener">
+      <tag name="kernel.event_subscriber"/>
+      <argument type="service" id="fos_user.mailer.default"/>
+      <argument type="service" id="fos_user.util.token_generator.default"/>
+      <argument type="service" id="router.default"/>
+      <argument type="service" id="session"/>
     </service>
     <service id="fos_user.change_password.form.factory" class="FOS\UserBundle\Form\Factory\FormFactory">
       <argument type="service" id="form.factory"/>
@@ -4917,6 +4959,10 @@
                 <argument type="collection">
                   <argument key="property">poste</argument>
                   <argument key="label">Poste occupé</argument>
+                </argument>
+                <argument type="collection">
+                  <argument key="property">enabled</argument>
+                  <argument key="label">Activer compte</argument>
                 </argument>
                 <argument type="collection">
                   <argument key="property">imageFile</argument>
@@ -5020,6 +5066,18 @@
                   <argument key="label">Nom du menu</argument>
                 </argument>
                 <argument type="collection">
+                  <argument key="property">entree</argument>
+                  <argument key="label">Entree</argument>
+                </argument>
+                <argument type="collection">
+                  <argument key="property">Plat</argument>
+                  <argument key="label">Plat</argument>
+                </argument>
+                <argument type="collection">
+                  <argument key="property">Boisson</argument>
+                  <argument key="label">Boisson</argument>
+                </argument>
+                <argument type="collection">
                   <argument key="property">prix</argument>
                   <argument key="label">Prix</argument>
                 </argument>
@@ -5031,6 +5089,14 @@
               </argument>
             </argument>
             <argument key="name">Menu</argument>
+          </argument>
+          <argument key="Comment" type="collection">
+            <argument key="class">AppBundle\Entity\Comment</argument>
+            <argument key="name">Comment</argument>
+          </argument>
+          <argument key="Thread" type="collection">
+            <argument key="class">AppBundle\Entity\Thread</argument>
+            <argument key="name">Thread</argument>
           </argument>
         </argument>
         <argument key="design" type="collection">
@@ -6746,12 +6812,18 @@
     <service id="web_server.command.server_status" class="Symfony\Bundle\WebServerBundle\Command\ServerStatusCommand" public="false">
       <tag name="console.command"/>
     </service>
+    <service id="instanceof.Symfony\Bundle\FrameworkBundle\Controller\Controller.0.AppBundle\Controller\AdminController" class="AppBundle\Controller\AdminController" autowire="true" abstract="true"/>
+    <service id="abstract.instanceof.AppBundle\Controller\AdminController" class="AppBundle\Controller\AdminController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id="instanceof.Symfony\Bundle\FrameworkBundle\Controller\Controller.0.AppBundle\Controller\DefaultController" class="AppBundle\Controller\DefaultController" autowire="true" abstract="true"/>
     <service id="abstract.instanceof.AppBundle\Controller\DefaultController" class="AppBundle\Controller\DefaultController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id="instanceof.Symfony\Bundle\FrameworkBundle\Controller\Controller.0.AppBundle\Controller\EmployeesController" class="AppBundle\Controller\EmployeesController" autowire="true" abstract="true"/>
     <service id="abstract.instanceof.AppBundle\Controller\EmployeesController" class="AppBundle\Controller\EmployeesController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id="instanceof.Symfony\Bundle\FrameworkBundle\Controller\Controller.0.AppBundle\Controller\FoodController" class="AppBundle\Controller\FoodController" autowire="true" abstract="true"/>
     <service id="abstract.instanceof.AppBundle\Controller\FoodController" class="AppBundle\Controller\FoodController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id="service_locator.90d2f9c613cb4255e5902c6a37360500" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection"/>
+    </service>
     <service id="service_locator.4f8384c8862c511eefe34301cff90111" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection"/>
@@ -6764,7 +6836,7 @@
       <tag name="container.service_locator"/>
       <argument type="collection"/>
     </service>
-    <service id="service_locator.3e082329fc99bfae597876a3501e6fda" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id="service_locator.d88cfa4e69b97939bcb559bc710963c9" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection"/>
     </service>
@@ -7063,7 +7135,7 @@
     <service id="cache.system.recorder_inner" class="Symfony\Component\Cache\Adapter\AdapterInterface" public="false" lazy="true">
       <argument>D8MxcDgLIr</argument>
       <argument>0</argument>
-      <argument>j6HfSkS8Oj8-K37Y8Oh2zo</argument>
+      <argument>eF-njCBHKV3n74Dfw7v4mF</argument>
       <argument>/home/ichinator/Bureau/MesProjetsGIT/Restaurant/var/cache/dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -7071,7 +7143,7 @@
     <service id="cache.validator.recorder_inner" class="Symfony\Component\Cache\Adapter\AdapterInterface" public="false" lazy="true">
       <argument>lLHwAahPtH</argument>
       <argument>0</argument>
-      <argument>j6HfSkS8Oj8-K37Y8Oh2zo</argument>
+      <argument>eF-njCBHKV3n74Dfw7v4mF</argument>
       <argument>/home/ichinator/Bureau/MesProjetsGIT/Restaurant/var/cache/dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -7079,7 +7151,7 @@
     <service id="cache.serializer.recorder_inner" class="Symfony\Component\Cache\Adapter\AdapterInterface" public="false" lazy="true">
       <argument>52d-Oa89OT</argument>
       <argument>0</argument>
-      <argument>j6HfSkS8Oj8-K37Y8Oh2zo</argument>
+      <argument>eF-njCBHKV3n74Dfw7v4mF</argument>
       <argument>/home/ichinator/Bureau/MesProjetsGIT/Restaurant/var/cache/dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -7087,7 +7159,7 @@
     <service id="cache.annotations.recorder_inner" class="Symfony\Component\Cache\Adapter\AdapterInterface" public="false" lazy="true">
       <argument>VQrigT4oBG</argument>
       <argument>0</argument>
-      <argument>j6HfSkS8Oj8-K37Y8Oh2zo</argument>
+      <argument>eF-njCBHKV3n74Dfw7v4mF</argument>
       <argument>/home/ichinator/Bureau/MesProjetsGIT/Restaurant/var/cache/dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>

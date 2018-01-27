@@ -5,10 +5,13 @@
 {% block body %}
     {{ parent ()}}
 
+
     {% for boissons in boissons %}
-        {{ boissons.name}}<br \>
-        {{ boissons.prix }}<br \>
-        <img src="{{ vich_uploader_asset(boissons, 'imageFile') }}" alt="{{ boissons.image }}" /><br \><br \>
+        {% if boissons.enabled %}
+            {{ boissons.name}}<br \>
+            {{ boissons.prix }}<br \>
+            <img src="{{ vich_uploader_asset(boissons, 'imageFile') }}" alt="{{ boissons.image }}" /><br \><br \>
+        {% endif %}
     {% endfor %}
 {% endblock %}
 

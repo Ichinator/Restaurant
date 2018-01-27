@@ -6,10 +6,12 @@
     {{ parent ()}}
 
     {% for employees in employees %}
-        {{ employees.nom}}<br \>
-        {{ employees.prenom }}<br \>
-        {{ employees.poste }}<br \>
-        <img src="{{ vich_uploader_asset(employees, 'imageFile') }}" alt="{{ employees.image }}" /><br \><br \>
+        {% if employees.enabled %}
+            {{ employees.nom}}<br \>
+            {{ employees.prenom }}<br \>
+            {{ employees.poste }}<br \>
+            <img src="{{ vich_uploader_asset(employees, 'imageFile') }}" alt="{{ employees.image }}" /><br \><br \>
+        {% endif %}
     {% endfor %}
 {% endblock %}
 

@@ -125,7 +125,7 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                         return $this->redirect($rawPathinfo.'/', 'easyadmin');
                     }
 
-                    return array (  '_controller' => 'EasyCorp\\Bundle\\EasyAdminBundle\\Controller\\AdminController::indexAction',  '_route' => 'easyadmin',);
+                    return array (  '_controller' => 'AppBundle\\Controller\\AdminController::indexAction',  '_route' => 'easyadmin',);
                 }
 
                 // admin
@@ -134,7 +134,7 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                         return $this->redirect($rawPathinfo.'/', 'admin');
                     }
 
-                    return array (  '_controller' => 'EasyCorp\\Bundle\\EasyAdminBundle\\Controller\\AdminController::indexAction',  '_route' => 'admin',);
+                    return array (  '_controller' => 'AppBundle\\Controller\\AdminController::indexAction',  '_route' => 'admin',);
                 }
 
             }
@@ -333,13 +333,22 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 
         elseif (0 === strpos($pathinfo, '/show')) {
             // employees
-            if ('/showEmployees' === $pathinfo) {
+            if ('/showEmployees' === $trimmedPathinfo) {
+                if (substr($pathinfo, -1) !== '/') {
+                    return $this->redirect($rawPathinfo.'/', 'employees');
+                }
+
                 return array (  '_controller' => 'AppBundle\\Controller\\EmployeesController::showAction',  '_route' => 'employees',);
             }
 
             // entrees
             if ('/showEntrees' === $pathinfo) {
                 return array (  '_controller' => 'AppBundle\\Controller\\FoodController::showEntreesAction',  '_route' => 'entrees',);
+            }
+
+            // showOneEmployee
+            if (0 === strpos($pathinfo, '/showOneEmployee') && preg_match('#^/showOneEmployee/(?P<id>\\d+)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'showOneEmployee')), array (  '_controller' => 'AppBundle\\Controller\\EmployeesController::showOneEmployeeAction',));
             }
 
             // plats

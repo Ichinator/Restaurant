@@ -6,10 +6,13 @@
     {{ parent ()}}
 
     {% for entrees in entrees %}
-        {{ entrees.name}}<br \>
-        {{ entrees.prix }}<br \>
-        <img src="{{ vich_uploader_asset(entrees, 'imageFile') }}" alt="{{ entrees.image }}" /><br \><br \>
+        {% if entrees.enabled %}
+            {{ entrees.name}}<br \>
+            {{ entrees.prix }}<br \>
+            <img src="{{ vich_uploader_asset(entrees, 'imageFile') }}" alt="{{ entrees.image }}" /><br \><br \>
+        {% endif %}
     {% endfor %}
+
 {% endblock %}
 
 {% block javascripts %}

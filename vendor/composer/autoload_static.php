@@ -47,6 +47,7 @@ class ComposerStaticInit6edc9ce91806279bb2928a74073821e6
             'Symfony\\Bridge\\PhpUnit\\' => 23,
             'Symfony\\Bridge\\Monolog\\' => 23,
             'Symfony\\Bridge\\Doctrine\\' => 24,
+            'Stof\\DoctrineExtensionsBundle\\' => 30,
             'Sensio\\Bundle\\GeneratorBundle\\' => 30,
             'Sensio\\Bundle\\FrameworkExtraBundle\\' => 35,
             'Sensio\\Bundle\\DistributionBundle\\' => 33,
@@ -179,6 +180,10 @@ class ComposerStaticInit6edc9ce91806279bb2928a74073821e6
         'Symfony\\Bridge\\Doctrine\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/symfony/src/Symfony/Bridge/Doctrine',
+        ),
+        'Stof\\DoctrineExtensionsBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/stof/doctrine-extensions-bundle',
         ),
         'Sensio\\Bundle\\GeneratorBundle\\' => 
         array (
@@ -338,6 +343,13 @@ class ComposerStaticInit6edc9ce91806279bb2928a74073821e6
                 0 => __DIR__ . '/..' . '/jms/parser-lib/src',
             ),
         ),
+        'G' => 
+        array (
+            'Gedmo\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/gedmo/doctrine-extensions/lib',
+            ),
+        ),
         'F' => 
         array (
             'FOS\\CommentBundle' => 
@@ -370,6 +382,13 @@ class ComposerStaticInit6edc9ce91806279bb2928a74073821e6
             'Doctrine\\Common\\Annotations\\' => 
             array (
                 0 => __DIR__ . '/..' . '/doctrine/annotations/lib',
+            ),
+        ),
+        'B' => 
+        array (
+            'Behat\\Transliterator' => 
+            array (
+                0 => __DIR__ . '/..' . '/behat/transliterator/src',
             ),
         ),
         'A' => 

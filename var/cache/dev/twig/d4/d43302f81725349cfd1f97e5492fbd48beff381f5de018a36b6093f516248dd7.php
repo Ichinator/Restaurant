@@ -15,11 +15,11 @@ class __TwigTemplate_48698430a953e66caf550e9cf8c51062a26516a0ff4489cac9782d5ac3a
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_2c0bcc3b83ed754819192fed7698077b5f76a9c30d872635547277167f410cb0 = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
-        $__internal_2c0bcc3b83ed754819192fed7698077b5f76a9c30d872635547277167f410cb0->enter($__internal_2c0bcc3b83ed754819192fed7698077b5f76a9c30d872635547277167f410cb0_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "FOSCommentBundle:Thread:comments.html.twig"));
+        $__internal_011ed9f70800964d0ead1ddae1bad87ea330c3409e65579d9fb1a5e20a178abf = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
+        $__internal_011ed9f70800964d0ead1ddae1bad87ea330c3409e65579d9fb1a5e20a178abf->enter($__internal_011ed9f70800964d0ead1ddae1bad87ea330c3409e65579d9fb1a5e20a178abf_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "FOSCommentBundle:Thread:comments.html.twig"));
 
-        $__internal_f9d1cbbefe8808b75f410fbde7d38cf4ae7c7c06497353519636c5c767341bff = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_f9d1cbbefe8808b75f410fbde7d38cf4ae7c7c06497353519636c5c767341bff->enter($__internal_f9d1cbbefe8808b75f410fbde7d38cf4ae7c7c06497353519636c5c767341bff_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "FOSCommentBundle:Thread:comments.html.twig"));
+        $__internal_c19278e2820393a45b8fc75e6156887c77e9d7be59ba2f007ce6d88d60867465 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_c19278e2820393a45b8fc75e6156887c77e9d7be59ba2f007ce6d88d60867465->enter($__internal_c19278e2820393a45b8fc75e6156887c77e9d7be59ba2f007ce6d88d60867465_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "FOSCommentBundle:Thread:comments.html.twig"));
 
         // line 11
         echo "
@@ -108,10 +108,10 @@ class __TwigTemplate_48698430a953e66caf550e9cf8c51062a26516a0ff4489cac9782d5ac3a
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['commentinfo'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
         
-        $__internal_2c0bcc3b83ed754819192fed7698077b5f76a9c30d872635547277167f410cb0->leave($__internal_2c0bcc3b83ed754819192fed7698077b5f76a9c30d872635547277167f410cb0_prof);
+        $__internal_011ed9f70800964d0ead1ddae1bad87ea330c3409e65579d9fb1a5e20a178abf->leave($__internal_011ed9f70800964d0ead1ddae1bad87ea330c3409e65579d9fb1a5e20a178abf_prof);
 
         
-        $__internal_f9d1cbbefe8808b75f410fbde7d38cf4ae7c7c06497353519636c5c767341bff->leave($__internal_f9d1cbbefe8808b75f410fbde7d38cf4ae7c7c06497353519636c5c767341bff_prof);
+        $__internal_c19278e2820393a45b8fc75e6156887c77e9d7be59ba2f007ce6d88d60867465->leave($__internal_c19278e2820393a45b8fc75e6156887c77e9d7be59ba2f007ce6d88d60867465_prof);
 
     }
 

@@ -38,6 +38,34 @@ class Menu
      */
     private $prix;
 
+    /**
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Entrees")
+     */
+
+    private $entree;
+
+    /**
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Plats")
+     */
+
+    private $plat;
+
+
+    /**
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Desserts")
+     */
+
+    private $dessert;
+
+
+    /**
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Boissons")
+     */
+
+    private $boisson;
+
+
+
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -56,6 +84,12 @@ class Menu
      * @var \DateTime
      */
     private $updatedAt;
+
+    /**
+     * @ORM\Column(type="boolean")
+     * @var \DateTime
+     */
+    private $enabled = true;
 
 // ...
 
@@ -145,5 +179,149 @@ class Menu
     public function getPrix()
     {
         return $this->prix;
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     *
+     * @return Menu
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * Set entree
+     *
+     * @param \AppBundle\Entity\Entrees $entree
+     *
+     * @return Menu
+     */
+    public function setEntree(\AppBundle\Entity\Entrees $entree = null)
+    {
+        $this->entree = $entree;
+
+        return $this;
+    }
+
+    /**
+     * Get entree
+     *
+     * @return \AppBundle\Entity\Entrees
+     */
+    public function getEntree()
+    {
+        return $this->entree;
+    }
+
+    /**
+     * Set plat
+     *
+     * @param \AppBundle\Entity\Plats $plat
+     *
+     * @return Menu
+     */
+    public function setPlat(\AppBundle\Entity\Plats $plat = null)
+    {
+        $this->plat = $plat;
+
+        return $this;
+    }
+
+    /**
+     * Get plat
+     *
+     * @return \AppBundle\Entity\Plats
+     */
+    public function getPlat()
+    {
+        return $this->plat;
+    }
+
+    /**
+     * Set dessert
+     *
+     * @param \AppBundle\Entity\Desserts $dessert
+     *
+     * @return Menu
+     */
+    public function setDessert(\AppBundle\Entity\Desserts $dessert = null)
+    {
+        $this->dessert = $dessert;
+
+        return $this;
+    }
+
+    /**
+     * Get dessert
+     *
+     * @return \AppBundle\Entity\Desserts
+     */
+    public function getDessert()
+    {
+        return $this->dessert;
+    }
+
+    /**
+     * Set boisson
+     *
+     * @param \AppBundle\Entity\Boissons $boisson
+     *
+     * @return Menu
+     */
+    public function setBoisson(\AppBundle\Entity\Boissons $boisson = null)
+    {
+        $this->boisson = $boisson;
+
+        return $this;
+    }
+
+    /**
+     * Get boisson
+     *
+     * @return \AppBundle\Entity\Boissons
+     */
+    public function getBoisson()
+    {
+        return $this->boisson;
+    }
+
+    /**
+     * Set enabled
+     *
+     * @param boolean $enabled
+     *
+     * @return Menu
+     */
+    public function setEnabled($enabled)
+    {
+        $this->enabled = $enabled;
+
+        return $this;
+    }
+
+    /**
+     * Get enabled
+     *
+     * @return boolean
+     */
+    public function getEnabled()
+    {
+        return $this->enabled;
     }
 }
