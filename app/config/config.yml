@@ -67,6 +67,7 @@ doctrine:
         naming_strategy: doctrine.orm.naming_strategy.underscore
         auto_mapping: true
 
+
 # Swiftmailer Configuration
 swiftmailer:
     transport: '%mailer_transport%'
@@ -103,6 +104,7 @@ easy_admin:
                                 - { property: 'prenom', label: 'Prénom'}
                                 - { property: 'poste', label: 'Poste occupé'}
                                 - { property: 'enabled', label: 'Activer compte'}
+                                - { property: 'description', label: 'Description'}
                                 - { property: 'imageFile', type: 'file', label: 'Ajouter' }
         Entrees:
             class: AppBundle\Entity\Entrees
@@ -110,6 +112,7 @@ easy_admin:
                             fields:
                                 - { property: 'name', label: 'Nom de l entrée'}
                                 - { property: 'prix', label: 'Prix'}
+                                - { property: 'description', label: 'Description'}
                                 - { property: 'imageFile', type: 'file', label: 'Ajouter image entree'}
         Plats:
             class: AppBundle\Entity\Plats
@@ -117,6 +120,7 @@ easy_admin:
                             fields:
                                 - { property: 'name', label: 'Nom du plat'}
                                 - { property: 'prix', label: 'Prix'}
+                                - { property: 'description', label: 'Description'}
                                 - { property: 'imageFile', type: 'file', label: 'Ajouter image du plat'}
         Desserts:
             class: AppBundle\Entity\Desserts
@@ -124,6 +128,7 @@ easy_admin:
                             fields:
                                 - { property: 'name', label: 'Nom du dessert'}
                                 - { property: 'prix', label: 'Prix'}
+                                - { property: 'description', label: 'Description'}
                                 - { property: 'imageFile', type: 'file', label: 'Ajouter image du dessert'}
         Boissons:
             class: AppBundle\Entity\Boissons
@@ -131,6 +136,7 @@ easy_admin:
                             fields:
                                 - { property: 'name', label: 'Nom de la boisson'}
                                 - { property: 'prix', label: 'Prix'}
+                                - { property: 'description', label: 'Description'}
                                 - { property: 'imageFile', type: 'file', label: 'Ajouter image de la boisson'}
         Menu:
                     class: AppBundle\Entity\Menu

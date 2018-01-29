@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    {{ parent ()}}
+{% endblock %}
+{% block body %}
+    {{ parent ()}}
+    {{ oneBoisson.name}}<br \>
+    {{ oneBoisson.prix }}<br \>
+    <img src="{{ vich_uploader_asset(oneBoisson, 'imageFile') }}" alt="{{ oneBoisson.image }}" /><br \><br \>
+    {{ oneBoisson.description }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}

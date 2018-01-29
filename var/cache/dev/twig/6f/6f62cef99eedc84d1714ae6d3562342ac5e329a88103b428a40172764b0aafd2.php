@@ -15,11 +15,11 @@ class __TwigTemplate_dfe2b587f8efa36b2139bbc46a7accd47bc1da471e8917612b039515ca2
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_9dcde9e5feec4d48c145f2416b072d5b58be35071f359cd2f7eea9f0cf54543a = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
-        $__internal_9dcde9e5feec4d48c145f2416b072d5b58be35071f359cd2f7eea9f0cf54543a->enter($__internal_9dcde9e5feec4d48c145f2416b072d5b58be35071f359cd2f7eea9f0cf54543a_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "FOSCommentBundle:Thread:comment.html.twig"));
+        $__internal_42a58c9b75227f15faee9cadaea77c23a25970250fa5f676910cb75945101a77 = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
+        $__internal_42a58c9b75227f15faee9cadaea77c23a25970250fa5f676910cb75945101a77->enter($__internal_42a58c9b75227f15faee9cadaea77c23a25970250fa5f676910cb75945101a77_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "FOSCommentBundle:Thread:comment.html.twig"));
 
-        $__internal_5805733c7f151665def6e1d2c4a53eadc430c1097e64bcc57617ea477e6ad521 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_5805733c7f151665def6e1d2c4a53eadc430c1097e64bcc57617ea477e6ad521->enter($__internal_5805733c7f151665def6e1d2c4a53eadc430c1097e64bcc57617ea477e6ad521_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "FOSCommentBundle:Thread:comment.html.twig"));
+        $__internal_503afa6752943b3b06ee120f162e148aa11f882e70ec462bafafdddc81e0ddce = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_503afa6752943b3b06ee120f162e148aa11f882e70ec462bafafdddc81e0ddce->enter($__internal_503afa6752943b3b06ee120f162e148aa11f882e70ec462bafafdddc81e0ddce_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "FOSCommentBundle:Thread:comment.html.twig"));
 
         // line 11
         echo "
@@ -34,10 +34,10 @@ class __TwigTemplate_dfe2b587f8efa36b2139bbc46a7accd47bc1da471e8917612b039515ca2
         // line 15
         $this->loadTemplate("FOSCommentBundle:Thread:comment_content.html.twig", "FOSCommentBundle:Thread:comment.html.twig", 15)->display($context);
         
-        $__internal_9dcde9e5feec4d48c145f2416b072d5b58be35071f359cd2f7eea9f0cf54543a->leave($__internal_9dcde9e5feec4d48c145f2416b072d5b58be35071f359cd2f7eea9f0cf54543a_prof);
+        $__internal_42a58c9b75227f15faee9cadaea77c23a25970250fa5f676910cb75945101a77->leave($__internal_42a58c9b75227f15faee9cadaea77c23a25970250fa5f676910cb75945101a77_prof);
 
         
-        $__internal_5805733c7f151665def6e1d2c4a53eadc430c1097e64bcc57617ea477e6ad521->leave($__internal_5805733c7f151665def6e1d2c4a53eadc430c1097e64bcc57617ea477e6ad521_prof);
+        $__internal_503afa6752943b3b06ee120f162e148aa11f882e70ec462bafafdddc81e0ddce->leave($__internal_503afa6752943b3b06ee120f162e148aa11f882e70ec462bafafdddc81e0ddce_prof);
 
     }
 

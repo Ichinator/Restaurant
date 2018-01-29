@@ -62,6 +62,11 @@ class Plats
      */
     private $enabled = true;
 
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $description;
+
 // ...
 
     public function setImageFile(File $image = null)
@@ -196,5 +201,29 @@ class Plats
     public function getEnabled()
     {
         return $this->enabled;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return Plats
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
     }
 }

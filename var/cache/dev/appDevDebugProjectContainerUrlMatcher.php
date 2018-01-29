@@ -346,9 +346,32 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                 return array (  '_controller' => 'AppBundle\\Controller\\FoodController::showEntreesAction',  '_route' => 'entrees',);
             }
 
-            // showOneEmployee
-            if (0 === strpos($pathinfo, '/showOneEmployee') && preg_match('#^/showOneEmployee/(?P<id>\\d+)$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'showOneEmployee')), array (  '_controller' => 'AppBundle\\Controller\\EmployeesController::showOneEmployeeAction',));
+            if (0 === strpos($pathinfo, '/showOne')) {
+                // showOneEmployee
+                if (0 === strpos($pathinfo, '/showOneEmployee') && preg_match('#^/showOneEmployee/(?P<id>\\d+)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'showOneEmployee')), array (  '_controller' => 'AppBundle\\Controller\\EmployeesController::showOneEmployeeAction',));
+                }
+
+                // showOneEntree
+                if (0 === strpos($pathinfo, '/showOneEntree') && preg_match('#^/showOneEntree/(?P<id>\\d+)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'showOneEntree')), array (  '_controller' => 'AppBundle\\Controller\\FoodController::showOneEntreeAction',));
+                }
+
+                // showOnePlat
+                if (0 === strpos($pathinfo, '/showOnePlat') && preg_match('#^/showOnePlat/(?P<id>\\d+)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'showOnePlat')), array (  '_controller' => 'AppBundle\\Controller\\FoodController::showOneEmployeeAction',));
+                }
+
+                // showOneBoisson
+                if (0 === strpos($pathinfo, '/showOneBoisson') && preg_match('#^/showOneBoisson/(?P<id>\\d+)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'showOneBoisson')), array (  '_controller' => 'AppBundle\\Controller\\FoodController::showOneBoissonAction',));
+                }
+
+                // showOneDessert
+                if (0 === strpos($pathinfo, '/showOneDessert') && preg_match('#^/showOneDessert/(?P<id>\\d+)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'showOneDessert')), array (  '_controller' => 'AppBundle\\Controller\\FoodController::showOneDessertAction',));
+                }
+
             }
 
             // plats

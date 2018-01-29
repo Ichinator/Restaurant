@@ -67,6 +67,42 @@ public function showPlatsAction(Request $request){
         ));
     }
 
+    /**
+     * @Route("/showOnePlat/{id}", name="showOnePlat", requirements={"id"="\d+"})
+     */
+    public function showOneEmployeeAction($id)
+    {
+        $onePlat = $this->getDoctrine()->getManager()->getRepository(Plats::Class)->find($id);
+        return $this->render('default/onePlat.html.twig', array('onePlat'=>$onePlat));
+    }
+
+    /**
+     * @Route("/showOneEntree/{id}", name="showOneEntree", requirements={"id"="\d+"})
+     */
+    public function showOneEntreeAction($id)
+    {
+        $oneEntree = $this->getDoctrine()->getManager()->getRepository(Entrees::Class)->find($id);
+        return $this->render('default/oneEntree.html.twig', array('oneEntree'=>$oneEntree));
+    }
+
+    /**
+     * @Route("/showOneBoisson/{id}", name="showOneBoisson", requirements={"id"="\d+"})
+     */
+    public function showOneBoissonAction($id)
+    {
+        $oneBoisson = $this->getDoctrine()->getManager()->getRepository(Boissons::Class)->find($id);
+        return $this->render('default/oneBoisson.html.twig', array('oneBoisson'=>$oneBoisson));
+    }
+
+    /**
+     * @Route("/showOneDessert/{id}", name="showOneDessert", requirements={"id"="\d+"})
+     */
+    public function showOneDessertAction($id)
+    {
+        $oneDessert = $this->getDoctrine()->getManager()->getRepository(Desserts::Class)->find($id);
+        return $this->render('default/oneDessert.html.twig', array('oneDessert'=>$oneDessert));
+    }
+
 }
 
 ?>

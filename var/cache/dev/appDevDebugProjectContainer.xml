@@ -464,6 +464,10 @@
                 <parameter key="label">Activer compte</parameter>
               </parameter>
               <parameter type="collection">
+                <parameter key="property">description</parameter>
+                <parameter key="label">Description</parameter>
+              </parameter>
+              <parameter type="collection">
                 <parameter key="property">imageFile</parameter>
                 <parameter key="type">file</parameter>
                 <parameter key="label">Ajouter</parameter>
@@ -483,6 +487,10 @@
               <parameter type="collection">
                 <parameter key="property">prix</parameter>
                 <parameter key="label">Prix</parameter>
+              </parameter>
+              <parameter type="collection">
+                <parameter key="property">description</parameter>
+                <parameter key="label">Description</parameter>
               </parameter>
               <parameter type="collection">
                 <parameter key="property">imageFile</parameter>
@@ -506,6 +514,10 @@
                 <parameter key="label">Prix</parameter>
               </parameter>
               <parameter type="collection">
+                <parameter key="property">description</parameter>
+                <parameter key="label">Description</parameter>
+              </parameter>
+              <parameter type="collection">
                 <parameter key="property">imageFile</parameter>
                 <parameter key="type">file</parameter>
                 <parameter key="label">Ajouter image du plat</parameter>
@@ -527,6 +539,10 @@
                 <parameter key="label">Prix</parameter>
               </parameter>
               <parameter type="collection">
+                <parameter key="property">description</parameter>
+                <parameter key="label">Description</parameter>
+              </parameter>
+              <parameter type="collection">
                 <parameter key="property">imageFile</parameter>
                 <parameter key="type">file</parameter>
                 <parameter key="label">Ajouter image du dessert</parameter>
@@ -546,6 +562,10 @@
               <parameter type="collection">
                 <parameter key="property">prix</parameter>
                 <parameter key="label">Prix</parameter>
+              </parameter>
+              <parameter type="collection">
+                <parameter key="property">description</parameter>
+                <parameter key="label">Description</parameter>
               </parameter>
               <parameter type="collection">
                 <parameter key="property">imageFile</parameter>
@@ -1142,7 +1162,7 @@
       <tag name="monolog.logger" channel="cache"/>
       <argument></argument>
       <argument>0</argument>
-      <argument>eF-njCBHKV3n74Dfw7v4mF</argument>
+      <argument>1SHRJk-WsccfGaHNq4enHM</argument>
       <argument>/home/ichinator/Bureau/MesProjetsGIT/Restaurant/var/cache/dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -1152,7 +1172,7 @@
       <tag name="monolog.logger" channel="cache"/>
       <argument></argument>
       <argument>0</argument>
-      <argument>eF-njCBHKV3n74Dfw7v4mF</argument>
+      <argument>1SHRJk-WsccfGaHNq4enHM</argument>
       <call method="setLogger">
         <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       </call>
@@ -3726,12 +3746,12 @@
     </service>
     <service id="security.authentication.listener.anonymous.main" class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
       <argument type="service" id="security.token_storage"/>
-      <argument>5a6ca1eb2ecb21.07172763</argument>
+      <argument>5a6f22108d8dc6.89512188</argument>
       <argument type="service" id="monolog.logger.security" on-invalid="null"/>
       <argument type="service" id="security.authentication.manager"/>
     </service>
     <service id="security.authentication.provider.anonymous.main" class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-      <argument>5a6ca1eb2ecb21.07172763</argument>
+      <argument>5a6f22108d8dc6.89512188</argument>
     </service>
     <service id="security.exception_listener.main" class="Symfony\Component\Security\Http\Firewall\ExceptionListener" public="false">
       <argument type="service" id="security.token_storage"/>
@@ -4965,6 +4985,10 @@
                   <argument key="label">Activer compte</argument>
                 </argument>
                 <argument type="collection">
+                  <argument key="property">description</argument>
+                  <argument key="label">Description</argument>
+                </argument>
+                <argument type="collection">
                   <argument key="property">imageFile</argument>
                   <argument key="type">file</argument>
                   <argument key="label">Ajouter</argument>
@@ -4984,6 +5008,10 @@
                 <argument type="collection">
                   <argument key="property">prix</argument>
                   <argument key="label">Prix</argument>
+                </argument>
+                <argument type="collection">
+                  <argument key="property">description</argument>
+                  <argument key="label">Description</argument>
                 </argument>
                 <argument type="collection">
                   <argument key="property">imageFile</argument>
@@ -5007,6 +5035,10 @@
                   <argument key="label">Prix</argument>
                 </argument>
                 <argument type="collection">
+                  <argument key="property">description</argument>
+                  <argument key="label">Description</argument>
+                </argument>
+                <argument type="collection">
                   <argument key="property">imageFile</argument>
                   <argument key="type">file</argument>
                   <argument key="label">Ajouter image du plat</argument>
@@ -5028,6 +5060,10 @@
                   <argument key="label">Prix</argument>
                 </argument>
                 <argument type="collection">
+                  <argument key="property">description</argument>
+                  <argument key="label">Description</argument>
+                </argument>
+                <argument type="collection">
                   <argument key="property">imageFile</argument>
                   <argument key="type">file</argument>
                   <argument key="label">Ajouter image du dessert</argument>
@@ -5047,6 +5083,10 @@
                 <argument type="collection">
                   <argument key="property">prix</argument>
                   <argument key="label">Prix</argument>
+                </argument>
+                <argument type="collection">
+                  <argument key="property">description</argument>
+                  <argument key="label">Description</argument>
                 </argument>
                 <argument type="collection">
                   <argument key="property">imageFile</argument>
@@ -7135,7 +7175,7 @@
     <service id="cache.system.recorder_inner" class="Symfony\Component\Cache\Adapter\AdapterInterface" public="false" lazy="true">
       <argument>D8MxcDgLIr</argument>
       <argument>0</argument>
-      <argument>eF-njCBHKV3n74Dfw7v4mF</argument>
+      <argument>1SHRJk-WsccfGaHNq4enHM</argument>
       <argument>/home/ichinator/Bureau/MesProjetsGIT/Restaurant/var/cache/dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -7143,7 +7183,7 @@
     <service id="cache.validator.recorder_inner" class="Symfony\Component\Cache\Adapter\AdapterInterface" public="false" lazy="true">
       <argument>lLHwAahPtH</argument>
       <argument>0</argument>
-      <argument>eF-njCBHKV3n74Dfw7v4mF</argument>
+      <argument>1SHRJk-WsccfGaHNq4enHM</argument>
       <argument>/home/ichinator/Bureau/MesProjetsGIT/Restaurant/var/cache/dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -7151,7 +7191,7 @@
     <service id="cache.serializer.recorder_inner" class="Symfony\Component\Cache\Adapter\AdapterInterface" public="false" lazy="true">
       <argument>52d-Oa89OT</argument>
       <argument>0</argument>
-      <argument>eF-njCBHKV3n74Dfw7v4mF</argument>
+      <argument>1SHRJk-WsccfGaHNq4enHM</argument>
       <argument>/home/ichinator/Bureau/MesProjetsGIT/Restaurant/var/cache/dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -7159,7 +7199,7 @@
     <service id="cache.annotations.recorder_inner" class="Symfony\Component\Cache\Adapter\AdapterInterface" public="false" lazy="true">
       <argument>VQrigT4oBG</argument>
       <argument>0</argument>
-      <argument>eF-njCBHKV3n74Dfw7v4mF</argument>
+      <argument>1SHRJk-WsccfGaHNq4enHM</argument>
       <argument>/home/ichinator/Bureau/MesProjetsGIT/Restaurant/var/cache/dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>

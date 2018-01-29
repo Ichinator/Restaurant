@@ -4,14 +4,20 @@
 {% endblock %}
 {% block body %}
     {{ parent ()}}
-
+<div class="container">
+    <div class="row">
     {% for plats in plats %}
+        <div class="col-sm-4">
         {% if plats.enabled %}
             {{ plats.name}}<br \>
             {{ plats.prix }}<br \>
             <img src="{{ vich_uploader_asset(plats, 'imageFile') }}" alt="{{ plats.image }}" /><br \><br \>
+            <td><a href="{{ path('showOnePlat', { 'id': plats.id }) }}">{{ plats.name }}</a></td>
         {% endif %}
+        </div>
     {% endfor %}
+    </div>
+</div>
 {% endblock %}
 
 {% block javascripts %}

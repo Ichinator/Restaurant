@@ -62,6 +62,11 @@ class Boissons
      */
     private $enabled = true;
 
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $description;
+
 // ...
 
     public function setImageFile(File $image = null)
@@ -198,5 +203,29 @@ class Boissons
     public function getEnabled()
     {
         return $this->enabled;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return Boissons
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
     }
 }

@@ -4,15 +4,25 @@
 {% endblock %}
 {% block body %}
     {{ parent ()}}
-
+    <div class="container">
+        <div class="row">
     {% for employees in employees %}
-        {% if employees.enabled %}
-            {{ employees.nom}}<br \>
-            {{ employees.prenom }}<br \>
-            {{ employees.poste }}<br \>
-            <img src="{{ vich_uploader_asset(employees, 'imageFile') }}" alt="{{ employees.image }}" /><br \><br \>
-        {% endif %}
+            <div class="col-sm-4">
+                {% if employees.enabled %}
+                    {{ employees.nom}}<br \>
+                    {{ employees.prenom }}<br \>
+                    {{ employees.poste }}<br \>
+                    <td><a href="{{ path('showOneEmployee', { 'id': employees.id }) }}">{{ employees.nom }}</a></td><br \>
+                    <img src="{{ vich_uploader_asset(employees, 'imageFile') }}" alt="{{ employees.image }}" /><br \>
+                {% endif %}
+            </div>
     {% endfor %}
+        </div>
+    </div>
+
+
+
+
 {% endblock %}
 
 {% block javascripts %}

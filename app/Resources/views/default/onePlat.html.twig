@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    {{ parent ()}}
+{% endblock %}
+{% block body %}
+    {{ parent ()}}
+    {{ onePlat.name}}<br \>
+    {{ onePlat.prix }}<br \>
+    <img src="{{ vich_uploader_asset(onePlat, 'imageFile') }}" alt="{{ onePlat.image }}" /><br \><br \>
+    {{ onePlat.description }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}

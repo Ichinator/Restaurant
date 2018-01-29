@@ -60,11 +60,9 @@ class Employees
     private $enabled;
 
     /**
-     * @ORM\column(length=255, unique=true, nullable=false)
-     * @Gedmo\Slug(fields={"id"})
+     * @ORM\Column(type="text")
      */
-
-    private $slug;
+    private $description;
 
 
 // ...
@@ -252,5 +250,29 @@ class Employees
     public function getSlug()
     {
         return $this->slug;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return Employees
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
     }
 }

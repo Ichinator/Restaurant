@@ -4,14 +4,20 @@
 {% endblock %}
 {% block body %}
     {{ parent ()}}
-
+    <div class="container">
+        <div class="row">
     {% for desserts in desserts %}
+        <div class="col-sm-4">
         {% if desserts.enabled %}
             {{ desserts.name}}<br \>
             {{ desserts.prix }}<br \>
             <img src="{{ vich_uploader_asset(desserts, 'imageFile') }}" alt="{{ desserts.image }}" /><br \><br \>
+            <td><a href="{{ path('showOneDessert', { 'id': desserts.id }) }}">{{ desserts.name }}</a></td>
         {% endif %}
+        </div>
     {% endfor %}
+    </div>
+    </div>
 {% endblock %}
 
 {% block javascripts %}

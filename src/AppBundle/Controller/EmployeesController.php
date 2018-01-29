@@ -27,9 +27,8 @@ class EmployeesController extends Controller{
      */
     public function showOneEmployeeAction($id)
     {
-        $oneEmployee = $this->getDoctrine()->getRepository(Employees::Class)->findAll();
-        return $this->render('default/oneEmployee.html.twig', array('oneEmployee'=> $oneEmployee));
-
+        $oneEmployee = $this->getDoctrine()->getManager()->getRepository(Employees::Class)->find($id);
+        return $this->render('default/oneEmployee.html.twig', array('oneEmployee'=>$oneEmployee));
     }
 }
 

@@ -64,6 +64,11 @@ class Desserts
      */
     private $enabled = true;
 
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $description;
+
 // ...
 
     public function setImageFile(File $image = null)
@@ -200,5 +205,29 @@ class Desserts
     public function getEnabled()
     {
         return $this->enabled;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return Desserts
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
     }
 }

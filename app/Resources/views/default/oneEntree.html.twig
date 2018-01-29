@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    {{ parent ()}}
+{% endblock %}
+{% block body %}
+    {{ parent ()}}
+    {{ oneEntree.name}}<br \>
+    {{ oneEntree.prix }}<br \>
+    <img src="{{ vich_uploader_asset(oneEntree, 'imageFile') }}" alt="{{ oneEntree.image }}" /><br \><br \>
+    {{ oneEntree.description }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}

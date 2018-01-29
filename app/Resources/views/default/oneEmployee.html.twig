@@ -4,14 +4,11 @@
 {% endblock %}
 {% block body %}
     {{ parent ()}}
-
-    {% for employees in oneEmployee %}
-        {{ employees.nom}}<br \>
-        {{ employees.prenom }}<br \>
-        {{ employees.poste }}<br \>
-        <img src="{{ vich_uploader_asset(employees, 'imageFile') }}" alt="{{ employees.image }}" /><br \><br \>
-    {% endfor %}
-    <p>Vu ok</p>
+    {{ oneEmployee.nom}}<br \>
+    {{ oneEmployee.prenom }}<br \>
+    {{ oneEmployee.poste }}<br \>
+    <img src="{{ vich_uploader_asset(oneEmployee, 'imageFile') }}" alt="{{ oneEmployee.image }}" /><br \><br \>
+    {{ oneEmployee.description }}
 {% endblock %}
 
 {% block javascripts %}

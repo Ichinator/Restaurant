@@ -62,6 +62,11 @@ class Plats
      */
     private $enabled = true;
 
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $description;
+
 // ...
 
     public function setImageFile(File $image = null)

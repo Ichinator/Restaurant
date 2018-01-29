@@ -4,14 +4,21 @@
 {% endblock %}
 {% block body %}
     {{ parent ()}}
-
+<div class="container">
+    <div class="row">
     {% for entrees in entrees %}
+        <div class="col-sm-4">
         {% if entrees.enabled %}
             {{ entrees.name}}<br \>
             {{ entrees.prix }}<br \>
             <img src="{{ vich_uploader_asset(entrees, 'imageFile') }}" alt="{{ entrees.image }}" /><br \><br \>
+            <td><a href="{{ path('showOneEntree', { 'id': entrees.id }) }}">{{ entrees.name }}</a></td>
         {% endif %}
+        </div>
     {% endfor %}
+    </div>
+</div>
+
 
 {% endblock %}
 

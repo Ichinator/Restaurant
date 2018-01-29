@@ -5,6 +5,7 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\HttpFoundation\File\File;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Entrees
@@ -61,6 +62,12 @@ class Entrees
      * @var \DateTime
      */
     private $enabled = true;
+
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $description;
+
 
 // ...
 
@@ -198,5 +205,29 @@ class Entrees
     public function getEnabled()
     {
         return $this->enabled;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return Entrees
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
     }
 }
