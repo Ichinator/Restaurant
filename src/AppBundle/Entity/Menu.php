@@ -39,35 +39,6 @@ class Menu
     private $prix;
 
     /**
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Entrees")
-     */
-
-    private $entree;
-
-    /**
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Plats")
-     */
-
-    private $plat;
-
-
-    /**
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Desserts")
-     */
-
-    private $dessert;
-
-
-    /**
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Boissons")
-     */
-
-    private $boisson;
-
-
-
-
-    /**
      * @ORM\Column(type="string", length=255)
      * @var string
      */
@@ -87,9 +58,9 @@ class Menu
 
     /**
      * @ORM\Column(type="boolean")
-     * @var \DateTime
      */
     private $enabled = true;
+
 
 // ...
 
@@ -206,6 +177,30 @@ class Menu
     }
 
     /**
+     * Set enabled
+     *
+     * @param boolean $enabled
+     *
+     * @return Menu
+     */
+    public function setEnabled($enabled)
+    {
+        $this->enabled = $enabled;
+
+        return $this;
+    }
+
+    /**
+     * Get enabled
+     *
+     * @return boolean
+     */
+    public function getEnabled()
+    {
+        return $this->enabled;
+    }
+
+    /**
      * Set entree
      *
      * @param \AppBundle\Entity\Entrees $entree
@@ -299,29 +294,5 @@ class Menu
     public function getBoisson()
     {
         return $this->boisson;
-    }
-
-    /**
-     * Set enabled
-     *
-     * @param boolean $enabled
-     *
-     * @return Menu
-     */
-    public function setEnabled($enabled)
-    {
-        $this->enabled = $enabled;
-
-        return $this;
-    }
-
-    /**
-     * Get enabled
-     *
-     * @return boolean
-     */
-    public function getEnabled()
-    {
-        return $this->enabled;
     }
 }

@@ -438,6 +438,10 @@
       <parameter>Default</parameter>
     </parameter>
     <parameter key="easyadmin.config" type="collection">
+      <parameter key="list" type="collection">
+        <parameter key="max_results">20</parameter>
+        <parameter key="actions" type="collection"/>
+      </parameter>
       <parameter key="entities" type="collection">
         <parameter key="User" type="collection">
           <parameter key="class">AppBundle\Entity\User</parameter>
@@ -617,6 +621,30 @@
           <parameter key="class">AppBundle\Entity\Thread</parameter>
           <parameter key="name">Thread</parameter>
         </parameter>
+        <parameter key="News" type="collection">
+          <parameter key="class">AppBundle\Entity\News</parameter>
+          <parameter key="form" type="collection">
+            <parameter key="fields" type="collection">
+              <parameter type="collection">
+                <parameter key="property">dateCreate</parameter>
+                <parameter key="label">Date de création</parameter>
+              </parameter>
+              <parameter type="collection">
+                <parameter key="property">title</parameter>
+                <parameter key="label">Titre</parameter>
+              </parameter>
+              <parameter type="collection">
+                <parameter key="property">content</parameter>
+                <parameter key="label">Contenu</parameter>
+              </parameter>
+              <parameter type="collection">
+                <parameter key="property">published</parameter>
+                <parameter key="label">Publié</parameter>
+              </parameter>
+            </parameter>
+          </parameter>
+          <parameter key="name">News</parameter>
+        </parameter>
       </parameter>
       <parameter key="design" type="collection">
         <parameter key="form_theme" type="collection">
@@ -644,10 +672,6 @@
       </parameter>
       <parameter key="disabled_actions" type="collection"/>
       <parameter key="translation_domain">messages</parameter>
-      <parameter key="list" type="collection">
-        <parameter key="actions" type="collection"/>
-        <parameter key="max_results">15</parameter>
-      </parameter>
       <parameter key="search" type="collection"/>
       <parameter key="edit" type="collection">
         <parameter key="actions" type="collection"/>
@@ -745,11 +769,14 @@
       </parameter>
     </parameter>
     <parameter key="vich_uploader.file_injector.class">Vich\UploaderBundle\Injector\FileInjector</parameter>
+    <parameter key="kms_froala_editor.saveinterval">2500</parameter>
     <parameter key="kms_froala_editor.fileuploadurl">kms_froala_editor_upload_file</parameter>
     <parameter key="kms_froala_editor.imagemanagerdeleteurl">kms_froala_editor_delete_image</parameter>
     <parameter key="kms_froala_editor.imagemanagerloadurl">kms_froala_editor_load_images</parameter>
     <parameter key="kms_froala_editor.imageuploadurl">kms_froala_editor_upload_image</parameter>
     <parameter key="kms_froala_editor.language">fr</parameter>
+    <parameter key="kms_froala_editor.saveparam">content</parameter>
+    <parameter key="kms_froala_editor.saveurl">createNews</parameter>
     <parameter key="kms_froala_editor.videouploadurl">kms_froala_editor_upload_video</parameter>
     <parameter key="kms_froala_editor.includejs">true</parameter>
     <parameter key="kms_froala_editor.includecss">true</parameter>
@@ -999,6 +1026,21 @@
     <service id="AppBundle\Controller\FoodController" class="AppBundle\Controller\FoodController" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
     </service>
+    <service id="AppBundle\Controller\MailController" class="AppBundle\Controller\MailController" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+    </service>
+    <service id="AppBundle\Controller\NewsController" class="AppBundle\Controller\NewsController" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+    </service>
+    <service id="AppBundle\Form\ContactType" class="AppBundle\Form\ContactType" public="false" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
+    <service id="AppBundle\Form\MailType" class="AppBundle\Form\MailType" public="false" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
+    <service id="AppBundle\Form\NewsType" class="AppBundle\Form\NewsType" public="false" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
     <service id="controller_name_converter" class="Symfony\Bundle\FrameworkBundle\Controller\ControllerNameParser" public="false">
       <tag name="monolog.logger" channel="request"/>
       <argument type="service" id="kernel"/>
@@ -1015,7 +1057,7 @@
     </service>
     <service id="argument_resolver.service" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" public="false">
       <tag name="controller.argument_value_resolver" priority="-50"/>
-      <argument type="service" id="service_locator.d88cfa4e69b97939bcb559bc710963c9"/>
+      <argument type="service" id="service_locator.532ff71d12f179ca4e41dff2f7e96ca9"/>
     </service>
     <service id="argument_resolver.default" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" public="false">
       <tag name="controller.argument_value_resolver" priority="-100"/>
@@ -1162,7 +1204,7 @@
       <tag name="monolog.logger" channel="cache"/>
       <argument></argument>
       <argument>0</argument>
-      <argument>1SHRJk-WsccfGaHNq4enHM</argument>
+      <argument>L1WgXChYwBJxcXMRMBTvt3</argument>
       <argument>/home/ichinator/Bureau/MesProjetsGIT/Restaurant/var/cache/dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -1172,7 +1214,7 @@
       <tag name="monolog.logger" channel="cache"/>
       <argument></argument>
       <argument>0</argument>
-      <argument>1SHRJk-WsccfGaHNq4enHM</argument>
+      <argument>L1WgXChYwBJxcXMRMBTvt3</argument>
       <call method="setLogger">
         <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       </call>
@@ -1288,7 +1330,7 @@
       <argument type="service" id="form.resolved_type_factory"/>
     </service>
     <service id="form.extension" class="Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension" public="false">
-      <argument type="service" id="service_locator.3e67394412e95f58fcf0d63d502ad55c"/>
+      <argument type="service" id="service_locator.1d2ffa7d497870f7902456cb57fff2d0"/>
       <argument type="collection">
         <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="iterator">
           <argument type="service" id="form.type_extension.form.http_foundation"/>
@@ -1764,6 +1806,8 @@
           </argument>
           <argument key="nn" type="collection">
             <argument>/home/ichinator/Bureau/MesProjetsGIT/Restaurant/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.nn.xlf</argument>
+            <argument>/home/ichinator/Bureau/MesProjetsGIT/Restaurant/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.nn.xlf</argument>
+            <argument>/home/ichinator/Bureau/MesProjetsGIT/Restaurant/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.nn.xlf</argument>
           </argument>
           <argument key="ru" type="collection">
             <argument>/home/ichinator/Bureau/MesProjetsGIT/Restaurant/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.ru.xlf</argument>
@@ -1958,6 +2002,13 @@
             <argument>/home/ichinator/Bureau/MesProjetsGIT/Restaurant/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.lb.xlf</argument>
             <argument>/home/ichinator/Bureau/MesProjetsGIT/Restaurant/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.lb.yml</argument>
           </argument>
+          <argument key="nb" type="collection">
+            <argument>/home/ichinator/Bureau/MesProjetsGIT/Restaurant/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.nb.xlf</argument>
+            <argument>/home/ichinator/Bureau/MesProjetsGIT/Restaurant/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.nb.xlf</argument>
+            <argument>/home/ichinator/Bureau/MesProjetsGIT/Restaurant/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.nb.xlf</argument>
+            <argument>/home/ichinator/Bureau/MesProjetsGIT/Restaurant/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.nb.yml</argument>
+            <argument>/home/ichinator/Bureau/MesProjetsGIT/Restaurant/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.nb.yml</argument>
+          </argument>
           <argument key="en" type="collection">
             <argument>/home/ichinator/Bureau/MesProjetsGIT/Restaurant/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.en.xlf</argument>
             <argument>/home/ichinator/Bureau/MesProjetsGIT/Restaurant/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.en.xlf</argument>
@@ -2074,10 +2125,6 @@
           <argument key="eo" type="collection">
             <argument>/home/ichinator/Bureau/MesProjetsGIT/Restaurant/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.eo.yml</argument>
             <argument>/home/ichinator/Bureau/MesProjetsGIT/Restaurant/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.eo.yml</argument>
-          </argument>
-          <argument key="nb" type="collection">
-            <argument>/home/ichinator/Bureau/MesProjetsGIT/Restaurant/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.nb.yml</argument>
-            <argument>/home/ichinator/Bureau/MesProjetsGIT/Restaurant/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.nb.yml</argument>
           </argument>
           <argument key="bn_BD" type="collection">
             <argument>/home/ichinator/Bureau/MesProjetsGIT/Restaurant/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.bn_BD.yml</argument>
@@ -3141,6 +3188,12 @@
         <argument>class_exists</argument>
       </call>
     </service>
+    <service id="annotations.cached_reader" class="Doctrine\Common\Annotations\CachedReader" public="false">
+      <argument type="service" id="annotations.reader"/>
+      <argument type="service" id="1_ed49d26c7dbc90866923d58d6a36ddb047079a416e6108826f6d90c3146a478d"/>
+      <argument>true</argument>
+      <property name="cacheProviderBackup" type="service" id="annotations.cache"/>
+    </service>
     <service id="annotations.filesystem_cache" class="Doctrine\Common\Cache\FilesystemCache" public="false">
       <argument></argument>
     </service>
@@ -3746,12 +3799,12 @@
     </service>
     <service id="security.authentication.listener.anonymous.main" class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
       <argument type="service" id="security.token_storage"/>
-      <argument>5a6f22108d8dc6.89512188</argument>
+      <argument>5a76fb17150d06.49300854</argument>
       <argument type="service" id="monolog.logger.security" on-invalid="null"/>
       <argument type="service" id="security.authentication.manager"/>
     </service>
     <service id="security.authentication.provider.anonymous.main" class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-      <argument>5a6f22108d8dc6.89512188</argument>
+      <argument>5a76fb17150d06.49300854</argument>
     </service>
     <service id="security.exception_listener.main" class="Symfony\Component\Security\Http\Firewall\ExceptionListener" public="false">
       <argument type="service" id="security.token_storage"/>
@@ -3860,9 +3913,6 @@
       </call>
       <call method="addExtension">
         <argument type="service" id="twig.extension.httpfoundation"/>
-      </call>
-      <call method="addExtension">
-        <argument type="service" id="twig.extension.debug"/>
       </call>
       <call method="addExtension">
         <argument type="service" id="twig.extension.form"/>
@@ -4052,9 +4102,7 @@
       <argument type="service" id="request_stack"/>
       <argument type="service" id="router.request_context" on-invalid="ignore"/>
     </service>
-    <service id="twig.extension.debug" class="Twig\Extension\DebugExtension" public="false">
-      <tag name="twig.extension"/>
-    </service>
+    <service id="twig.extension.debug" class="Twig\Extension\DebugExtension" public="false"/>
     <service id="twig.translation.extractor" class="Symfony\Bridge\Twig\Translation\TwigExtractor">
       <tag name="translation.extractor" alias="twig"/>
       <argument type="service" id="twig"/>
@@ -4064,6 +4112,7 @@
       <tag name="monolog.logger" channel="request"/>
       <argument>twig.controller.exception:showAction</argument>
       <argument type="service" id="monolog.logger.request" on-invalid="null"/>
+      <argument>true</argument>
     </service>
     <service id="twig.controller.exception" class="Symfony\Bundle\TwigBundle\Controller\ExceptionController">
       <argument type="service" id="twig"/>
@@ -4959,6 +5008,10 @@
       <argument type="service" id="easyadmin.cache.manager"/>
       <argument type="service" id="property_accessor"/>
       <argument type="collection">
+        <argument key="list" type="collection">
+          <argument key="max_results">20</argument>
+          <argument key="actions" type="collection"/>
+        </argument>
         <argument key="entities" type="collection">
           <argument key="User" type="collection">
             <argument key="class">AppBundle\Entity\User</argument>
@@ -5138,6 +5191,30 @@
             <argument key="class">AppBundle\Entity\Thread</argument>
             <argument key="name">Thread</argument>
           </argument>
+          <argument key="News" type="collection">
+            <argument key="class">AppBundle\Entity\News</argument>
+            <argument key="form" type="collection">
+              <argument key="fields" type="collection">
+                <argument type="collection">
+                  <argument key="property">dateCreate</argument>
+                  <argument key="label">Date de création</argument>
+                </argument>
+                <argument type="collection">
+                  <argument key="property">title</argument>
+                  <argument key="label">Titre</argument>
+                </argument>
+                <argument type="collection">
+                  <argument key="property">content</argument>
+                  <argument key="label">Contenu</argument>
+                </argument>
+                <argument type="collection">
+                  <argument key="property">published</argument>
+                  <argument key="label">Publié</argument>
+                </argument>
+              </argument>
+            </argument>
+            <argument key="name">News</argument>
+          </argument>
         </argument>
         <argument key="design" type="collection">
           <argument key="form_theme" type="collection">
@@ -5165,10 +5242,6 @@
         </argument>
         <argument key="disabled_actions" type="collection"/>
         <argument key="translation_domain">messages</argument>
-        <argument key="list" type="collection">
-          <argument key="actions" type="collection"/>
-          <argument key="max_results">15</argument>
-        </argument>
         <argument key="search" type="collection"/>
         <argument key="edit" type="collection">
           <argument key="actions" type="collection"/>
@@ -6860,6 +6933,16 @@
     <service id="abstract.instanceof.AppBundle\Controller\EmployeesController" class="AppBundle\Controller\EmployeesController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id="instanceof.Symfony\Bundle\FrameworkBundle\Controller\Controller.0.AppBundle\Controller\FoodController" class="AppBundle\Controller\FoodController" autowire="true" abstract="true"/>
     <service id="abstract.instanceof.AppBundle\Controller\FoodController" class="AppBundle\Controller\FoodController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id="instanceof.Symfony\Bundle\FrameworkBundle\Controller\Controller.0.AppBundle\Controller\MailController" class="AppBundle\Controller\MailController" autowire="true" abstract="true"/>
+    <service id="abstract.instanceof.AppBundle\Controller\MailController" class="AppBundle\Controller\MailController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id="instanceof.Symfony\Bundle\FrameworkBundle\Controller\Controller.0.AppBundle\Controller\NewsController" class="AppBundle\Controller\NewsController" autowire="true" abstract="true"/>
+    <service id="abstract.instanceof.AppBundle\Controller\NewsController" class="AppBundle\Controller\NewsController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id="instanceof.Symfony\Component\Form\FormTypeInterface.0.AppBundle\Form\ContactType" class="AppBundle\Form\ContactType" public="false" autowire="true" abstract="true"/>
+    <service id="abstract.instanceof.AppBundle\Form\ContactType" class="AppBundle\Form\ContactType" public="false" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id="instanceof.Symfony\Component\Form\FormTypeInterface.0.AppBundle\Form\MailType" class="AppBundle\Form\MailType" public="false" autowire="true" abstract="true"/>
+    <service id="abstract.instanceof.AppBundle\Form\MailType" class="AppBundle\Form\MailType" public="false" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id="instanceof.Symfony\Component\Form\FormTypeInterface.0.AppBundle\Form\NewsType" class="AppBundle\Form\NewsType" public="false" autowire="true" abstract="true"/>
+    <service id="abstract.instanceof.AppBundle\Form\NewsType" class="AppBundle\Form\NewsType" public="false" autowire="true" autoconfigure="true" abstract="true"/>
     <service id="service_locator.90d2f9c613cb4255e5902c6a37360500" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection"/>
@@ -6876,7 +6959,15 @@
       <tag name="container.service_locator"/>
       <argument type="collection"/>
     </service>
-    <service id="service_locator.d88cfa4e69b97939bcb559bc710963c9" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id="service_locator.904046b3c05d142485b9796e7ca7b1a9" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection"/>
+    </service>
+    <service id="service_locator.e50610dc8c07c39454d2e2e3fb643c4d" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection"/>
+    </service>
+    <service id="service_locator.532ff71d12f179ca4e41dff2f7e96ca9" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection"/>
     </service>
@@ -6896,9 +6987,12 @@
         <argument key="translation.loader.yml" type="service" id="translation.loader.yml"/>
       </argument>
     </service>
-    <service id="service_locator.3e67394412e95f58fcf0d63d502ad55c" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id="service_locator.1d2ffa7d497870f7902456cb57fff2d0" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
+        <argument key="AppBundle\Form\ContactType" type="service" id="AppBundle\Form\ContactType"/>
+        <argument key="AppBundle\Form\MailType" type="service" id="AppBundle\Form\MailType"/>
+        <argument key="AppBundle\Form\NewsType" type="service" id="AppBundle\Form\NewsType"/>
         <argument key="EasyCorp\Bundle\EasyAdminBundle\Form\Type\EasyAdminAutocompleteType" type="service" id="easyadmin.form.type.autocomplete"/>
         <argument key="EasyCorp\Bundle\EasyAdminBundle\Form\Type\EasyAdminDividerType" type="service" id="easyadmin.form.type.divider"/>
         <argument key="EasyCorp\Bundle\EasyAdminBundle\Form\Type\EasyAdminFormType" type="service" id="easyadmin.form.type"/>
@@ -7158,12 +7252,6 @@
         <argument key="validator.expression" type="service" id="validator.expression"/>
       </argument>
     </service>
-    <service id="annotations.cached_reader" class="Doctrine\Common\Annotations\CachedReader" public="false">
-      <tag name="annotations.cached_reader" provider="annotations.cache"/>
-      <argument type="service" id="annotations.reader"/>
-      <argument type="service" id="annotations.cache"/>
-      <argument>true</argument>
-    </service>
     <service id="cache.app.recorder_inner" class="Symfony\Component\Cache\Adapter\FilesystemAdapter" public="false" lazy="true">
       <argument>IPY0sgSsTh</argument>
       <argument>0</argument>
@@ -7175,7 +7263,7 @@
     <service id="cache.system.recorder_inner" class="Symfony\Component\Cache\Adapter\AdapterInterface" public="false" lazy="true">
       <argument>D8MxcDgLIr</argument>
       <argument>0</argument>
-      <argument>1SHRJk-WsccfGaHNq4enHM</argument>
+      <argument>L1WgXChYwBJxcXMRMBTvt3</argument>
       <argument>/home/ichinator/Bureau/MesProjetsGIT/Restaurant/var/cache/dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -7183,7 +7271,7 @@
     <service id="cache.validator.recorder_inner" class="Symfony\Component\Cache\Adapter\AdapterInterface" public="false" lazy="true">
       <argument>lLHwAahPtH</argument>
       <argument>0</argument>
-      <argument>1SHRJk-WsccfGaHNq4enHM</argument>
+      <argument>L1WgXChYwBJxcXMRMBTvt3</argument>
       <argument>/home/ichinator/Bureau/MesProjetsGIT/Restaurant/var/cache/dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -7191,7 +7279,7 @@
     <service id="cache.serializer.recorder_inner" class="Symfony\Component\Cache\Adapter\AdapterInterface" public="false" lazy="true">
       <argument>52d-Oa89OT</argument>
       <argument>0</argument>
-      <argument>1SHRJk-WsccfGaHNq4enHM</argument>
+      <argument>L1WgXChYwBJxcXMRMBTvt3</argument>
       <argument>/home/ichinator/Bureau/MesProjetsGIT/Restaurant/var/cache/dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -7199,7 +7287,7 @@
     <service id="cache.annotations.recorder_inner" class="Symfony\Component\Cache\Adapter\AdapterInterface" public="false" lazy="true">
       <argument>VQrigT4oBG</argument>
       <argument>0</argument>
-      <argument>1SHRJk-WsccfGaHNq4enHM</argument>
+      <argument>L1WgXChYwBJxcXMRMBTvt3</argument>
       <argument>/home/ichinator/Bureau/MesProjetsGIT/Restaurant/var/cache/dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>

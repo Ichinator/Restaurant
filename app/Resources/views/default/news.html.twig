@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    {{ parent ()}}
+{% endblock %}
+{% block body %}
+    {{ parent ()}}
+    <div class="container">
+        <div class="row">
+            {% for news in news %}
+                <div class="col-sm-4">
+                    {% if news.published %}
+                        {{ news.title}}<br \>
+                        {# <img src="{{ vich_uploader_asset(plats, 'imageFile') }}" alt="{{ plats.image }}" /><br \><br \>#}
+                        <td><a href="{{ path('showOneNews', { 'id': news.id }) }}">{{ news.title }}</a></td>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}

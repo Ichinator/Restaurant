@@ -119,6 +119,20 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
             }
 
             if (0 === strpos($pathinfo, '/admin')) {
+                // writeMail
+                if ('/admin/writeMail' === $trimmedPathinfo) {
+                    if (substr($pathinfo, -1) !== '/') {
+                        return $this->redirect($rawPathinfo.'/', 'writeMail');
+                    }
+
+                    return array (  '_controller' => 'AppBundle\\Controller\\MailController::writeMailAction',  '_route' => 'writeMail',);
+                }
+
+                // createNews
+                if ('/admin/createNews' === $pathinfo) {
+                    return array (  '_controller' => 'AppBundle\\Controller\\NewsController::addNewsAction',  '_route' => 'createNews',);
+                }
+
                 // easyadmin
                 if ('/admin' === $trimmedPathinfo) {
                     if (substr($pathinfo, -1) !== '/') {
@@ -331,7 +345,12 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 
         }
 
-        elseif (0 === strpos($pathinfo, '/show')) {
+        // contact
+        if ('/contact' === $pathinfo) {
+            return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::contactAction',  '_route' => 'contact',);
+        }
+
+        if (0 === strpos($pathinfo, '/show')) {
             // employees
             if ('/showEmployees' === $trimmedPathinfo) {
                 if (substr($pathinfo, -1) !== '/') {
@@ -372,6 +391,11 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                     return $this->mergeDefaults(array_replace($matches, array('_route' => 'showOneDessert')), array (  '_controller' => 'AppBundle\\Controller\\FoodController::showOneDessertAction',));
                 }
 
+                // showOneNews
+                if (0 === strpos($pathinfo, '/showOneNews') && preg_match('#^/showOneNews/(?P<id>\\d+)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'showOneNews')), array (  '_controller' => 'AppBundle\\Controller\\NewsController::showOneNewsAction',));
+                }
+
             }
 
             // plats
@@ -387,6 +411,15 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
             // boissons
             if ('/showBoissons' === $pathinfo) {
                 return array (  '_controller' => 'AppBundle\\Controller\\FoodController::showBoissonsAction',  '_route' => 'boissons',);
+            }
+
+            // showNews
+            if ('/showNews' === $trimmedPathinfo) {
+                if (substr($pathinfo, -1) !== '/') {
+                    return $this->redirect($rawPathinfo.'/', 'showNews');
+                }
+
+                return array (  '_controller' => 'AppBundle\\Controller\\NewsController::showNewsAction',  '_route' => 'showNews',);
             }
 
         }

@@ -1,23 +1,32 @@
 {% extends 'base.html.twig' %}
 {% block stylesheets %}
-    {{ parent ()}}
+    {{ parent () }}
 {% endblock %}
 {% block body %}
-    {{ parent ()}}
-<div class="container">
-    <div class="row">
-    {% for entrees in entrees %}
-        <div class="col-sm-4">
-        {% if entrees.enabled %}
-            {{ entrees.name}}<br \>
-            {{ entrees.prix }}<br \>
-            <img src="{{ vich_uploader_asset(entrees, 'imageFile') }}" alt="{{ entrees.image }}" /><br \><br \>
-            <td><a href="{{ path('showOneEntree', { 'id': entrees.id }) }}">{{ entrees.name }}</a></td>
-        {% endif %}
+    {{ parent () }}
+
+
+    <div class="container">
+        <div class="row">
+            {% for entrees in entrees %}
+                <div class="col-sm-4">
+                    {% if entrees.enabled %}
+                        <div class="card" style="width:400px">
+                            <img class="card-img-top rounded img-fluid"
+                                 src="{{ vich_uploader_asset(entrees, 'imageFile') }}" alt="{{ entrees.image }}"
+                                 alt="Card image">
+                            <div class="card-body">
+                                <h4 class="card-title">{{ entrees.name }}</h4>
+                                <p class="card-text">{{ entrees.prix }} €</p>
+                                <a href="{{ path('showOneEntree', { 'id': entrees.id }) }}" class="btn btn-primary">See
+                                    Profile</a>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            {% endfor %}
         </div>
-    {% endfor %}
     </div>
-</div>
 
 
 {% endblock %}

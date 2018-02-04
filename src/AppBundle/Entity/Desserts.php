@@ -60,7 +60,6 @@ class Desserts
 
     /**
      * @ORM\Column(type="boolean")
-     * @var \DateTime
      */
     private $enabled = true;
 
@@ -68,6 +67,8 @@ class Desserts
      * @ORM\Column(type="text")
      */
     private $description;
+
+
 
 // ...
 

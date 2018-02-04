@@ -67,6 +67,11 @@ class Boissons
      */
     private $description;
 
+    /**
+     * @var
+     */
+    private $menu;
+
 // ...
 
     public function setImageFile(File $image = null)

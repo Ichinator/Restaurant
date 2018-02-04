@@ -9,11 +9,15 @@
     {% for employees in employees %}
             <div class="col-sm-4">
                 {% if employees.enabled %}
-                    {{ employees.nom}}<br \>
-                    {{ employees.prenom }}<br \>
-                    {{ employees.poste }}<br \>
-                    <td><a href="{{ path('showOneEmployee', { 'id': employees.id }) }}">{{ employees.nom }}</a></td><br \>
-                    <img src="{{ vich_uploader_asset(employees, 'imageFile') }}" alt="{{ employees.image }}" /><br \>
+                    <div class="card" style="width:400px">
+                        <img class="card-img-top rounded img-fluid" src="{{ vich_uploader_asset(employees, 'imageFile') }}" alt="{{ employees.image }}" alt="Card image">
+                        <div class="card-body">
+                            <h4 class="card-title">{{ employees.prenom }} {{ employees.nom}}</h4>
+                            <p class="card-text">{{ employees.poste }}</p>
+                            <a href="{{ path('showOneEmployee', { 'id': employees.id }) }}" class="btn btn-primary">See Profile</a>
+                        </div>
+                    </div>
+
                 {% endif %}
             </div>
     {% endfor %}

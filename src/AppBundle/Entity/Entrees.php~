@@ -68,6 +68,12 @@ class Entrees
      */
     private $description;
 
+    /**
+     * @
+     */
+
+    private $menu;
+
 
 // ...
 
@@ -205,5 +211,29 @@ class Entrees
     public function getEnabled()
     {
         return $this->enabled;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return Entrees
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
     }
 }

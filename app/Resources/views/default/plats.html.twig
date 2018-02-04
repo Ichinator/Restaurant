@@ -4,20 +4,28 @@
 {% endblock %}
 {% block body %}
     {{ parent ()}}
-<div class="container">
-    <div class="row">
-    {% for plats in plats %}
-        <div class="col-sm-4">
-        {% if plats.enabled %}
-            {{ plats.name}}<br \>
-            {{ plats.prix }}<br \>
-            <img src="{{ vich_uploader_asset(plats, 'imageFile') }}" alt="{{ plats.image }}" /><br \><br \>
-            <td><a href="{{ path('showOnePlat', { 'id': plats.id }) }}">{{ plats.name }}</a></td>
-        {% endif %}
+
+    <div class="container">
+        <div class="row">
+            {% for plats in plats %}
+                <div class="col-sm-4">
+                    {% if plats.enabled %}
+                        <div class="card" style="width:400px">
+                            <img class="card-img-top rounded img-fluid"
+                                 src="{{ vich_uploader_asset(plats, 'imageFile') }}" alt="{{ plats.image }}"
+                                 alt="Card image">
+                            <div class="card-body">
+                                <h4 class="card-title">{{ plats.name }}</h4>
+                                <p class="card-text">{{ plats.prix }} €</p>
+                                <a href="{{ path('showOnePlat', { 'id': plats.id }) }}" class="btn btn-primary">See
+                                    Profile</a>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            {% endfor %}
         </div>
-    {% endfor %}
     </div>
-</div>
 {% endblock %}
 
 {% block javascripts %}

@@ -93,6 +93,8 @@ fos_user:
 
 # app/config/config.yml
 easy_admin:
+    list:
+        max_results: 20
     entities:
         User:
             class: AppBundle\Entity\User
@@ -152,6 +154,16 @@ easy_admin:
                     class: AppBundle\Entity\Comment
         Thread:
                     class: AppBundle\Entity\Thread
+        News:
+                    class: AppBundle\Entity\News
+                    form:
+                            fields:
+                                - { property: 'dateCreate', label: 'Date de création'}
+                                - { property: 'title', label: 'Titre'}
+                                - { property: 'content', label: 'Contenu'}
+                                - { property: 'published', label: 'Publié'}
+
+
     design:
             form_theme: ['horizontal', 'VichUploaderBundle:Form:fields.html.twig']
 
@@ -183,6 +195,10 @@ vich_uploader:
 # app/config.yml
 kms_froala_editor:
     language: "fr"
+    saveURL: "createNews"
+    saveInterval: 2500
+    saveParam: "content"
+
 
 # app/config/config.yml
 fos_comment:

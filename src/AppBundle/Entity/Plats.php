@@ -58,7 +58,6 @@ class Plats
 
     /**
      * @ORM\Column(type="boolean")
-     * @var \DateTime
      */
     private $enabled = true;
 

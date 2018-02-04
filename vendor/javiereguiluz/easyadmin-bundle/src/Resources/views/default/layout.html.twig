@@ -93,6 +93,9 @@
                                             </button>
                                             <ul class="dropdown-menu" role="menu">
                                                 {% block user_menu_dropdown %}
+                                                    <li>
+                                                        <a href="{{ path('createNews') }}">Créer une news</a>
+                                                    </li>
                                                 <li>
                                                     <a href="{{ _logout_path }}"><i class="fa fa-sign-out"></i> {{ 'user.signout'|trans(domain = 'EasyAdminBundle') }}</a>
                                                 </li>

@@ -4,19 +4,28 @@
 {% endblock %}
 {% block body %}
     {{ parent ()}}
+
+
     <div class="container">
         <div class="row">
-    {% for desserts in desserts %}
-        <div class="col-sm-4">
-        {% if desserts.enabled %}
-            {{ desserts.name}}<br \>
-            {{ desserts.prix }}<br \>
-            <img src="{{ vich_uploader_asset(desserts, 'imageFile') }}" alt="{{ desserts.image }}" /><br \><br \>
-            <td><a href="{{ path('showOneDessert', { 'id': desserts.id }) }}">{{ desserts.name }}</a></td>
-        {% endif %}
+            {% for desserts in desserts %}
+                <div class="col-sm-4">
+                    {% if desserts.enabled %}
+                        <div class="card" style="width:400px">
+                            <img class="card-img-top rounded img-fluid"
+                                 src="{{ vich_uploader_asset(desserts, 'imageFile') }}" alt="{{ desserts.image }}"
+                                 alt="Card image">
+                            <div class="card-body">
+                                <h4 class="card-title">{{ desserts.name }}</h4>
+                                <p class="card-text">{{ desserts.prix }} €</p>
+                                <a href="{{ path('showOneDessert', { 'id': desserts.id }) }}" class="btn btn-primary">See
+                                    Profile</a>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            {% endfor %}
         </div>
-    {% endfor %}
-    </div>
     </div>
 {% endblock %}
 

@@ -5,20 +5,28 @@
 {% block body %}
     {{ parent ()}}
 
-<div class="container">
-    <div class="row">
-    {% for boissons in boissons %}
-        <div class="col-sm-4">
-        {% if boissons.enabled %}
-            {{ boissons.name}}<br \>
-            {{ boissons.prix }}<br \>
-            <img src="{{ vich_uploader_asset(boissons, 'imageFile') }}" alt="{{ boissons.image }}" /><br \><br \>
-            <td><a href="{{ path('showOneBoisson', { 'id': boissons.id }) }}">{{ boissons.name }}</a></td>
-        {% endif %}
+
+    <div class="container">
+        <div class="row">
+            {% for boissons in boissons %}
+                <div class="col-sm-4">
+                    {% if boissons.enabled %}
+                        <div class="card" style="width:400px">
+                            <img class="card-img-top rounded img-fluid"
+                                 src="{{ vich_uploader_asset(boissons, 'imageFile') }}" alt="{{ boissons.image }}"
+                                 alt="Card image">
+                            <div class="card-body">
+                                <h4 class="card-title">{{ boissons.name }}</h4>
+                                <p class="card-text">{{ boissons.prix }} €</p>
+                                <a href="{{ path('showOneBoisson', { 'id': boissons.id }) }}" class="btn btn-primary">See
+                                    Profile</a>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            {% endfor %}
         </div>
-    {% endfor %}
     </div>
-</div>
 
 {% endblock %}
 
